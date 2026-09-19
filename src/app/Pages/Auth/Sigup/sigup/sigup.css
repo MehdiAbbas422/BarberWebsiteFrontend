@@ -1,0 +1,776 @@
+/* =========================================
+   SIGNUP PAGE
+========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.signup-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(99, 102, 241, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(139, 92, 246, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #070a13,
+      #0d1222 50%,
+      #070a13
+    );
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.bg-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  pointer-events: none;
+
+  animation: floatGlow 7s ease-in-out infinite;
+}
+
+.glow-one {
+  width: 300px;
+  height: 300px;
+
+  top: -120px;
+  left: -100px;
+
+  background: rgba(99, 102, 241, 0.13);
+}
+
+.glow-two {
+  width: 350px;
+  height: 350px;
+
+  right: -150px;
+  bottom: -150px;
+
+  background: rgba(168, 85, 247, 0.12);
+
+  animation-delay: 2s;
+}
+
+@keyframes floatGlow {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, -20px);
+  }
+}
+
+
+/* =========================================
+   SIGNUP CARD
+========================================= */
+
+.signup-card {
+  width: 100%;
+  max-width: 450px;
+
+  padding: 42px 40px;
+
+  position: relative;
+  z-index: 2;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  border-radius: 24px;
+
+  background: rgba(17, 23, 42, 0.72);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  animation: cardEnter 0.7s ease;
+}
+
+@keyframes cardEnter {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.signup-header {
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: white;
+
+  font-size: 28px;
+
+  box-shadow:
+    0 12px 35px rgba(99, 102, 241, 0.35);
+
+  transform: rotate(-3deg);
+
+  transition: 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.signup-header h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 29px;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.signup-header p {
+  margin: 9px 0 0;
+
+  color: #8d95ad;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #dce1f2;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================
+   INPUT WRAPPER
+========================================= */
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #8b93ad;
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+  transition: 0.25s ease;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  height: 50px;
+
+  padding: 0 16px 0 44px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: #68718b;
+}
+
+.input-wrapper input:hover {
+  border-color: rgba(129, 140, 248, 0.35);
+}
+
+.input-wrapper input:focus {
+  border-color: #818cf8;
+
+  background: rgba(255, 255, 255, 0.065);
+
+  box-shadow:
+    0 0 0 3px rgba(129, 140, 248, 0.10),
+    0 0 25px rgba(99, 102, 241, 0.10);
+
+  transform: translateY(-1px);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #a5b4fc;
+}
+
+
+/* =========================================
+   SIGNUP BUTTON
+========================================= */
+
+.signup-btn {
+  width: 100%;
+
+  height: 52px;
+
+  margin-top: 8px;
+  margin-bottom: 22px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.signup-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 17px 38px rgba(99, 102, 241, 0.38);
+}
+
+.signup-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.signup-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+.arrow {
+  margin-left: 8px;
+
+  font-size: 18px;
+
+  vertical-align: -1px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-content {
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.account-link,
+.reset-link {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  color: #858da5;
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+.account-link {
+  margin-bottom: 10px;
+}
+
+.reset-link {
+  margin-bottom: 25px;
+}
+
+.account-link a,
+.reset-link a {
+  color: #9ca3ff;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.account-link a:hover,
+.reset-link a:hover {
+  color: #c4c7ff;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.security {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  color: #626b83;
+
+  font-size: 11px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   OTP SECTION
+========================================= */
+
+.otp-section {
+  text-align: center;
+}
+
+.otp-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: white;
+
+  font-size: 28px;
+
+  box-shadow:
+    0 14px 35px rgba(99, 102, 241, 0.30);
+}
+
+.otp-section h1 {
+  margin: 0 0 9px;
+
+  color: #ffffff;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.otp-section p {
+  margin: 0;
+
+  color: #858da5;
+
+  font-size: 13px;
+}
+
+.otp-section strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #a5b4fc;
+
+  font-size: 13px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   OTP INPUT
+========================================= */
+
+.otp-group {
+  margin-top: 28px;
+
+  text-align: left;
+}
+
+.otp-group input {
+  width: 100%;
+
+  height: 58px;
+
+  padding: 0 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  border-radius: 13px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: white;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  letter-spacing: 9px;
+
+  text-align: center;
+
+  transition: 0.25s ease;
+}
+
+.otp-group input::placeholder {
+  color: #555e76;
+
+  letter-spacing: 8px;
+}
+
+.otp-group input:focus {
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 3px rgba(129, 140, 248, 0.10),
+    0 0 25px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================
+   VERIFY BUTTON
+========================================= */
+
+.verify-btn {
+  width: 100%;
+
+  height: 50px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+
+  transition: 0.25s ease;
+}
+
+.verify-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 32px rgba(99, 102, 241, 0.35);
+}
+
+.verify-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   RESEND BUTTON
+========================================= */
+
+.resend-btn {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 10px;
+
+  border: 1px solid rgba(129, 140, 248, 0.25);
+
+  border-radius: 12px;
+
+  background: rgba(129, 140, 248, 0.06);
+
+  color: #a5b4fc;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.resend-btn:hover:not(:disabled) {
+  background: rgba(129, 140, 248, 0.12);
+
+  border-color: rgba(129, 140, 248, 0.45);
+}
+
+.resend-btn:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   OTP HELP
+========================================= */
+
+.otp-help {
+  margin-top: 22px;
+
+  color: #68718a;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.otp-help span {
+  display: block;
+
+  color: #929ab1;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .signup-page {
+    padding: 25px 15px;
+  }
+
+  .signup-card {
+    max-width: 100%;
+
+    padding: 35px 25px;
+
+    border-radius: 20px;
+  }
+
+  .signup-header h1,
+  .otp-section h1 {
+    font-size: 25px;
+  }
+
+  .logo,
+  .otp-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .signup-page {
+    padding: 20px 12px;
+  }
+
+  .signup-card {
+    padding: 30px 20px;
+  }
+
+  .signup-header {
+    margin-bottom: 25px;
+  }
+
+  .signup-header h1,
+  .otp-section h1 {
+    font-size: 23px;
+  }
+
+  .signup-header p {
+    font-size: 13px;
+  }
+
+  .input-wrapper input {
+    height: 48px;
+  }
+
+  .account-link,
+  .reset-link {
+    flex-direction: column;
+
+    gap: 3px;
+  }
+
+  .otp-group input {
+    font-size: 21px;
+
+    letter-spacing: 7px;
+  }
+}

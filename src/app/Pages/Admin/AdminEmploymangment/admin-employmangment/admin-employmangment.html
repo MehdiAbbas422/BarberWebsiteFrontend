@@ -1,0 +1,98 @@
+<div class="panel-wrapper">
+  
+  <!-- Header Section -->
+  <header class="panel-header">
+    <div class="brand-title">
+      <div class="icon-badge">💈</div>
+      <div>
+        <h1>Barber Management</h1>
+        <p>Control salon staff, active status & credentials</p>
+      </div>
+    </div>
+    
+    <!-- Controls Section: Search & Filter -->
+    <div class="controls-group">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" placeholder="Search by name or email..." />
+      </div>
+    </div>
+  </header>
+
+  <!-- Table/Card Area -->
+  <main class="content-card">
+    <div class="table-responsive">
+      <table class="premium-table">
+        <thead>
+          <tr>
+            <th>Barber</th>
+            <th>Barber ID</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(barber of BarberDto; track $index) {
+            <tr>
+              <!-- Barber Info (Avatar + Name) -->
+              <td data-label="Barber">
+                <div class="barber-profile">
+                  <div class="avatar">
+                    {{ barber.name ? barber.name.charAt(0).toUpperCase() : 'B' }}
+                  </div>
+                  <span class="barber-name">{{ barber.name }}</span>
+                </div>
+              </td>
+
+              <!-- ID -->
+              <td data-label="Barber ID">
+                <span class="id-tag">#{{ barber.id }}</span>
+              </td>
+
+              <!-- Email -->
+              <td data-label="Email">
+                <span class="text-truncate" title="{{ barber.email }}">{{ barber.email }}</span>
+              </td>
+
+              <!-- Status -->
+              <td data-label="Status">
+                <span class="status-badge active">Active</span>
+              </td>
+
+              <!-- Action -->
+              <td data-label="Actions" class="text-end">
+                <button class="btn-kickout" (click)="Kickout(barber.id)">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <line x1="18" y1="8" x2="23" y2="13"></line>
+                    <line x1="23" y1="8" x2="18" y2="13"></line>
+                  </svg>
+                  <span>Kickout</span>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Footer -->
+    <footer class="table-footer">
+      <div class="pagination-info">
+        Showing <strong>1-10</strong> of <strong>{{ BarberDto?.length || 0 }}</strong> barbers
+      </div>
+      <div class="pagination-nav">
+        <button class="nav-btn" disabled>&laquo;</button>
+        <button class="nav-btn active">1</button>
+        <button class="nav-btn">2</button>
+        <button class="nav-btn">&raquo;</button>
+      </div>
+    </footer>
+  </main>
+  
+</div>

@@ -1,0 +1,267 @@
+<div class="signup-page">
+
+  <!-- Background Effects -->
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+
+  <div class="signup-card">
+
+    @if (!EmailVerfy()) {
+
+      <!-- Header -->
+      <div class="signup-header">
+
+        <div class="logo">
+          ✂
+        </div>
+
+        <h1>Create Account</h1>
+
+        <p>
+          Join us and create your account
+        </p>
+
+      </div>
+
+
+      <!-- Signup Form -->
+
+      <div class="form-group">
+
+        <label for="username">
+          Username
+        </label>
+
+        <div class="input-wrapper">
+
+          <span class="input-icon">👤</span>
+
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="SigupDto.Username"
+            placeholder="Enter your username"
+            autocomplete="username"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <div class="input-wrapper">
+
+          <span class="input-icon">✉</span>
+
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="SigupDto.Email"
+            placeholder="Enter your email"
+            autocomplete="email"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <div class="input-wrapper">
+
+          <span class="input-icon">🔒</span>
+
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="SigupDto.Password"
+            placeholder="Create a password"
+            autocomplete="new-password"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- Signup Button -->
+
+      <button
+        class="signup-btn"
+        (click)="Sigup(SigupDto)"
+        [disabled]="Isloading()"
+      >
+
+        @if (Isloading()) {
+
+          <span class="loading-content">
+            <span class="spinner"></span>
+            Creating Account...
+          </span>
+
+        }
+        @else {
+
+          <span>
+            Create Account
+            <span class="arrow">→</span>
+          </span>
+
+        }
+
+      </button>
+
+
+      <!-- Login -->
+
+      <div class="account-link">
+
+        <span>
+          Already have an account?
+        </span>
+
+        <a routerLink="/sigin">
+          Sign in
+        </a>
+
+      </div>
+
+
+      <!-- Forgot Password -->
+
+      <div class="reset-link">
+
+        <span>
+          Forgot your password?
+        </span>
+
+        <a routerLink="/resetpassword">
+          Reset Password
+        </a>
+
+      </div>
+
+
+      <!-- Security -->
+
+      <div class="security">
+
+        <span>🛡️</span>
+
+        <span>
+          Your information is secure and encrypted
+        </span>
+
+      </div>
+
+    }
+
+
+    @else {
+
+      <!-- OTP Verification -->
+
+      <div class="otp-section">
+
+        <div class="otp-icon">
+          ✉
+        </div>
+
+        <h1>Verify Your Email</h1>
+
+        <p>
+          We've sent a verification code to
+        </p>
+
+        <strong>
+          {{ SigupDto.Email }}
+        </strong>
+
+
+        <!-- OTP Input -->
+
+        <div class="form-group otp-group">
+
+          <label for="otp">
+            Enter OTP
+          </label>
+
+          <input
+            type="text"
+            id="otp"
+            [(ngModel)]="OTP"
+            placeholder="000000"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+          >
+
+        </div>
+
+
+        <!-- Verify -->
+
+        <button
+          class="verify-btn"
+          (click)="VerfyEmail(OTP, SigupDto.Email)"
+          [disabled]="Isloading()"
+        >
+
+          @if (Isloading()) {
+
+            <span class="loading-content">
+              <span class="spinner"></span>
+              Verifying...
+            </span>
+
+          }
+          @else {
+
+            Verify Email
+
+          }
+
+        </button>
+
+
+        <!-- Resend -->
+
+        <button
+          class="resend-btn"
+          (click)="ResendOTP(SigupDto.Email)"
+          [disabled]="Isloading()"
+        >
+
+          Resend OTP
+
+        </button>
+
+
+        <div class="otp-help">
+
+          Didn't receive the code?
+
+          <span>
+            Check your spam folder
+          </span>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

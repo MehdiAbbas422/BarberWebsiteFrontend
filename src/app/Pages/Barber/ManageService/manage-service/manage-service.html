@@ -1,0 +1,210 @@
+
+<div class="manage-page">
+
+  <!-- Background decorative lights -->
+  <div class="ambient-light light-one"></div>
+  <div class="ambient-light light-two"></div>
+
+  <div class="page-content">
+
+    <!-- Header -->
+    <div class="page-header">
+
+      <div class="heading-area">
+        <div class="heading-icon">
+          <span>✂</span>
+        </div>
+
+        <div>
+          <p class="eyebrow">SALON MANAGEMENT</p>
+          <h1>Manage Services</h1>
+          <p class="page-subtitle">
+            Curate your salon menu and manage the services you offer.
+          </p>
+        </div>
+      </div>
+
+      <div class="header-badge">
+        <span class="status-dot"></span>
+        <span>Salon Menu</span>
+      </div>
+
+    </div>
+
+
+    <!-- Main management card -->
+    <div class="service-manager">
+
+      <!-- Card top -->
+      <div class="manager-top">
+
+        <div>
+          <p class="section-label">YOUR SERVICES</p>
+          <h2>Service Collection</h2>
+          <p class="section-description">
+            Add a service to your salon or remove an existing one.
+          </p>
+        </div>
+
+        <div class="service-count">
+          <span class="count-number">{{ BarberServiceList.length }}</span>
+          <span class="count-label">Active Services</span>
+        </div>
+
+      </div>
+
+
+      <!-- Add service area -->
+      <div class="add-service-box">
+
+        <div class="add-heading">
+          <div class="add-icon">＋</div>
+
+          <div>
+            <h3>Add New Service</h3>
+            <p>Select a service from your available salon menu.</p>
+          </div>
+        </div>
+
+        <div class="select-wrapper">
+
+          <select
+            class="service-select"
+            (change)="AddService($any($event.target).value)"
+            [disabled]="Isloading">
+
+            <option value="" disabled selected>
+              Choose a salon service
+            </option>
+
+            @for(service of ServiceList; track $index)
+            {
+              <option [value]="service.id">
+                {{ service.serviceName }}
+              </option>
+            }
+
+          </select>
+
+          <span class="select-arrow">⌄</span>
+
+        </div>
+
+        <p class="helper-text">
+          ✦ Choose a service to add it to your salon menu.
+        </p>
+
+      </div>
+
+
+      <!-- Services heading -->
+      <div class="list-heading">
+
+        <div>
+          <h3>Available Services</h3>
+          <p>Services currently listed on your salon profile.</p>
+        </div>
+
+        <span class="list-count">
+          {{ BarberServiceList.length }} Services
+        </span>
+
+      </div>
+
+
+      <!-- Desktop / tablet table -->
+      <div class="services-table-wrapper">
+
+        <table class="services-table">
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Service Details</th>
+              <th class="action-heading">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for(barber of BarberServiceList; track $index)
+            {
+              <tr>
+
+                <td class="serial-number">
+                  {{ ($index + 1).toString().padStart(2, '0') }}
+                </td>
+
+                <td>
+                  <div class="service-info">
+
+                    <div class="service-avatar">
+                      <span>✂</span>
+                    </div>
+
+                    <div>
+                      <h4>{{ barber.serviceName }}</h4>
+                      <p>Professional salon service</p>
+                    </div>
+
+                  </div>
+                </td>
+
+                <td class="action-cell">
+
+                  <button
+                    type="button"
+                    class="delete-btn"
+                    (click)="DeleteService(barber.serviceId)">
+
+                    <span class="delete-icon">⌫</span>
+                    <span>Remove</span>
+
+                  </button>
+
+                </td>
+
+              </tr>
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- Empty state -->
+      @if(BarberServiceList.length === 0)
+      {
+        <div class="empty-state">
+
+          <div class="empty-icon">✂</div>
+
+          <h3>No services added yet</h3>
+
+          <p>
+            Your salon menu is empty. Choose a service above to get started.
+          </p>
+
+        </div>
+      }
+
+
+      <!-- Footer -->
+      <div class="manager-footer">
+
+        <div class="footer-status">
+          <span class="footer-dot"></span>
+          <span>Your salon menu is ready to manage</span>
+        </div>
+
+        <span class="footer-brand">RECO BARBER</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

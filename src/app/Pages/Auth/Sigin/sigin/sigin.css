@@ -1,0 +1,530 @@
+* {
+  box-sizing: border-box;
+  }
+
+.auth-page {
+min-height: 100vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+padding: 30px 20px;
+
+background:
+radial-gradient(
+circle at 15% 20%,
+rgba(124, 58, 237, 0.18),
+transparent 30%
+),
+radial-gradient(
+circle at 85% 80%,
+rgba(37, 99, 235, 0.16),
+transparent 30%
+),
+#080b14;
+}
+
+/* ================================
+BACKGROUND SHAPES
+================================ */
+
+.background-shape {
+position: absolute;
+border-radius: 50%;
+pointer-events: none;
+filter: blur(2px);
+opacity: 0.45;
+}
+
+.shape-one {
+width: 330px;
+height: 330px;
+top: -140px;
+left: -100px;
+
+background: linear-gradient(
+135deg,
+#7c3aed,
+#2563eb
+);
+
+animation: floatOne 8s ease-in-out infinite;
+}
+
+.shape-two {
+width: 280px;
+height: 280px;
+right: -90px;
+bottom: -110px;
+
+background: linear-gradient(
+135deg,
+#2563eb,
+#06b6d4
+);
+
+animation: floatTwo 10s ease-in-out infinite;
+}
+
+@keyframes floatOne {
+0%,
+100% {
+transform: translate(0, 0);
+}
+
+50% {
+transform: translate(25px, 30px);
+}
+}
+
+@keyframes floatTwo {
+0%,
+100% {
+transform: translate(0, 0);
+}
+
+50% {
+transform: translate(-25px, -20px);
+}
+}
+
+/* ================================
+SIGN IN CARD
+================================ */
+
+.signin-card {
+width: 100%;
+max-width: 450px;
+
+position: relative;
+z-index: 2;
+
+padding: 42px;
+
+background: rgba(15, 18, 30, 0.78);
+
+border: 1px solid rgba(255, 255, 255, 0.09);
+border-radius: 26px;
+
+backdrop-filter: blur(22px);
+-webkit-backdrop-filter: blur(22px);
+
+box-shadow:
+0 30px 80px rgba(0, 0, 0, 0.55),
+inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+animation: cardAppear 0.6s ease;
+}
+
+@keyframes cardAppear {
+from {
+opacity: 0;
+transform: translateY(25px) scale(0.97);
+}
+
+to {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+}
+
+/* ================================
+HEADER
+================================ */
+
+.auth-header {
+text-align: center;
+margin-bottom: 34px;
+}
+
+.logo-icon {
+width: 64px;
+height: 64px;
+
+margin: 0 auto 18px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 27px;
+
+border-radius: 18px;
+
+background:
+linear-gradient(
+135deg,
+rgba(124, 58, 237, 0.25),
+rgba(37, 99, 235, 0.18)
+);
+
+border: 1px solid rgba(124, 58, 237, 0.3);
+
+box-shadow:
+0 10px 30px rgba(124, 58, 237, 0.18);
+}
+
+.auth-header h1 {
+margin: 0;
+
+color: #ffffff;
+
+font-size: 29px;
+font-weight: 700;
+
+letter-spacing: -0.7px;
+}
+
+.auth-header p {
+margin: 9px 0 0;
+
+color: #8f96a8;
+
+font-size: 14px;
+line-height: 1.6;
+}
+
+/* ================================
+INPUT GROUP
+================================ */
+
+.input-group {
+margin-bottom: 22px;
+}
+
+.input-group label {
+display: block;
+
+color: #d8dce7;
+
+font-size: 13px;
+font-weight: 600;
+
+margin-bottom: 9px;
+}
+
+/* ================================
+PASSWORD LABEL
+================================ */
+
+.password-label {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+margin-bottom: 9px;
+}
+
+.password-label label {
+margin-bottom: 0;
+}
+
+.password-label a {
+color: #8b5cf6;
+
+font-size: 11px;
+font-weight: 600;
+
+text-decoration: none;
+
+transition: color 0.2s ease;
+}
+
+.password-label a:hover {
+color: #a78bfa;
+}
+
+/* ================================
+INPUT
+================================ */
+
+.input-wrapper {
+position: relative;
+}
+
+.input-wrapper input {
+width: 100%;
+height: 55px;
+
+padding: 0 48px;
+
+color: #ffffff;
+
+background: rgba(255, 255, 255, 0.045);
+
+border: 1px solid rgba(255, 255, 255, 0.1);
+
+border-radius: 13px;
+
+outline: none;
+
+font-size: 14px;
+
+transition:
+border-color 0.25s ease,
+background 0.25s ease,
+box-shadow 0.25s ease;
+}
+
+.input-wrapper input::placeholder {
+color: #626a7d;
+}
+
+.input-wrapper input:focus {
+border-color: #7c3aed;
+
+background: rgba(124, 58, 237, 0.06);
+
+box-shadow:
+0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+/* ================================
+INPUT ICON
+================================ */
+
+.input-icon {
+position: absolute;
+
+left: 16px;
+top: 50%;
+
+transform: translateY(-50%);
+
+color: #737b8e;
+
+font-size: 15px;
+
+pointer-events: none;
+}
+
+/* ================================
+EYE BUTTON
+================================ */
+
+.eye-btn {
+position: absolute;
+
+right: 7px;
+top: 7px;
+
+width: 40px;
+height: 40px;
+
+border: none;
+border-radius: 9px;
+
+background: transparent;
+
+cursor: pointer;
+
+font-size: 15px;
+
+opacity: 0.6;
+
+transition:
+opacity 0.2s ease,
+background 0.2s ease;
+}
+
+.eye-btn:hover {
+opacity: 1;
+
+background: rgba(255, 255, 255, 0.07);
+}
+
+/* ================================
+SIGN IN BUTTON
+================================ */
+
+.signin-btn {
+width: 100%;
+height: 55px;
+
+margin-top: 4px;
+
+border: none;
+border-radius: 13px;
+
+color: #ffffff;
+
+font-size: 14px;
+font-weight: 700;
+
+cursor: pointer;
+
+background:
+linear-gradient(
+135deg,
+#7c3aed,
+#2563eb
+);
+
+box-shadow:
+0 12px 25px rgba(79, 70, 229, 0.25);
+
+transition:
+transform 0.2s ease,
+box-shadow 0.2s ease,
+opacity 0.2s ease;
+}
+
+.signin-btn:hover:not(:disabled) {
+transform: translateY(-2px);
+
+box-shadow:
+0 16px 32px rgba(79, 70, 229, 0.35);
+}
+
+.signin-btn:active:not(:disabled) {
+transform: translateY(0);
+}
+
+.signin-btn:disabled {
+opacity: 0.55;
+
+cursor: not-allowed;
+
+box-shadow: none;
+}
+
+.arrow {
+margin-left: 7px;
+
+font-size: 18px;
+
+transition: margin 0.2s ease;
+}
+
+.signin-btn:hover:not(:disabled) .arrow {
+margin-left: 12px;
+}
+
+/* ================================
+LOADING
+================================ */
+
+.loading-content {
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+gap: 10px;
+}
+
+.spinner {
+width: 17px;
+height: 17px;
+
+border-radius: 50%;
+
+border: 2px solid rgba(255, 255, 255, 0.3);
+
+border-top-color: #ffffff;
+
+animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+to {
+transform: rotate(360deg);
+}
+}
+
+/* ================================
+SIGN UP
+================================ */
+
+.signup-section {
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+gap: 5px;
+
+margin-top: 25px;
+
+font-size: 12px;
+
+color: #70788b;
+}
+
+.signup-section a {
+color: #8b5cf6;
+
+font-weight: 600;
+
+text-decoration: none;
+
+transition: color 0.2s ease;
+}
+
+.signup-section a:hover {
+color: #a78bfa;
+}
+
+/* ================================
+SECURITY
+================================ */
+
+.security-note {
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+gap: 7px;
+
+margin-top: 22px;
+padding-top: 19px;
+
+border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+color: #5f687b;
+
+font-size: 10px;
+}
+
+/* ================================
+MOBILE
+================================ */
+
+@media (max-width: 520px) {
+
+.auth-page {
+padding: 20px 15px;
+}
+
+.signin-card {
+padding: 30px 22px;
+border-radius: 21px;
+}
+
+.auth-header h1 {
+font-size: 25px;
+}
+
+.logo-icon {
+width: 58px;
+height: 58px;
+}
+
+.shape-one {
+width: 220px;
+height: 220px;
+}
+
+.shape-two {
+width: 200px;
+height: 200px;
+}
+
+.signup-section {
+flex-direction: column;
+gap: 4px;
+}
+}

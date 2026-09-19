@@ -1,0 +1,404 @@
+/* ======================================================
+   PREMIUM BARBER ADMIN THEME (100% RESPONSIVE FIXED)
+   ====================================================== */
+
+:host {
+  --bg-dark: #090a0f;
+  --card-bg: rgba(22, 24, 34, 0.75);
+  --border-color: rgba(212, 175, 55, 0.12);
+  --gold-primary: #d4af37;
+  --gold-glow: #f3ca3e;
+  --text-main: #f0f2f5;
+  --text-sub: #9a9caf;
+  --danger-red: #ff4757;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Base Wrapper */
+.admin-wrapper {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  padding: 1.5rem;
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  width: 100%;
+}
+
+/* Header Section */
+.dashboard-header {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.badge {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-primary);
+  border: 1px solid var(--gold-primary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-tag {
+  margin: 0;
+  color: var(--gold-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Search Box */
+.search-wrapper {
+  flex: 1;
+  max-width: 340px;
+  width: 100%;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-sub);
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  background: #0f1017;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.search-box input::placeholder {
+  color: var(--text-sub);
+  opacity: 0.7;
+}
+
+/* Table Card Area */
+.table-responsive {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+.salon-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.salon-table th {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--gold-primary);
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.salon-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.salon-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.salon-table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.04);
+}
+
+/* Specific Columns */
+.id-col {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-email {
+  color: var(--text-sub);
+  word-break: break-all;
+}
+
+/* Role Pill */
+.role-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* Select Dropdown */
+.salon-select {
+  background-color: #0f1017;
+  color: var(--gold-primary);
+  border: 1px solid var(--gold-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
+}
+
+.salon-select option {
+  background-color: #161822;
+  color: #fff;
+}
+
+/* Action Button */
+.salon-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #aa8513 100%);
+  color: #000;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.salon-btn:hover {
+  background: linear-gradient(135deg, #f3ca3e 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+}
+
+.salon-btn.btn-cancel {
+  background: linear-gradient(135deg, #ff4757 0%, #c0392b 100%);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.25);
+}
+
+.salon-btn.btn-cancel:hover {
+  background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
+}
+
+.text-end {
+  text-align: right;
+}
+
+/* Pagination Footer */
+.pagination-footer {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pagination-info {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.pagination-info span {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.pagination-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.pg-btn {
+  background: #0f1017;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pg-btn:hover:not(:disabled) {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.pg-btn.active {
+  background: linear-gradient(135deg, #d4af37 0%, #aa8513 100%);
+  color: #000;
+  border-color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.pg-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ======================================================
+   MOBILE & TABLET RESPONSIVENESS FIX (BELOW 768px)
+   ====================================================== */
+
+@media (max-width: 768px) {
+  .admin-wrapper {
+    padding: 0.75rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+  }
+
+  /* Separate table-responsive wrapper into independent cards */
+  .table-responsive {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .salon-table thead {
+    display: none; /* Hide headers on mobile */
+  }
+
+  .salon-table, 
+  .salon-table tbody, 
+  .salon-table tr, 
+  .salon-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .salon-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .salon-table tr {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .salon-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: right;
+  }
+
+  .salon-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Show column label on left side */
+  .salon-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    text-align: left;
+    margin-right: 12px;
+  }
+
+  .text-end {
+    text-align: right;
+  }
+
+  .salon-select {
+    max-width: 160px;
+  }
+
+  .pagination-footer {
+    border-radius: 14px;
+    border-top: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+}

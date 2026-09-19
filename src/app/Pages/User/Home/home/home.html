@@ -1,0 +1,35 @@
+<p>home works!</p>
+
+<button (click)="logout()" >Logout</button>
+
+<table>
+    <tr>
+        <td>Barber Name</td>
+        <td>Services</td>
+    </tr>
+    @for(barber of BarberDto; track $index)
+{
+    <tr>
+        <td>{{barber.name}}</td>
+       
+        @for(service of barber.barberServices; track $index)
+        {
+            
+  <label class="service-checkbox">
+      <input 
+        type="checkbox"
+        [value]="service.serviceId"
+        (change)="OnServiceChange($event,service.serviceId)"
+      />
+
+      <span>{{ service.serviceName }}</span>
+    </label>          
+        }
+
+        <td><button type="button" (click)="BookingRequest(barber.barberId)">Booked</button></td>
+          
+    </tr>
+
+}
+</table>
+

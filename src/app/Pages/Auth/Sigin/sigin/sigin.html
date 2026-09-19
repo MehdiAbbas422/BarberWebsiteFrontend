@@ -1,0 +1,142 @@
+<div class="auth-page">
+
+  <div class="background-shape shape-one"></div>
+  <div class="background-shape shape-two"></div>
+
+  <div class="signin-card">
+
+```
+<!-- Header -->
+<div class="auth-header">
+
+  <div class="logo-icon">
+    ✂️
+  </div>
+
+  <h1>Welcome Back</h1>
+
+  <p>
+    Sign in to continue to your account
+  </p>
+
+</div>
+
+
+<!-- Form -->
+<form>
+
+  <!-- Email -->
+  <div class="input-group">
+
+    <label>Email Address</label>
+
+    <div class="input-wrapper">
+
+      <span class="input-icon">✉</span>
+
+      <input
+        type="email"
+        [(ngModel)]="SiginDto.Email"
+        name="email"
+        placeholder="Enter your email"
+        autocomplete="email"
+      />
+
+    </div>
+
+  </div>
+
+
+  <!-- Password -->
+  <div class="input-group">
+
+    <div class="password-label">
+
+      <label>Password</label>
+
+      <a routerLink="/resetpassword">
+        Forgot password?
+      </a>
+
+    </div>
+
+    <div class="input-wrapper">
+
+      <span class="input-icon">🔒</span>
+
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="SiginDto.Password"
+        name="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+      />
+
+      <button
+        type="button"
+        class="eye-btn"
+        (click)="showPassword = !showPassword">
+
+        {{ showPassword ? '🙈' : '👁️' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Sign In -->
+  <button
+    type="button"
+    class="signin-btn"
+    (click)="Sigin(SiginDto)"
+    [disabled]="Isloading()">
+
+    <span *ngIf="!Isloading()">
+      Sign In
+      <span class="arrow">→</span>
+    </span>
+
+    <span
+      *ngIf="Isloading()"
+      class="loading-content">
+
+      <span class="spinner"></span>
+
+      Signing In...
+
+    </span>
+
+  </button>
+
+</form>
+
+
+<!-- Signup -->
+<div class="signup-section">
+
+  <span>Don't have an account?</span>
+
+  <a routerLink="/sigup">
+    Create an account
+  </a>
+
+</div>
+
+
+<!-- Security -->
+<div class="security-note">
+
+  <span>🛡️</span>
+
+  <span>
+    Your connection is secure and encrypted
+  </span>
+
+</div>
+```
+
+  </div>
+
+</div>
