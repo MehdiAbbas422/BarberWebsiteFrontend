@@ -25,6 +25,11 @@ export class AdminUserMangment implements OnInit{
   ]
   Keyword:string = '';
   page:number = 1;
+  pageSize = 10;
+  totalPages = 1;
+  totalRecords = 0;
+  get PageNumbers(): number[] { return Array.from({ length: this.totalPages }, (_, index) => index + 1); }
+  get RecordEnd(): number { return Math.min(this.page * this.pageSize, this.totalRecords); }
   RoleDto:any = {
     Role:'',
     BarberId:0,
@@ -60,7 +65,11 @@ this.Isloading =false
     this.adminService.GetUser(Keyword,page).subscribe(
       (res:any) => {
         console.log('User list fetched successfully:', res);
-      this.UserList = res;
+      this.UserList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
+      this.page = res?.pageNumber ?? this.page;
+      this.pageSize = res?.pageSize ?? this.pageSize;
+      this.totalPages = res?.totalPages ?? Math.max(1, Math.ceil((res?.totalRecords ?? this.UserList.length) / this.pageSize));
+      this.totalRecords = res?.totalRecords ?? this.UserList.length;
       this.cdr.detectChanges()
       this.Isloading = false;
     },
@@ -71,6 +80,12 @@ this.Isloading =false
      this.Isloading = false
     }
   );
+  }
+
+  ChangePage(page: number): void {
+    if (page < 1 || page > this.totalPages || page === this.page || this.Isloading) return;
+    this.page = page;
+    this.GetUserList(this.Keyword, this.page);
   }
 
   UpdateRole(Role:string)
@@ -99,6 +114,13 @@ this.Isloading =false
 
 
 
+  }
+  Search()
+  {
+    this.Isloading = true
+    this.page = 1
+    this.GetUserList(this.Keyword,this.page)
+    this.Isloading = false
   }
 
 }

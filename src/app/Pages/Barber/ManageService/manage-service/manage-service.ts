@@ -17,6 +17,11 @@ BarberServiceList:any[]=[];
 Isloading:boolean = false
 Keyword:string = ''
 Page:number = 1
+PageSize = 10;
+TotalPages = 1;
+TotalRecords = 0;
+get PageNumbers(): number[] { return Array.from({ length: this.TotalPages }, (_, index) => index + 1); }
+get RecordEnd(): number { return Math.min(this.Page * this.PageSize, this.TotalRecords); }
 constructor(private barber:BarberService,private cdr:ChangeDetectorRef){}
 
 
@@ -34,7 +39,11 @@ GetServiceList(){
       {
         
           console.log(res)
-          this.ServiceList = res
+          this.ServiceList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
+          this.Page = res?.pageNumber ?? this.Page;
+          this.PageSize = res?.pageSize ?? this.PageSize;
+          this.TotalPages = res?.totalPages ?? Math.max(1, Math.ceil((res?.totalRecords ?? this.ServiceList.length) / this.PageSize));
+          this.TotalRecords = res?.totalRecords ?? this.ServiceList.length;
           this.cdr.detectChanges()
           this.Isloading =false;
       },
@@ -46,6 +55,12 @@ GetServiceList(){
       }
       
     )
+}
+
+ChangePage(page: number): void {
+  if (page < 1 || page > this.TotalPages || page === this.Page || this.Isloading) return;
+  this.Page = page;
+  this.GetServiceList();
 }
 
 AddService(ServiceId:number)

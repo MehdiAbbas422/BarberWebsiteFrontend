@@ -18,8 +18,8 @@ export const userGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  if (token && role === 'Baber') {
-    router.navigate(['/baber/dashboard']);
+  if (token && role === 'Barber') {
+    router.navigate(['barber/dashboard']);
     return false;
   }
 

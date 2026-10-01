@@ -1,1 +1,634 @@
-<p>dashboard works!</p>
+<main class="dashboard">
+
+    <!-- =========================================
+         PREMIUM ADMIN HERO
+    ========================================== -->
+    <section class="admin-hero">
+
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-left">
+
+                <span class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    SALON ADMINISTRATION
+                </span>
+
+                <h1>
+                    Earnings
+                    <span>Dashboard</span>
+                </h1>
+
+                <p>
+                    Track salon revenue, customer activity and
+                    earning performance from one place.
+                </p>
+
+            </div>
+
+            <div class="hero-mark">
+                <span>✂</span>
+                <small>EST.</small>
+                <strong>2026</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         DASHBOARD STAT CARDS
+    ========================================== -->
+    <section class="stats-grid">
+
+        <!-- TOTAL USERS -->
+        <article class="stat-card users-card">
+
+            <div class="stat-icon">
+                <span>♙</span>
+            </div>
+
+            <div class="stat-info">
+                <span class="stat-label">TOTAL USERS</span>
+
+                <!-- Apne actual variable ka naam yahan lagao -->
+                <strong>{{ totalCustomers }}</strong>
+
+                <small>
+                    Registered customers
+                </small>
+            </div>
+
+            <div class="stat-decoration">
+                <span>USERS</span>
+            </div>
+
+        </article>
+
+
+        <!-- TOTAL MONTHS -->
+        <article class="stat-card">
+
+            <div class="stat-icon">
+                <span>◷</span>
+            </div>
+
+            <div class="stat-info">
+                <span class="stat-label">REPORT PERIOD</span>
+
+                <strong>{{ earnings.length }}</strong>
+
+                <small>
+                    Months available
+                </small>
+            </div>
+
+            <div class="stat-decoration">
+                <span>MONTHS</span>
+            </div>
+
+        </article>
+
+
+        <!-- CURRENT MAX REVENUE -->
+        <article class="stat-card revenue-card">
+
+            <div class="stat-icon">
+                <span>₨</span>
+            </div>
+
+            <div class="stat-info">
+                <span class="stat-label">PEAK REVENUE</span>
+
+                <strong>
+                    ₨ {{ maximumEarning | number:'1.0-2' }}
+                </strong>
+
+                <small>
+                    Highest monthly earning
+                </small>
+            </div>
+
+            <div class="stat-decoration">
+                <span>REVENUE</span>
+            </div>
+
+        </article>
+
+
+        <!-- SALON STATUS -->
+        <article class="stat-card status-card">
+
+            <div class="stat-icon">
+                <span>✦</span>
+            </div>
+
+            <div class="stat-info">
+                <span class="stat-label">SALON STATUS</span>
+
+                <strong>ACTIVE</strong>
+
+                <small>
+                    System operating normally
+                </small>
+            </div>
+
+            <div class="live-indicator">
+                <span></span>
+                LIVE
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ERROR -->
+    @if (errorMessage) {
+
+        <div class="status-message error-message">
+            <span>!</span>
+            {{ errorMessage }}
+        </div>
+
+    }
+
+
+    <!-- =========================================
+         REVENUE ANALYTICS
+    ========================================== -->
+    <section class="analytics-card">
+
+        <div class="analytics-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    FINANCIAL ANALYTICS
+                </span>
+
+                <h2>
+                    Monthly Revenue
+                </h2>
+
+                <p>
+                    Select any month to inspect detailed earning entries.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-badge">
+
+                <span class="pulse-dot"></span>
+
+                <div>
+                    <strong>LIVE DATA</strong>
+                    <small>Revenue overview</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHART -->
+        @if (earnings.length > 0) {
+
+            <div
+                class="chart"
+                role="list"
+                aria-label="Monthly earnings chart"
+            >
+
+                <!-- background decorative lines -->
+                <div class="chart-lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+
+                @for (
+                    earning of earnings;
+                    track earning.earningId
+                ) {
+
+                    <button
+                        class="chart-column"
+                        type="button"
+                        role="listitem"
+                        [disabled]="isLoadingEntry"
+
+                        [attr.aria-label]="
+                            earning.mouth + ': ' + earning.totalEarning
+                        "
+
+                        (click)="selectMonth(earning.earningId)"
+                    >
+
+                        <div class="bar-value">
+
+                            <small>₨</small>
+
+                            {{ earning.totalEarning |
+                               number:'1.0-2' }}
+
+                        </div>
+
+
+                        <div class="bar-area">
+
+                            <span
+                                class="bar"
+                                [style.height.%]="
+                                    (earning.totalEarning /
+                                    maximumEarning) * 100
+                                "
+                            >
+                            </span>
+
+                            <span class="bar-shine"></span>
+
+                        </div>
+
+
+                        <span class="bar-label">
+                            {{ earning.mouth }}
+                        </span>
+
+                    </button>
+
+                }
+
+            </div>
+
+        } @else {
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ◌
+                </div>
+
+                <strong>
+                    No earnings data
+                </strong>
+
+                <p>
+                    Monthly revenue information will appear here.
+                </p>
+
+            </div>
+
+        }
+
+    </section>
+
+
+    <!-- LOADING -->
+    @if (isLoadingEntry) {
+
+        <div class="status-message loading-message">
+
+            <span class="loader"></span>
+
+            Loading earning entries...
+
+        </div>
+
+    }
+
+
+    <!-- =========================================
+         EARNING ENTRIES
+    ========================================== -->
+    @if (isEarningEntryVisible) {
+
+        <section class="entries-card">
+
+            <div class="entries-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        TRANSACTION CENTER
+                    </span>
+
+                    <h2>
+                        Earning Entries
+                    </h2>
+
+                    <p>
+                        Review booking and manually recorded revenue.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="close-button"
+                    type="button"
+                    (click)="closeEarningEntry()"
+                >
+                    <span>×</span>
+                    Close
+                </button>
+
+            </div>
+
+
+            <!-- ENTRY SWITCHER -->
+            <div class="entry-tabs">
+
+                <button
+                    type="button"
+
+                    [class.active]="PageName === 'Entry'"
+
+                    (click)="ChangeEntries('Entry')"
+                >
+
+                    <span>◈</span>
+
+                    Booking Entries
+
+                </button>
+
+
+                <button
+                    type="button"
+
+                    [class.active]="PageName === 'ManualEntry'"
+
+                    (click)="ChangeEntries('ManualEntry')"
+                >
+
+                    <span>✦</span>
+
+                    Manual Entries
+
+                </button>
+
+            </div>
+
+
+            <!-- =====================================
+                 TABLE
+            ====================================== -->
+            @if (
+                PageName === 'Entry'
+                && earningEntries.length > 0
+            ) {
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Bill ID</th>
+                                <th>Barber</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th class="money-column">
+                                    Total Bill
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            @for (
+                                entry of earningEntries;
+                                track entry.billId
+                            ) {
+
+                                <tr>
+
+                                    <td data-label="Bill ID">
+
+                                        <span class="bill-id">
+                                            #{{ entry.billId }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td data-label="Barber">
+
+                                        <div class="barber">
+
+                                            <div class="barber-avatar">
+                                                {{ entry.barberName.charAt(0) }}
+                                            </div>
+
+                                            <strong>
+                                                {{ entry.barberName }}
+                                            </strong>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td data-label="Email">
+
+                                        <span class="email">
+                                            {{ entry.baberEmail }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td data-label="Date">
+                                        {{ entry.date }}
+                                    </td>
+
+
+                                    <td data-label="Time">
+
+                                        <span class="time">
+                                            {{ entry.time }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td
+                                        data-label="Total Bill"
+                                        class="money-column"
+                                    >
+
+                                        <strong class="money">
+                                            ₨ {{ entry.totalBill |
+                                            number:'1.0-2' }}
+                                        </strong>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            }
+
+
+            <!-- MANUAL ENTRIES -->
+            @if (
+                PageName === 'ManualEntry'
+                && ManualEntryDto.length > 0
+            ) {
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Bill ID</th>
+                                <th>Barber</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th class="money-column">
+                                    Total Bill
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            @for (
+                                entry of ManualEntryDto;
+                                track entry.billId
+                            ) {
+
+                                <tr>
+
+                                    <td data-label="Bill ID">
+
+                                        <span class="bill-id">
+                                            #{{ entry.billId }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td data-label="Barber">
+
+                                        <div class="barber">
+
+                                            <div class="barber-avatar">
+                                                {{ entry.barberName.charAt(0) }}
+                                            </div>
+
+                                            <strong>
+                                                {{ entry.barberName }}
+                                            </strong>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td data-label="Email">
+
+                                        <span class="email">
+                                            {{ entry.barberEmail }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td data-label="Date">
+                                        {{ entry.date }}
+                                    </td>
+
+
+                                    <td data-label="Time">
+
+                                        <span class="time">
+                                            {{ entry.time }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <td
+                                        data-label="Total Bill"
+                                        class="money-column"
+                                    >
+
+                                        <strong class="money">
+                                            ₨ {{ entry.totalBill |
+                                            number:'1.0-2' }}
+                                        </strong>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            }
+
+
+            <!-- EMPTY -->
+            @if (
+                (PageName === 'Entry' && earningEntries.length === 0)
+                ||
+                (PageName === 'ManualEntry' && ManualEntryDto.length === 0)
+            ) {
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ◌
+                    </div>
+
+                    <strong>
+                        No entries found
+                    </strong>
+
+                    <p>
+                        There are no earning entries available.
+                    </p>
+
+                </div>
+
+            }
+
+        </section>
+
+    }
+
+</main>

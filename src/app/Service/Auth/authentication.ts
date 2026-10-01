@@ -61,4 +61,9 @@ Role()
 }
 }
 
+ChangeUserName(Name:string)
+{
+  return this.http.post(`${this.apiUrl}/ChangeUserName?Name=${Name}`,{})
+}
+
 }

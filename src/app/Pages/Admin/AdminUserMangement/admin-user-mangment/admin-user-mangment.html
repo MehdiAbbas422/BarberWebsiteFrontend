@@ -1,30 +1,137 @@
 <div class="admin-wrapper">
-  <!-- Header Card -->
-  <div class="dashboard-header">
-    <div class="header-main">
-      <div class="header-title">
-        <span class="badge">Admin Panel</span>
-        <h2>User Management</h2>
+
+  <!-- PREMIUM HERO -->
+  <section class="admin-hero">
+
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80"
+        alt="Barber Salon"
+      />
+
+      <div class="hero-image-overlay"></div>
+
+      <div class="hero-image-content">
+        <span>✂ PREMIUM BARBER</span>
       </div>
-      <p class="status-tag">✂️ Barber & Salon Management</p>
     </div>
 
-    <!-- Search Input Box -->
-    <div class="search-wrapper">
-      <div class="search-box">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" placeholder="Search user by name or email..." />
+    <div class="hero-content">
+
+      <div class="hero-top">
+        <div>
+          <span class="badge">ADMIN PANEL</span>
+
+          <h1>User Management</h1>
+
+          <p>
+            Manage barbers, customers and salon staff
+            from one place.
+          </p>
+        </div>
+
+        <div class="hero-icon">
+          ✂
+        </div>
       </div>
+
+      <div class="hero-stats">
+
+        <div class="stat-card">
+          <span class="stat-icon">👤</span>
+
+          <div>
+            <small>TOTAL USERS</small>
+            <strong>{{ totalRecords }}</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-icon">✂</span>
+
+          <div>
+            <small>SALON SYSTEM</small>
+            <strong>ACTIVE</strong>
+          </div>
+        </div>
+
+      </div>
+
     </div>
+
+  </section>
+
+
+  <!-- HEADER / SEARCH -->
+  <div class="dashboard-header">
+
+    <div class="header-main">
+
+      <div class="header-title">
+        <span class="gold-line"></span>
+
+        <div>
+          <span class="section-label">
+            MANAGEMENT
+          </span>
+
+          <h2>
+            Users & Roles
+          </h2>
+        </div>
+      </div>
+
+      <p class="status-tag">
+        Control user access and salon permissions
+      </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search-wrapper">
+
+      <div class="search-box">
+
+        <svg
+          class="search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2">
+
+          <circle cx="11" cy="11" r="8"></circle>
+
+          <line
+            x1="21"
+            y1="21"
+            x2="16.65"
+            y2="16.65">
+          </line>
+
+        </svg>
+
+        <input
+          type="text"
+          placeholder="Search user by name or email..."
+           [(ngModel)]="Keyword"
+            (keyup)="Search()"
+        />
+
+      </div>
+
+    </div>
+
   </div>
 
-  <!-- Table Container (Fully Responsive) -->
+
+  <!-- TABLE -->
   <div class="table-responsive">
+
     <table class="salon-table">
+
       <thead>
+
         <tr>
           <th>Id</th>
           <th>Name</th>
@@ -32,52 +139,179 @@
           <th>Role</th>
           <th class="text-end">Action</th>
         </tr>
+
       </thead>
+
+
       <tbody>
+
         @for(user of UserList; track $index) {
+
           <tr>
-            <td data-label="Id" class="id-col">#{{user.id}}</td>
-            <td data-label="Name" class="user-name">{{user.name}}</td>
-            <td data-label="Email" class="user-email">{{user.email}}</td>
-            
-            @if(!RoleChange) {
-              <td data-label="Role">
-                <span class="role-pill">{{user.role}}</span>
-              </td>
-            } @else {
-              <td data-label="Role">
-                <select (change)="UpdateRole($any($event.target).value)" class="salon-select" [disabled]="Isloading">
-                  @for(role of RoleList; track $index) {
-                    <option [value]="role.role">{{role.role}}</option>
-                  }
-                </select>
-              </td>
-            }
-            
-            <td data-label="Action" class="text-end">
-              <button 
-                class="salon-btn" 
-                [class.btn-cancel]="RoleChange" 
-                (click)="RoleChange ? CencelRoleButton() : ChangeRoleButton(user.id)">
-                {{RoleChange ? 'Cancel' : 'Change Role'}}
-              </button>
+
+            <!-- ID -->
+            <td
+              data-label="Id"
+              class="id-col">
+
+              <span class="id-badge">
+                #{{user.id}}
+              </span>
+
             </td>
+
+
+            <!-- NAME -->
+            <td
+              data-label="Name"
+              class="user-name">
+
+              <div class="user-profile">
+
+                <div class="avatar">
+                  {{user.name.charAt(0).toUpperCase()}}
+                </div>
+
+                <div>
+                  <strong>
+                    {{user.name}}
+                  </strong>
+
+                  <small>
+                    Salon Member
+                  </small>
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- EMAIL -->
+            <td
+              data-label="Email"
+              class="user-email">
+
+              <span>
+                {{user.email}}
+              </span>
+
+            </td>
+
+
+            <!-- ROLE -->
+            @if(!RoleChange) {
+
+              <td data-label="Role">
+
+                <span class="role-pill">
+
+                  <span class="role-dot"></span>
+
+                  {{user.role}}
+
+                </span>
+
+              </td>
+
+            } @else {
+
+              <td data-label="Role">
+
+                <select
+                  (change)="UpdateRole($any($event.target).value)"
+                  class="salon-select"
+                  [disabled]="Isloading">
+
+                  @for(role of RoleList; track $index) {
+
+                    <option [value]="role.role">
+                      {{role.role}}
+                    </option>
+
+                  }
+
+                </select>
+
+              </td>
+
+            }
+
+
+            <!-- ACTION -->
+            <td
+              data-label="Action"
+              class="text-end">
+
+              <button
+                class="salon-btn"
+                [disabled]="Isloading"
+                [class.btn-cancel]="RoleChange"
+                (click)="RoleChange ? CencelRoleButton() : ChangeRoleButton(user.id)">
+
+                <span>
+                  {{RoleChange ? '×' : '✦'}}
+                </span>
+
+                {{RoleChange ? 'Cancel' : 'Change Role'}}
+
+              </button>
+
+            </td>
+
           </tr>
+
         }
+
       </tbody>
+
     </table>
+
   </div>
 
-  <!-- Pagination Controls Container -->
+
+  <!-- PAGINATION -->
   <div class="pagination-footer">
+
     <div class="pagination-info">
-      Showing <span>1 to 10</span> of <span>{{UserList?.length || 0}}</span> users
+
+      Showing
+      <span>{{ totalRecords === 0 ? 0 : (page - 1) * pageSize + 1 }} to {{ RecordEnd }}</span>
+      of
+      <span>{{ totalRecords }}</span>
+      users
+
     </div>
+
+
     <div class="pagination-actions">
-      <button class="pg-btn" disabled>&laquo; Prev</button>
-      <button class="pg-btn active">1</button>
-      <button class="pg-btn">2</button>
-      <button class="pg-btn">Next &raquo;</button>
+
+      <button
+        class="pg-btn"
+        [disabled]="page <= 1 || Isloading"
+        (click)="ChangePage(page - 1)">
+
+        &laquo; Prev
+
+      </button>
+
+      @for(pageNumber of PageNumbers; track pageNumber) {
+        <button
+          class="pg-btn"
+          [class.active]="pageNumber === page"
+          [attr.aria-current]="pageNumber === page ? 'page' : null"
+          [disabled]="Isloading"
+          (click)="ChangePage(pageNumber)">
+          {{ pageNumber }}
+        </button>
+      }
+
+      <button class="pg-btn" [disabled]="page >= totalPages || Isloading" (click)="ChangePage(page + 1)">
+        Next &raquo;
+      </button>
+
     </div>
+
   </div>
+
 </div>

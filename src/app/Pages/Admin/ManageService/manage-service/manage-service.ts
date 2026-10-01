@@ -15,6 +15,11 @@ import { Signal } from '@angular/core';
 export class ManageService implements OnInit{
 
 ServiceList:any[] =[];
+PageSize = 10;
+totalPages = 1;
+totalRecords = 0;
+get PageNumbers(): number[] { return Array.from({ length: this.totalPages }, (_, index) => index + 1); }
+get RecordEnd(): number { return Math.min(this.Page * this.PageSize, this.totalRecords); }
 Isloading = signal<boolean>(false)
 Keyword:string = ''
 Page:number = 1
@@ -44,7 +49,11 @@ GetServiceList(){
       {
         
           console.log(res)
-          this.ServiceList = res
+          this.ServiceList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
+          this.Page = res?.pageNumber ?? this.Page;
+          this.PageSize = res?.pageSize ?? this.PageSize;
+          this.totalPages = res?.totalPages ?? Math.max(1, Math.ceil((res?.totalRecords ?? this.ServiceList.length) / this.PageSize));
+          this.totalRecords = res?.totalRecords ?? this.ServiceList.length;
           this.cdr.detectChanges()
           this.Isloading.set(false)
           
@@ -57,6 +66,17 @@ GetServiceList(){
       }
       
     )
+}
+
+ChangePage(page: number): void {
+  if (page < 1 || page > this.totalPages || page === this.Page || this.Isloading()) return;
+  this.Page = page;
+  this.GetServiceList();
+}
+
+Search(): void {
+  this.Page = 1;
+  this.GetServiceList();
 }
 
 CreateService()

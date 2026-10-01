@@ -1,0 +1,50 @@
+<main class="username-page">
+	<section class="username-panel" aria-labelledby="page-title">
+
+		<p class="eyebrow">Account settings</p>
+
+		<h1 id="page-title">Change username</h1>
+
+		<p class="description">
+			Choose a new name for your account.
+		</p>
+
+		<form (ngSubmit)="changeUserName()">
+
+			<label for="username">
+				New username
+			</label>
+
+			<input
+				id="username"
+				name="username"
+				type="text"
+				[(ngModel)]="name"
+				autocomplete="username"
+				placeholder="Enter your username"
+				required
+			>
+
+			<button
+				type="submit"
+				[disabled]="isLoading() || !name.trim()"
+			>
+				{{ isLoading() ? 'Updating...' : 'Update username' }}
+			</button>
+
+		</form>
+
+		@if (message()) {
+			<p
+				class="status"
+				[class.success]="messageType() === 'success'"
+				[class.error]="messageType() === 'error'"
+				role="status"
+				aria-live="polite"
+			>
+				{{ message() }}
+			</p>
+		}
+
+	</section>
+</main>

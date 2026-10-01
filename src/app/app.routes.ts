@@ -14,20 +14,26 @@ import { AdminEmploymangment } from './Pages/Admin/AdminEmploymangment/admin-emp
 import { BarberDashboard } from './Pages/Barber/Dashboard/barber-dashboard/barber-dashboard';
 import { ManageService } from './Pages/Admin/ManageService/manage-service/manage-service';
 import { ManageService as BarberService } from './Pages/Barber/ManageService/manage-service/manage-service';
-
+import { Reports } from './Pages/Admin/Report/reports/reports';
+import { ManualEntry } from './Pages/Barber/ManualEntry/manual-entry/manual-entry';
+import { ChangeUserName } from './Pages/Auth/ChangeUserName/change-user-name/change-user-name';
+import { superGuardGuard } from './Gruad/SuperGuard/super-guard-guard';
 
 export const routes: Routes = [
 
-{ path: '', component: Home  },
+{ path: '', component: Home , canActivate:[userGuard] },
 {path:'sigin', component: Sigin , canActivate:[authGruadGuard] },
 {path:'resetpassword', component: ResetPassword , canActivate:[authGruadGuard] },
-{path:'changepassword', component: ChangePassword , canActivate:[userGuard] },
+{path:'changepassword', component: ChangePassword , canActivate:[superGuardGuard] },
 {path:'sigup', component: Sigup , canActivate:[authGruadGuard] },
 {path:'admin/dashboard', component: AdminDashboard , canActivate:[adminGuard] },
-{path:'baber/dashboard', component: BarberDashboard, canActivate:[baberGuard] },
+{path:'barber/dashboard', component: BarberDashboard, canActivate:[baberGuard] },
 {path:'admin/UserManagment' , component:AdminUserMangment , canActivate:[adminGuard]  },
 {path:'admin/EmployManagment' , component:AdminEmploymangment , canActivate:[adminGuard]  },
 {path:'admin/ManageService' , component:ManageService , canActivate:[adminGuard] },
-{path:'barber/Service' , component:BarberService , canActivate:[baberGuard]}
+{path:'barber/Service' , component:BarberService , canActivate:[baberGuard]},
+{path:'admin/Report' , component:Reports , canActivate:[adminGuard]},
+{path:'barber/ManualEntry' , component:ManualEntry , canActivate:[baberGuard]},
+{path:'ChangeUserName', component:ChangeUserName , canActivate:[superGuardGuard] }
 
 ];

@@ -1,0 +1,203 @@
+<section class="manual-entry-page">
+
+```
+<!-- Decorative salon visual -->
+<div class="manual-hero">
+
+    <div class="manual-hero-image"></div>
+    <div class="manual-hero-overlay"></div>
+
+    <div class="manual-hero-content">
+
+        <div>
+            <span class="eyebrow">
+                <span class="eyebrow-line"></span>
+                SALON BILLING
+            </span>
+
+            <h1>
+                Manual Entry
+            </h1>
+
+            <p>
+                Create a walk-in customer bill and record
+                the services completed by the barber.
+            </p>
+        </div>
+
+        <div class="hero-scissors">
+            ✂
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Main form -->
+<div class="manual-card">
+
+    <div class="form-header">
+
+        <div>
+            <span class="section-kicker">
+                WALK-IN CUSTOMER
+            </span>
+
+            <h2>
+                Create New Bill
+            </h2>
+
+            <p>
+                Enter customer information and select the
+                services provided.
+            </p>
+        </div>
+
+        <div class="bill-badge">
+            <span>✦</span>
+            MANUAL BILL
+        </div>
+
+    </div>
+
+
+    <!-- Customer -->
+    <div class="form-group">
+
+        <label for="customerName">
+            Customer Name
+        </label>
+
+        <div class="input-wrapper">
+
+            <span class="input-icon">
+                ♙
+            </span>
+
+            <input
+                id="customerName"
+                type="text"
+                [(ngModel)]="CustumerName"
+                placeholder="Enter customer name"
+                autocomplete="off"
+            />
+
+        </div>
+
+    </div>
+
+
+    <!-- Services -->
+    <div class="services-header">
+
+        <div>
+            <span class="section-kicker">
+                SERVICE MENU
+            </span>
+
+            <h3>
+                Select Services
+            </h3>
+        </div>
+
+        <span class="service-count">
+            {{ ServiceDto.length }} Services
+        </span>
+
+    </div>
+
+
+    <div class="services-grid">
+
+        @for(service of ServiceDto; track $index)
+        {
+
+            <label class="service-card">
+
+                <input
+                    type="checkbox"
+                    [value]="service.serviceId"
+                    (change)="OnServiceChange(
+                        $event,
+                        service.serviceId
+                    )"
+                />
+
+                <span class="service-card-content">
+
+                    <span class="service-icon">
+                        ✦
+                    </span>
+
+                    <span class="service-info">
+
+                        <span class="service-name">
+                            {{ service.serviceName }}
+                        </span>
+
+                        <span class="service-caption">
+                            Salon service
+                        </span>
+
+                    </span>
+
+                    <span class="custom-checkbox">
+                        <span class="check-mark">
+                            ✓
+                        </span>
+                    </span>
+
+                </span>
+
+            </label>
+
+        }
+
+    </div>
+
+
+    <!-- Bottom action -->
+    <div class="form-footer">
+
+        <div class="footer-info">
+
+            <span class="footer-icon">
+                ₨
+            </span>
+
+            <div>
+                <strong>
+                    Ready to create bill
+                </strong>
+
+                <small>
+                    Selected services will be recorded
+                    as a manual earning entry.
+                </small>
+            </div>
+
+        </div>
+
+
+        <button
+            class="confirm-button"
+            type="button"
+            [disabled]="Isloading"
+            (click)="ManualEntryFunction()"
+        >
+
+            <span>
+                Confirm Entry
+            </span>
+
+            <b>→</b>
+
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>

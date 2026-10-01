@@ -1,0 +1,440 @@
+:host {
+	display: block;
+	min-height: 100vh;
+
+	color: #f1eee7;
+	background: #0b0b0a;
+
+	font-family: inherit;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.username-page {
+	width: 100%;
+	min-height: 100vh;
+
+	display: grid;
+	place-items: center;
+
+	padding: 32px 24px;
+
+	background:
+		radial-gradient(
+			ellipse at 15% 10%,
+			rgb(201 160 82 / 12%),
+			transparent 38%
+		),
+		radial-gradient(
+			ellipse at 85% 90%,
+			rgb(201 160 82 / 5%),
+			transparent 35%
+		),
+		#0b0b0a;
+}
+
+
+/* =========================================
+   PANEL
+========================================= */
+
+.username-panel {
+	width: min(100%, 440px);
+
+	padding: 36px;
+
+	border: 1px solid rgb(201 160 82 / 24%);
+	border-radius: 8px;
+
+	background: #141411;
+
+	box-shadow:
+		0 24px 70px rgb(0 0 0 / 35%);
+
+	overflow: hidden;
+}
+
+
+/* =========================================
+   EYEBROW
+========================================= */
+
+.eyebrow {
+	margin: 0 0 10px;
+
+	color: #d6b56d;
+
+	font-size: 0.75rem;
+	font-weight: 700;
+
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+h1 {
+	margin: 0;
+
+	color: #f1eee7;
+
+	font-size: 1.8rem;
+	font-weight: 700;
+
+	line-height: 1.2;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+	margin: 10px 0 28px;
+
+	color: #b7b1a5;
+
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+	width: 100%;
+
+	display: grid;
+	gap: 12px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+label {
+	display: block;
+
+	color: #f1eee7;
+
+	font-size: 0.9rem;
+	font-weight: 600;
+
+	line-height: 1.4;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+input {
+	display: block;
+
+	width: 100%;
+	min-width: 0;
+	min-height: 48px;
+
+	padding: 0 14px;
+
+	border: 1px solid #49443a;
+	border-radius: 4px;
+
+	color: #f1eee7;
+	background: #0d0d0c;
+
+	font: inherit;
+	font-size: 0.95rem;
+
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		background 0.2s ease;
+}
+
+input::placeholder {
+	color: #77736a;
+}
+
+input:hover {
+	border-color: #625a4b;
+}
+
+input:focus {
+	border-color: #d6b56d;
+
+	background: #0f0f0e;
+
+	outline: none;
+
+	box-shadow:
+		0 0 0 3px rgb(214 181 109 / 10%);
+}
+
+input:focus-visible,
+button:focus-visible {
+	outline: 2px solid #e5c477;
+	outline-offset: 2px;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+	width: 100%;
+	min-height: 48px;
+
+	margin-top: 8px;
+	padding: 0 18px;
+
+	border: 0;
+	border-radius: 4px;
+
+	color: #17140d;
+	background: #d6b56d;
+
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	transition:
+		background 0.2s ease,
+		transform 0.15s ease,
+		box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+	background: #e5c477;
+
+	box-shadow:
+		0 8px 24px rgb(214 181 109 / 12%);
+}
+
+button:active:not(:disabled) {
+	transform: translateY(1px);
+}
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+
+/* =========================================
+   STATUS MESSAGE
+========================================= */
+
+.status {
+	margin: 18px 0 0;
+
+	padding: 11px 13px;
+
+	border-radius: 4px;
+
+	font-size: 0.9rem;
+	line-height: 1.5;
+
+	background: rgb(255 255 255 / 3%);
+}
+
+.success {
+	color: #a9d6a2;
+	border: 1px solid rgb(169 214 162 / 15%);
+}
+
+.error {
+	color: #f0a19a;
+	border: 1px solid rgb(240 161 154 / 15%);
+}
+
+
+/* =========================================
+   TABLET
+   768px - 1024px
+========================================= */
+
+@media (max-width: 1024px) {
+
+	.username-page {
+		padding: 28px 22px;
+	}
+
+	.username-panel {
+		width: min(100%, 440px);
+		padding: 34px;
+	}
+
+}
+
+
+/* =========================================
+   MOBILE LARGE
+   481px - 767px
+========================================= */
+
+@media (max-width: 767px) {
+
+	.username-page {
+		min-height: 100svh;
+
+		padding: 24px 18px;
+	}
+
+	.username-panel {
+		width: 100%;
+
+		padding: 30px 24px;
+
+		border-radius: 8px;
+	}
+
+	h1 {
+		font-size: 1.65rem;
+	}
+
+	.description {
+		margin-bottom: 24px;
+		font-size: 0.92rem;
+	}
+
+	input,
+	button {
+		min-height: 48px;
+	}
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   480px and below
+========================================= */
+
+@media (max-width: 480px) {
+
+	.username-page {
+		min-height: 100svh;
+
+		padding: 18px 14px;
+	}
+
+	.username-panel {
+		width: 100%;
+
+		padding: 26px 20px;
+
+		border-radius: 7px;
+	}
+
+	.eyebrow {
+		margin-bottom: 9px;
+
+		font-size: 0.7rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+		line-height: 1.25;
+	}
+
+	.description {
+		margin: 9px 0 22px;
+
+		font-size: 0.88rem;
+		line-height: 1.55;
+	}
+
+	form {
+		gap: 10px;
+	}
+
+	label {
+		font-size: 0.86rem;
+	}
+
+	input {
+		min-height: 47px;
+
+		padding: 0 12px;
+
+		font-size: 0.9rem;
+	}
+
+	button {
+		min-height: 47px;
+
+		margin-top: 7px;
+
+		padding: 0 14px;
+
+		font-size: 0.9rem;
+	}
+
+	.status {
+		margin-top: 16px;
+
+		padding: 10px 12px;
+
+		font-size: 0.85rem;
+	}
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   360px and below
+========================================= */
+
+@media (max-width: 360px) {
+
+	.username-page {
+		padding: 14px 10px;
+	}
+
+	.username-panel {
+		padding: 23px 17px;
+	}
+
+	h1 {
+		font-size: 1.4rem;
+	}
+
+	.description {
+		font-size: 0.84rem;
+	}
+
+	input,
+	button {
+		min-height: 45px;
+	}
+
+	input {
+		font-size: 0.86rem;
+	}
+
+	button {
+		font-size: 0.86rem;
+	}
+
+}

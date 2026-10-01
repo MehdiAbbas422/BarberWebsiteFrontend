@@ -1,0 +1,33 @@
+:host {
+    display: block;
+}
+
+
+.app-content {
+
+    min-height: 100vh;
+
+    margin-left: 260px;
+
+    box-sizing: border-box;
+
+    background: #080807;
+}
+
+
+@media (max-width: 900px) {
+
+    .app-content {
+        margin-left: 235px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .app-content {
+        margin-left: 0;
+    }
+
+}

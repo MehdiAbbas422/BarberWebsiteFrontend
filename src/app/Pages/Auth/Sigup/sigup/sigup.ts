@@ -48,11 +48,12 @@ VerfyEmail(OTP: string,Email:string) {
   this.authService.VerfyEmail(OTP,Email).subscribe(
     (response: any) => {
       console.log('Email verification successful:', response);
-      alert(response.message)
+      
       this.authService.SaveToken(response.token,);
       
       this.EmailVerfy.set(false);
       this.Isloading.set(false);
+      window.location.reload();
       // Handle successful email verification, e.g., navigate to login page
     },
     (error: any) => {

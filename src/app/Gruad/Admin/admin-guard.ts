@@ -21,7 +21,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
     return true;
   }
   else if(token && role == 'Baber') {
-    router.navigate(['/baber/dashboard']);
+    router.navigate(['/barber/dashboard']);
     return false ;
   }
   else if(token && role == 'User') {

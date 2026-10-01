@@ -1,530 +1,706 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
 * {
   box-sizing: border-box;
-  }
-
-.auth-page {
-min-height: 100vh;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-overflow: hidden;
-padding: 30px 20px;
-
-background:
-radial-gradient(
-circle at 15% 20%,
-rgba(124, 58, 237, 0.18),
-transparent 30%
-),
-radial-gradient(
-circle at 85% 80%,
-rgba(37, 99, 235, 0.16),
-transparent 30%
-),
-#080b14;
 }
 
-/* ================================
-BACKGROUND SHAPES
-================================ */
+
+/* =====================================================
+   AUTH PAGE
+===================================================== */
+
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 30px 20px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(212, 175, 55, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(212, 175, 55, 0.055),
+      transparent 30%
+    ),
+    #080807;
+}
+
+
+/* =====================================================
+   BACKGROUND SHAPES
+===================================================== */
 
 .background-shape {
-position: absolute;
-border-radius: 50%;
-pointer-events: none;
-filter: blur(2px);
-opacity: 0.45;
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(4px);
+
+  opacity: 0.32;
 }
 
 .shape-one {
-width: 330px;
-height: 330px;
-top: -140px;
-left: -100px;
+  width: 330px;
+  height: 330px;
 
-background: linear-gradient(
-135deg,
-#7c3aed,
-#2563eb
-);
+  top: -140px;
+  left: -100px;
 
-animation: floatOne 8s ease-in-out infinite;
+  background:
+    radial-gradient(
+      circle,
+      rgba(212, 175, 55, 0.55),
+      rgba(212, 175, 55, 0.08) 55%,
+      transparent 72%
+    );
+
+  animation: floatOne 8s ease-in-out infinite;
 }
 
 .shape-two {
-width: 280px;
-height: 280px;
-right: -90px;
-bottom: -110px;
+  width: 280px;
+  height: 280px;
 
-background: linear-gradient(
-135deg,
-#2563eb,
-#06b6d4
-);
+  right: -90px;
+  bottom: -110px;
 
-animation: floatTwo 10s ease-in-out infinite;
+  background:
+    radial-gradient(
+      circle,
+      rgba(180, 140, 35, 0.45),
+      rgba(180, 140, 35, 0.06) 55%,
+      transparent 72%
+    );
+
+  animation: floatTwo 10s ease-in-out infinite;
 }
+
 
 @keyframes floatOne {
-0%,
-100% {
-transform: translate(0, 0);
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(25px, 30px);
+  }
+
 }
 
-50% {
-transform: translate(25px, 30px);
-}
-}
 
 @keyframes floatTwo {
-0%,
-100% {
-transform: translate(0, 0);
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-25px, -20px);
+  }
+
 }
 
-50% {
-transform: translate(-25px, -20px);
-}
-}
 
-/* ================================
-SIGN IN CARD
-================================ */
+/* =====================================================
+   SIGN IN CARD
+===================================================== */
 
 .signin-card {
-width: 100%;
-max-width: 450px;
+  width: 100%;
+  max-width: 450px;
 
-position: relative;
-z-index: 2;
+  position: relative;
+  z-index: 2;
 
-padding: 42px;
+  padding: 42px;
 
-background: rgba(15, 18, 30, 0.78);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 20, 17, 0.94),
+      rgba(12, 12, 10, 0.96)
+    );
 
-border: 1px solid rgba(255, 255, 255, 0.09);
-border-radius: 26px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
 
-backdrop-filter: blur(22px);
--webkit-backdrop-filter: blur(22px);
+  border-radius: 22px;
 
-box-shadow:
-0 30px 80px rgba(0, 0, 0, 0.55),
-inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 
-animation: cardAppear 0.6s ease;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 45px rgba(212, 175, 55, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  animation: cardAppear 0.6s ease;
 }
+
+
+.signin-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+
+  width: 80%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.55),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
 
 @keyframes cardAppear {
-from {
-opacity: 0;
-transform: translateY(25px) scale(0.97);
+
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
 }
 
-to {
-opacity: 1;
-transform: translateY(0) scale(1);
-}
-}
 
-/* ================================
-HEADER
-================================ */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .auth-header {
-text-align: center;
-margin-bottom: 34px;
+  text-align: center;
+
+  margin-bottom: 34px;
 }
+
 
 .logo-icon {
-width: 64px;
-height: 64px;
+  width: 64px;
+  height: 64px;
 
-margin: 0 auto 18px;
+  margin: 0 auto 18px;
 
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-font-size: 27px;
+  font-size: 27px;
 
-border-radius: 18px;
+  border-radius: 17px;
 
-background:
-linear-gradient(
-135deg,
-rgba(124, 58, 237, 0.25),
-rgba(37, 99, 235, 0.18)
-);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(212, 175, 55, 0.18),
+      rgba(212, 175, 55, 0.045)
+    );
 
-border: 1px solid rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.35);
 
-box-shadow:
-0 10px 30px rgba(124, 58, 237, 0.18);
+  color: #d4af37;
+
+  box-shadow:
+    0 12px 30px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
+
 
 .auth-header h1 {
-margin: 0;
+  margin: 0;
 
-color: #ffffff;
+  color: #f4f0e7;
 
-font-size: 29px;
-font-weight: 700;
+  font-size: 29px;
+  font-weight: 700;
 
-letter-spacing: -0.7px;
+  letter-spacing: -0.7px;
 }
+
 
 .auth-header p {
-margin: 9px 0 0;
+  margin: 9px 0 0;
 
-color: #8f96a8;
+  color: #88847a;
 
-font-size: 14px;
-line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-/* ================================
-INPUT GROUP
-================================ */
+
+/* =====================================================
+   INPUT GROUP
+===================================================== */
 
 .input-group {
-margin-bottom: 22px;
+  margin-bottom: 22px;
 }
+
 
 .input-group label {
-display: block;
+  display: block;
 
-color: #d8dce7;
+  color: #d6d1c6;
 
-font-size: 13px;
-font-weight: 600;
+  font-size: 13px;
+  font-weight: 600;
 
-margin-bottom: 9px;
+  margin-bottom: 9px;
 }
 
-/* ================================
-PASSWORD LABEL
-================================ */
+
+/* =====================================================
+   PASSWORD LABEL
+===================================================== */
 
 .password-label {
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-margin-bottom: 9px;
+  margin-bottom: 9px;
 }
+
 
 .password-label label {
-margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 
 .password-label a {
-color: #8b5cf6;
+  color: #d4af37;
 
-font-size: 11px;
-font-weight: 600;
+  font-size: 11px;
+  font-weight: 600;
 
-text-decoration: none;
+  text-decoration: none;
 
-transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
+
 
 .password-label a:hover {
-color: #a78bfa;
+  color: #f0c94a;
 }
 
-/* ================================
-INPUT
-================================ */
+
+/* =====================================================
+   INPUT
+===================================================== */
 
 .input-wrapper {
-position: relative;
+  position: relative;
 }
+
 
 .input-wrapper input {
-width: 100%;
-height: 55px;
+  width: 100%;
+  height: 55px;
 
-padding: 0 48px;
+  padding: 0 48px;
 
-color: #ffffff;
+  color: #f4f0e7;
 
-background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.035);
 
-border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 
-border-radius: 13px;
+  border-radius: 12px;
 
-outline: none;
+  outline: none;
 
-font-size: 14px;
+  font-size: 14px;
 
-transition:
-border-color 0.25s ease,
-background 0.25s ease,
-box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
 
 .input-wrapper input::placeholder {
-color: #626a7d;
+  color: #626058;
 }
+
+
+.input-wrapper input:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
 
 .input-wrapper input:focus {
-border-color: #7c3aed;
+  border-color: rgba(212, 175, 55, 0.65);
 
-background: rgba(124, 58, 237, 0.06);
+  background: rgba(212, 175, 55, 0.035);
 
-box-shadow:
-0 0 0 4px rgba(124, 58, 237, 0.1);
+  box-shadow:
+    0 0 0 4px rgba(212, 175, 55, 0.07),
+    0 0 20px rgba(212, 175, 55, 0.035);
 }
 
-/* ================================
-INPUT ICON
-================================ */
+
+/* =====================================================
+   INPUT ICON
+===================================================== */
 
 .input-icon {
-position: absolute;
+  position: absolute;
 
-left: 16px;
-top: 50%;
+  left: 16px;
+  top: 50%;
 
-transform: translateY(-50%);
+  transform: translateY(-50%);
 
-color: #737b8e;
+  color: #8d887d;
 
-font-size: 15px;
+  font-size: 15px;
 
-pointer-events: none;
+  pointer-events: none;
+
+  transition: color 0.2s ease;
 }
 
-/* ================================
-EYE BUTTON
-================================ */
+
+.input-wrapper:focus-within .input-icon {
+  color: #d4af37;
+}
+
+
+/* =====================================================
+   EYE BUTTON
+===================================================== */
 
 .eye-btn {
-position: absolute;
+  position: absolute;
 
-right: 7px;
-top: 7px;
+  right: 7px;
+  top: 7px;
 
-width: 40px;
-height: 40px;
+  width: 40px;
+  height: 40px;
 
-border: none;
-border-radius: 9px;
+  border: none;
 
-background: transparent;
+  border-radius: 9px;
 
-cursor: pointer;
+  background: transparent;
 
-font-size: 15px;
+  color: #8b877e;
 
-opacity: 0.6;
+  cursor: pointer;
 
-transition:
-opacity 0.2s ease,
-background 0.2s ease;
+  font-size: 15px;
+
+  opacity: 0.65;
+
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
+
 
 .eye-btn:hover {
-opacity: 1;
+  opacity: 1;
 
-background: rgba(255, 255, 255, 0.07);
+  color: #d4af37;
+
+  background: rgba(212, 175, 55, 0.07);
 }
 
-/* ================================
-SIGN IN BUTTON
-================================ */
+
+/* =====================================================
+   SIGN IN BUTTON
+===================================================== */
 
 .signin-btn {
-width: 100%;
-height: 55px;
+  width: 100%;
+  height: 55px;
 
-margin-top: 4px;
+  margin-top: 4px;
 
-border: none;
-border-radius: 13px;
+  border: 1px solid rgba(212, 175, 55, 0.8);
 
-color: #ffffff;
+  border-radius: 12px;
 
-font-size: 14px;
-font-weight: 700;
+  color: #0d0c09;
 
-cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
 
-background:
-linear-gradient(
-135deg,
-#7c3aed,
-#2563eb
-);
+  cursor: pointer;
 
-box-shadow:
-0 12px 25px rgba(79, 70, 229, 0.25);
+  background:
+    linear-gradient(
+      135deg,
+      #e1bd43,
+      #c49a2e
+    );
 
-transition:
-transform 0.2s ease,
-box-shadow 0.2s ease,
-opacity 0.2s ease;
+  box-shadow:
+    0 12px 28px rgba(212, 175, 55, 0.13);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
 }
+
 
 .signin-btn:hover:not(:disabled) {
-transform: translateY(-2px);
+  transform: translateY(-2px);
 
-box-shadow:
-0 16px 32px rgba(79, 70, 229, 0.35);
+  background:
+    linear-gradient(
+      135deg,
+      #f0ce58,
+      #d4af37
+    );
+
+  box-shadow:
+    0 16px 35px rgba(212, 175, 55, 0.22);
 }
+
 
 .signin-btn:active:not(:disabled) {
-transform: translateY(0);
+  transform: translateY(0);
 }
+
 
 .signin-btn:disabled {
-opacity: 0.55;
+  opacity: 0.45;
 
-cursor: not-allowed;
+  cursor: not-allowed;
 
-box-shadow: none;
+  box-shadow: none;
 }
+
 
 .arrow {
-margin-left: 7px;
+  margin-left: 7px;
 
-font-size: 18px;
+  font-size: 18px;
 
-transition: margin 0.2s ease;
+  transition: margin 0.2s ease;
 }
+
 
 .signin-btn:hover:not(:disabled) .arrow {
-margin-left: 12px;
+  margin-left: 12px;
 }
 
-/* ================================
-LOADING
-================================ */
+
+/* =====================================================
+   LOADING
+===================================================== */
 
 .loading-content {
-display: flex;
+  display: flex;
 
-align-items: center;
-justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-gap: 10px;
+  gap: 10px;
 }
+
 
 .spinner {
-width: 17px;
-height: 17px;
+  width: 17px;
+  height: 17px;
 
-border-radius: 50%;
+  border-radius: 50%;
 
-border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(20, 18, 12, 0.3);
 
-border-top-color: #ffffff;
+  border-top-color: #17140c;
 
-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
 }
+
 
 @keyframes spin {
-to {
-transform: rotate(360deg);
-}
+
+  to {
+    transform: rotate(360deg);
+  }
+
 }
 
-/* ================================
-SIGN UP
-================================ */
+
+/* =====================================================
+   SIGN UP
+===================================================== */
 
 .signup-section {
-display: flex;
+  display: flex;
 
-justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
 
-gap: 5px;
+  gap: 5px;
 
-margin-top: 25px;
+  margin-top: 25px;
 
-font-size: 12px;
+  font-size: 12px;
 
-color: #70788b;
+  color: #777269;
 }
+
 
 .signup-section a {
-color: #8b5cf6;
+  color: #d4af37;
 
-font-weight: 600;
+  font-weight: 600;
 
-text-decoration: none;
+  text-decoration: none;
 
-transition: color 0.2s ease;
+  transition: color 0.2s ease;
 }
+
 
 .signup-section a:hover {
-color: #a78bfa;
+  color: #f0c94a;
 }
 
-/* ================================
-SECURITY
-================================ */
+
+/* =====================================================
+   SECURITY
+===================================================== */
 
 .security-note {
-display: flex;
+  display: flex;
 
-justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
 
-gap: 7px;
+  gap: 7px;
 
-margin-top: 22px;
-padding-top: 19px;
+  margin-top: 22px;
+  padding-top: 19px;
 
-border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
 
-color: #5f687b;
+  color: #5f5b53;
 
-font-size: 10px;
+  font-size: 10px;
 }
 
-/* ================================
-MOBILE
-================================ */
+
+/* =====================================================
+   SECURITY ICON / TEXT
+===================================================== */
+
+.security-note span:first-child {
+  color: #a88a2e;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 520px) {
 
-.auth-page {
-padding: 20px 15px;
+  .auth-page {
+    padding: 20px 15px;
+  }
+
+
+  .signin-card {
+    padding: 30px 22px;
+
+    border-radius: 19px;
+  }
+
+
+  .auth-header h1 {
+    font-size: 25px;
+  }
+
+
+  .auth-header p {
+    font-size: 12px;
+  }
+
+
+  .logo-icon {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 15px;
+  }
+
+
+  .shape-one {
+    width: 220px;
+    height: 220px;
+  }
+
+
+  .shape-two {
+    width: 200px;
+    height: 200px;
+  }
+
+
+  .signup-section {
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
 }
 
-.signin-card {
-padding: 30px 22px;
-border-radius: 21px;
-}
 
-.auth-header h1 {
-font-size: 25px;
-}
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
-.logo-icon {
-width: 58px;
-height: 58px;
-}
+@media (max-width: 360px) {
 
-.shape-one {
-width: 220px;
-height: 220px;
-}
+  .signin-card {
+    padding: 27px 18px;
+  }
 
-.shape-two {
-width: 200px;
-height: 200px;
-}
 
-.signup-section {
-flex-direction: column;
-gap: 4px;
-}
+  .input-wrapper input {
+    height: 52px;
+  }
+
+
+  .signin-btn {
+    height: 52px;
+  }
+
 }

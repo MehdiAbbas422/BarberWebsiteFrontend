@@ -1,0 +1,490 @@
+<!-- =====================================================
+     MOBILE / TABLET HAMBURGER
+===================================================== -->
+
+<button
+    class="sidebar-toggle"
+    type="button"
+    aria-label="Open sidebar"
+    (click)="openSidebar()"
+>
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+</button>
+
+
+<!-- =====================================================
+     DARK OVERLAY
+===================================================== -->
+
+@if (isSidebarOpen) {
+
+    <div
+        class="sidebar-overlay"
+        (click)="closeSidebar()"
+    ></div>
+
+}
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    [class.sidebar-open]="isSidebarOpen"
+>
+
+
+    <!-- =================================================
+         BRAND
+    ================================================== -->
+
+    <div class="sidebar-brand">
+
+        <div class="brand-mark">
+            <span>✂</span>
+        </div>
+
+
+        <div class="brand-text">
+
+            <strong>
+                RECO
+            </strong>
+
+            <span>
+                BARBER
+            </span>
+
+        </div>
+
+
+        <!-- MOBILE/TABLET CLOSE -->
+
+        <button
+            class="sidebar-close"
+            type="button"
+            aria-label="Close sidebar"
+            (click)="closeSidebar()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         USER PROFILE
+    ================================================== -->
+
+    <div class="sidebar-profile">
+
+        <div class="profile-avatar">
+
+            {{ userName.charAt(0) }}
+
+        </div>
+
+
+        <div class="profile-info">
+
+            <strong>
+                {{ userName }}
+            </strong>
+
+            <span>
+                {{ Role }}
+            </span>
+
+        </div>
+
+
+        <span class="online-dot"></span>
+
+    </div>
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <nav class="sidebar-nav">
+
+
+        <!-- =============================================
+             GENERAL
+        ============================================== -->
+        @if(Role == 'Admin' || 'User')
+        {
+            <div class="nav-section">
+
+            <span class="nav-title">
+                GENERAL
+            </span>
+
+
+            <a
+                routerLink="/"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="navigate()"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-label">
+                    Home
+                </span>
+
+            </a>
+
+        </div>
+        }
+        
+
+
+        <!-- =============================================
+             ADMIN
+        ============================================== -->
+
+        @if (Role === 'Admin') {
+
+            <div class="nav-section">
+
+                <span class="nav-title">
+                    ADMINISTRATION
+                </span>
+
+
+                <!-- Dashboard -->
+
+                <a
+                    routerLink="/admin/dashboard"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ◈
+                    </span>
+
+                    <span class="nav-label">
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <!-- Users -->
+
+                <a
+                    routerLink="/admin/UserManagment"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ♙
+                    </span>
+
+                    <span class="nav-label">
+                        User Management
+                    </span>
+
+                </a>
+
+
+                <!-- Employees -->
+
+                <a
+                    routerLink="/admin/EmployManagment"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ♜
+                    </span>
+
+                    <span class="nav-label">
+                        Employee Management
+                    </span>
+
+                </a>
+
+
+                <!-- Services -->
+
+                <a
+                    routerLink="/admin/ManageService"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ✦
+                    </span>
+
+                    <span class="nav-label">
+                        Manage Services
+                    </span>
+
+                </a>
+
+
+                <!-- Reports -->
+
+                <a
+                    routerLink="/admin/Report"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ▥
+                    </span>
+
+                    <span class="nav-label">
+                        Reports
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- =========================================
+                 ADMIN CAN ALSO ACCESS BARBER AREA
+            ========================================== -->
+
+            <div class="nav-section">
+
+                <span class="nav-title">
+                    BARBER OPERATIONS
+                </span>
+
+
+                <a
+                    routerLink="/barber/dashboard"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ◉
+                    </span>
+
+                    <span class="nav-label">
+                        Barber Dashboard
+                    </span>
+
+                </a>
+
+
+                <a
+                    routerLink="/barber/Service"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ✂
+                    </span>
+
+                    <span class="nav-label">
+                        Barber Services
+                    </span>
+
+                </a>
+
+
+                <a
+                    routerLink="/barber/ManualEntry"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ＋
+                    </span>
+
+                    <span class="nav-label">
+                        Manual Entry
+                    </span>
+
+                </a>
+
+            </div>
+
+        }
+
+
+        <!-- =============================================
+             BARBER
+        ============================================== -->
+
+        @if (Role === 'Barber') {
+
+            <div class="nav-section">
+
+                <span class="nav-title">
+                    BARBER PANEL
+                </span>
+
+
+                <a
+                    routerLink="/barber/dashboard"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ◉
+                    </span>
+
+                    <span class="nav-label">
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a
+                    routerLink="/barber/Service"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ✂
+                    </span>
+
+                    <span class="nav-label">
+                        My Services
+                    </span>
+
+                </a>
+
+
+                <a
+                    routerLink="/barber/ManualEntry"
+                    routerLinkActive="active"
+                    (click)="navigate()"
+                >
+
+                    <span class="nav-icon">
+                        ＋
+                    </span>
+
+                    <span class="nav-label">
+                        Manual Entry
+                    </span>
+
+                </a>
+
+            </div>
+
+        }
+
+
+        <!-- =============================================
+             ACCOUNT
+             SUPER GUARD ROUTES
+             EVERY LOGGED-IN SIDEBAR
+        ============================================== -->
+
+        <div class="nav-section">
+
+            <span class="nav-title">
+                ACCOUNT
+            </span>
+
+
+            <a
+                routerLink="/changepassword"
+                routerLinkActive="active"
+                (click)="navigate()"
+            >
+
+                <span class="nav-icon">
+                    ◇
+                </span>
+
+                <span class="nav-label">
+                    Change Password
+                </span>
+
+            </a>
+
+
+            <a
+                routerLink="/ChangeUserName"
+                routerLinkActive="active"
+                (click)="navigate()"
+            >
+
+                <span class="nav-icon">
+                    Aa
+                </span>
+
+                <span class="nav-label">
+                    Change Username
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =================================================
+         SIDEBAR FOOTER
+    ================================================== -->
+
+    <div class="sidebar-bottom">
+
+
+        <div class="salon-status">
+
+            <span class="status-light"></span>
+
+            <div>
+
+                <strong>
+                    Salon System
+                </strong>
+
+                <small>
+                    Online
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="logout-button"
+            type="button"
+            (click)="Logout()"
+        >
+
+            <span>
+                ↪
+            </span>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>

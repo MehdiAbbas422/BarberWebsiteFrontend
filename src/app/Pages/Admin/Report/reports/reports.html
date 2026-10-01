@@ -1,0 +1,607 @@
+<section class="reports-page">
+
+  <!-- ================================
+       PAGE HERO
+       ================================= -->
+
+  <div class="reports-hero">
+
+    <div class="hero-content">
+
+      <div class="hero-icon">
+        <span>▤</span>
+      </div>
+
+      <div class="hero-text">
+
+        <span class="hero-overline">
+          SALON ADMINISTRATION
+        </span>
+
+        <h1>Reports</h1>
+
+        <p>
+          Review and manage barber reports from your salon.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- Decorative salon area -->
+    <div class="hero-decoration">
+
+      <div class="chair-light"></div>
+
+      <div class="chair">
+        <div class="chair-head"></div>
+        <div class="chair-body"></div>
+        <div class="chair-seat"></div>
+      </div>
+
+      <div class="hero-slogan">
+        Good Hair<br>
+        <span>Good Mood</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================================
+       STAT CARDS
+       ================================= -->
+
+  <div class="stats-grid">
+
+
+    <!-- Total Reports -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon gold">
+        ▤
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          Total Reports
+        </span>
+
+        <strong class="stat-number">
+          {{ totalRecords }}
+        </strong>
+
+        <small class="stat-description">
+          Reports available
+        </small>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Current Page -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon blue">
+        ◷
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          Current Page
+        </span>
+
+        <strong class="stat-number">
+          {{ page }}
+        </strong>
+
+        <small class="stat-description">
+          Report directory
+        </small>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Search -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        ⌕
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          Search
+        </span>
+
+        <strong class="stat-number search-status">
+          {{ keyword ? 'ACTIVE' : 'ALL' }}
+        </strong>
+
+        <small class="stat-description">
+          {{ keyword ? 'Filter applied' : 'No filter applied' }}
+        </small>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Management -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon red">
+        !
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          Management
+        </span>
+
+        <strong class="stat-number">
+          ADMIN
+        </strong>
+
+        <small class="stat-description">
+          Report control
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================================
+       SEARCH BAR
+       ================================= -->
+
+  <div class="report-toolbar">
+
+    <div class="toolbar-title">
+
+      <div class="toolbar-icon">
+        ⌕
+      </div>
+
+      <div>
+        <strong>Report Directory</strong>
+
+        <span>
+          Search barber, email or report details
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="report-search">
+
+      <div class="input-wrapper">
+
+        <span class="input-icon">
+          ⌕
+        </span>
+
+        <input
+          #searchInput
+          type="search"
+          placeholder="Search barber, email or report detail..."
+          [value]="keyword"
+          (keyup.enter)="SearchReports(searchInput.value)"
+        />
+
+      </div>
+
+
+      <button
+        type="button"
+        class="search-button"
+        [disabled]="Isloading"
+        (click)="SearchReports(searchInput.value)"
+      >
+        <span>⌕</span>
+        Search
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================================
+       REPORTS
+       ================================= -->
+
+  <div
+    class="reports-wrapper"
+    *ngIf="reports.length; else noReports"
+  >
+
+
+    <!-- ================================
+         DESKTOP TABLE
+         ================================= -->
+
+    <div class="reports-table-wrapper">
+
+      <table class="reports-table">
+
+        <thead>
+
+          <tr>
+
+            <th class="number-column">
+              #
+            </th>
+
+            <th>
+              BARBER
+            </th>
+
+            <th>
+              BARBER EMAIL
+            </th>
+
+            <th>
+              REPORT DETAIL
+            </th>
+
+            <th>
+              REPORT TIME
+            </th>
+
+            <th class="action-column">
+              ACTION
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for(report of reports; track $index)
+          {
+
+            <tr>
+
+              <!-- Number -->
+
+              <td class="row-number">
+                {{ $index + 1 }}
+              </td>
+
+
+
+              <!-- Barber -->
+
+              <td>
+
+                <div class="barber-cell">
+
+                  <div class="barber-avatar">
+
+                    <span>
+                      {{ report.barberName?.charAt(0)?.toUpperCase() }}
+                    </span>
+
+                  </div>
+
+                  <div class="barber-details">
+
+                    <strong>
+                      {{ report.barberName }}
+                    </strong>
+
+                    <small>
+                      Salon Barber
+                    </small>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+
+              <!-- Email -->
+
+              <td>
+
+                <span class="barber-email">
+                  {{ report.barberEmail }}
+                </span>
+
+              </td>
+
+
+
+              <!-- Report -->
+
+              <td>
+
+                <div class="report-text">
+
+                  {{ report.reportDetail }}
+
+                </div>
+
+              </td>
+
+
+
+              <!-- Time -->
+
+              <td>
+
+                <span class="report-time">
+
+                  <span class="clock-icon">
+                    ◷
+                  </span>
+
+                  {{ report.reportTime }}
+
+                </span>
+
+              </td>
+
+
+
+              <!-- Action -->
+
+              <td>
+
+                <button
+                  type="button"
+                  class="delete-button"
+                  [disabled]="Isloading"
+                  (click)="DeleteReport(report.reportID)"
+                >
+
+                  <span class="delete-icon">
+                    ♲
+                  </span>
+
+                  Delete
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+
+
+      <!-- Desktop Pagination -->
+
+      <div class="table-pagination">
+
+        <button
+          type="button"
+          class="pagination-button"
+          (click)="ChangePage(-1)"
+          [disabled]="page === 1 || Isloading"
+        >
+          ←
+          <span>Previous</span>
+        </button>
+
+
+        <div class="page-display">
+
+          <span>Page</span>
+
+          <strong>
+            {{ page }}
+          </strong>
+          <span>of {{ totalPages }}</span>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="pagination-button"
+          (click)="ChangePage(1)"
+          [disabled]="!hasNextPage || Isloading"
+        >
+          <span>Next</span>
+          →
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================
+         MOBILE REPORT CARDS
+         ================================= -->
+
+    <div class="mobile-reports">
+
+      @for(report of reports; track $index)
+      {
+
+        <article class="mobile-report-card">
+
+
+          <!-- Card Header -->
+
+          <div class="mobile-card-header">
+
+            <div class="mobile-barber">
+
+              <div class="mobile-avatar">
+
+                {{ report.barberName?.charAt(0)?.toUpperCase() }}
+
+              </div>
+
+
+              <div>
+
+                <strong>
+                  {{ report.barberName }}
+                </strong>
+
+                <span>
+                  {{ report.barberEmail }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <span class="mobile-index">
+              #{{ $index + 1 }}
+            </span>
+
+          </div>
+
+
+
+          <!-- Time -->
+
+          <div class="mobile-time">
+
+            <span>
+              ◷
+            </span>
+
+            {{ report.reportTime }}
+
+          </div>
+
+
+
+          <!-- Report -->
+
+          <div class="mobile-report-content">
+
+            <span class="mobile-label">
+              REPORT DETAIL
+            </span>
+
+            <p>
+              {{ report.reportDetail }}
+            </p>
+
+          </div>
+
+
+
+          <!-- Delete -->
+
+          <button
+            type="button"
+            class="mobile-delete"
+            [disabled]="Isloading"
+            (click)="DeleteReport(report.reportID)"
+          >
+
+            <span>
+              ♲
+            </span>
+
+            Delete Report
+
+          </button>
+
+        </article>
+
+      }
+
+
+      <!-- Mobile Pagination -->
+
+     <!-- Mobile Pagination -->
+<div class="mobile-pagination">
+
+  <button
+    type="button"
+    (click)="ChangePage(-1)"
+    [disabled]="page === 1 || Isloading"
+  >
+    ← Previous
+  </button>
+
+  <div>
+    <small>PAGE</small>
+    <strong>{{ page }}</strong>
+  </div>
+
+  <button
+    type="button"
+    (click)="ChangePage(1)"
+    [disabled]="!hasNextPage || Isloading"
+  >
+    Next →
+  </button>
+
+</div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================================
+       EMPTY STATE
+       ================================= -->
+
+  <ng-template #noReports>
+
+    <div class="empty-reports">
+
+      <div class="empty-icon">
+        ▤
+      </div>
+
+      <h3>
+        No Reports Found
+      </h3>
+
+      <p>
+        There are no reports matching your current search.
+      </p>
+
+    </div>
+
+  </ng-template>
+
+</section>

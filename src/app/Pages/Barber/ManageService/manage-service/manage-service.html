@@ -90,6 +90,17 @@
 
         </div>
 
+        <div class="manager-footer">
+          <span>Showing {{ TotalRecords === 0 ? 0 : (Page - 1) * PageSize + 1 }}-{{ RecordEnd }} of {{ TotalRecords }} available services</span>
+          <div class="pagination-buttons">
+            <button type="button" aria-label="Previous page" [disabled]="Page <= 1 || Isloading" (click)="ChangePage(Page - 1)">‹</button>
+            @for(pageNumber of PageNumbers; track pageNumber) {
+              <button type="button" [class.active]="pageNumber === Page" [attr.aria-current]="pageNumber === Page ? 'page' : null" [disabled]="Isloading" (click)="ChangePage(pageNumber)">{{ pageNumber }}</button>
+            }
+            <button type="button" aria-label="Next page" [disabled]="Page >= TotalPages || Isloading" (click)="ChangePage(Page + 1)">›</button>
+          </div>
+        </div>
+
         <p class="helper-text">
           ✦ Choose a service to add it to your salon menu.
         </p>
@@ -155,6 +166,7 @@
                   <button
                     type="button"
                     class="delete-btn"
+                    [disabled]="Isloading"
                     (click)="DeleteService(barber.serviceId)">
 
                     <span class="delete-icon">⌫</span>

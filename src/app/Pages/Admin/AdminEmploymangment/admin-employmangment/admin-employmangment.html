@@ -1,98 +1,573 @@
+
 <div class="panel-wrapper">
-  
-  <!-- Header Section -->
+
+  <!-- =====================================================
+       PREMIUM HERO HEADER
+       ===================================================== -->
+
   <header class="panel-header">
-    <div class="brand-title">
-      <div class="icon-badge">💈</div>
-      <div>
+
+    <div class="hero-content">
+
+      <!-- Brand Icon -->
+      <div class="icon-badge">
+        <span>✂</span>
+      </div>
+
+      <!-- Title -->
+      <div class="brand-title">
+
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          SALON ADMINISTRATION
+        </span>
+
         <h1>Barber Management</h1>
-        <p>Control salon staff, active status & credentials</p>
+
+        <p>
+          Manage your professional barbers, accounts,
+          availability and salon access.
+        </p>
+
       </div>
+
     </div>
-    
-    <!-- Controls Section: Search & Filter -->
-    <div class="controls-group">
-      <div class="search-input-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" placeholder="Search by name or email..." />
+
+
+    <!-- =================================================
+         HERO IMAGE
+         ================================================= -->
+
+    <div class="hero-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=85"
+        alt="Professional barber cutting hair"
+      />
+
+      <div class="hero-image-overlay"></div>
+
+      <div class="hero-image-content">
+
+        <span class="image-label">
+          PREMIUM BARBERSHOP
+        </span>
+
+        <strong>
+          Style. Precision. Confidence.
+        </strong>
+
       </div>
+
     </div>
+
   </header>
 
-  <!-- Table/Card Area -->
-  <main class="content-card">
-    <div class="table-responsive">
-      <table class="premium-table">
-        <thead>
-          <tr>
-            <th>Barber</th>
-            <th>Barber ID</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th class="text-end">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(barber of BarberDto; track $index) {
-            <tr>
-              <!-- Barber Info (Avatar + Name) -->
-              <td data-label="Barber">
-                <div class="barber-profile">
-                  <div class="avatar">
-                    {{ barber.name ? barber.name.charAt(0).toUpperCase() : 'B' }}
-                  </div>
-                  <span class="barber-name">{{ barber.name }}</span>
-                </div>
-              </td>
 
-              <!-- ID -->
-              <td data-label="Barber ID">
-                <span class="id-tag">#{{ barber.id }}</span>
-              </td>
+  <!-- =====================================================
+       DASHBOARD STATS
+       ===================================================== -->
 
-              <!-- Email -->
-              <td data-label="Email">
-                <span class="text-truncate" title="{{ barber.email }}">{{ barber.email }}</span>
-              </td>
+  <section class="stats-grid">
 
-              <!-- Status -->
-              <td data-label="Status">
-                <span class="status-badge active">Active</span>
-              </td>
+    <!-- Total Barbers -->
+    <div class="stat-card">
 
-              <!-- Action -->
-              <td data-label="Actions" class="text-end">
-                <button class="btn-kickout" (click)="Kickout(barber.id)">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="8.5" cy="7" r="4"></circle>
-                    <line x1="18" y1="8" x2="23" y2="13"></line>
-                    <line x1="23" y1="8" x2="18" y2="13"></line>
-                  </svg>
-                  <span>Kickout</span>
-                </button>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
+      <div class="stat-icon">
+        <span>✂</span>
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          TOTAL BARBERS
+        </span>
+
+        <strong>
+          {{ totalRecords }}
+        </strong>
+
+        <small>
+          Registered professionals
+        </small>
+
+      </div>
+
+      <div class="stat-decoration"></div>
+
     </div>
 
-    <!-- Pagination Footer -->
+
+    <!-- Active -->
+    <div class="stat-card success-card">
+
+      <div class="stat-icon">
+        <span>✓</span>
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          ACTIVE
+        </span>
+
+        <strong>
+          {{ totalRecords }}
+        </strong>
+
+        <small>
+          Currently available
+        </small>
+
+      </div>
+
+      <div class="online-indicator">
+        <span></span>
+        LIVE
+      </div>
+
+    </div>
+
+
+    <!-- Management -->
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        <span>♙</span>
+      </div>
+
+      <div class="stat-info">
+
+        <span class="stat-label">
+          MANAGEMENT
+        </span>
+
+        <strong>
+          STAFF
+        </strong>
+
+        <small>
+          Account administration
+        </small>
+
+      </div>
+
+      <div class="stat-decoration"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MAIN MANAGEMENT CARD
+       ===================================================== -->
+
+  <main class="content-card">
+
+
+    <!-- =================================================
+         CARD HEADER
+         ================================================= -->
+
+    <div class="content-header">
+
+      <div class="content-title">
+
+        <div class="section-icon">
+          ✂
+        </div>
+
+        <div>
+
+          <span class="section-label">
+            STAFF DIRECTORY
+          </span>
+
+          <h2>
+            Salon Barbers
+          </h2>
+
+          <p>
+            View and manage all registered barber accounts.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Search -->
+      <div class="controls-group">
+
+        <div class="search-input-wrapper">
+
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+
+            <line
+              x1="21"
+              y1="21"
+              x2="16.65"
+              y2="16.65">
+            </line>
+
+          </svg>
+
+          <input
+            type="text"
+            placeholder="Search barber by name or email..."
+            [(ngModel)]="Keyword"
+            (keyup)="Search()"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DECORATIVE GOLD LINE
+         ================================================= -->
+
+    <div class="gold-divider">
+
+      <span></span>
+
+    </div>
+
+
+    <!-- =================================================
+         TABLE
+         ================================================= -->
+
+    <div class="table-responsive">
+
+      <table class="premium-table">
+
+        <!-- TABLE HEADER -->
+
+        <thead>
+
+          <tr>
+
+            <th>
+              <span class="th-content">
+                <span>BARBER</span>
+              </span>
+            </th>
+
+            <th>
+              BARBER ID
+            </th>
+
+            <th>
+              EMAIL ADDRESS
+            </th>
+
+            <th>
+              STATUS
+            </th>
+
+            <th class="text-end">
+              MANAGEMENT
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <!-- TABLE BODY -->
+
+        <tbody>
+
+          @for(barber of BarberDto; track $index) {
+
+            <tr>
+
+
+              <!-- =====================================
+                   BARBER PROFILE
+                   ===================================== -->
+
+              <td data-label="Barber">
+
+                <div class="barber-profile">
+
+
+                  <!-- PROFILE IMAGE -->
+
+                  <div class="avatar">
+
+                    <img
+                      [src]="barber.image || 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=150&q=80'"
+                      [alt]="barber.name || 'Barber'"
+                      loading="lazy"
+                    />
+
+                    <!-- Online Glow -->
+
+                    <span class="avatar-status"></span>
+
+                  </div>
+
+
+                  <!-- NAME -->
+
+                  <div class="barber-details">
+
+                    <span class="barber-name">
+                      {{ barber.name }}
+                    </span>
+
+                    <span class="barber-role">
+                      Professional Barber
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <!-- =====================================
+                   BARBER ID
+                   ===================================== -->
+
+              <td data-label="Barber ID">
+
+                <span class="id-tag">
+
+                  <span class="hash">
+                    #
+                  </span>
+
+                  {{ barber.id }}
+
+                </span>
+
+              </td>
+
+
+              <!-- =====================================
+                   EMAIL
+                   ===================================== -->
+
+              <td data-label="Email">
+
+                <div class="email-wrapper">
+
+                  <span class="email-icon">
+                    @
+                  </span>
+
+                  <span
+                    class="text-truncate"
+                    title="{{ barber.email }}"
+                  >
+                    {{ barber.email }}
+                  </span>
+
+                </div>
+
+              </td>
+
+
+              <!-- =====================================
+                   STATUS
+                   ===================================== -->
+
+              <td data-label="Status">
+
+                <span class="status-badge active">
+
+                  <span class="status-dot"></span>
+
+                  Active
+
+                </span>
+
+              </td>
+
+
+              <!-- =====================================
+                   ACTION
+                   ===================================== -->
+
+              <td
+                data-label="Actions"
+                class="text-end"
+              >
+
+                <button
+                  class="btn-kickout"
+                  type="button"
+                  [disabled]="Isloading"
+                  (click)="Kickout(barber.id)"
+                >
+
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="15"
+                    height="15"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+
+                    <path
+                      d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+                    </path>
+
+                    <circle
+                      cx="8.5"
+                      cy="7"
+                      r="4">
+                    </circle>
+
+                    <line
+                      x1="18"
+                      y1="8"
+                      x2="23"
+                      y2="13">
+                    </line>
+
+                    <line
+                      x1="23"
+                      y1="8"
+                      x2="18"
+                      y2="13">
+                    </line>
+
+                  </svg>
+
+                  <span>
+                    Kickout
+                  </span>
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- =================================================
+         EMPTY STATE
+         ================================================= -->
+
+    @if (!BarberDto || BarberDto.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ✂
+        </div>
+
+        <h3>
+          No Barbers Found
+        </h3>
+
+        <p>
+          There are currently no barber accounts
+          registered in the system.
+        </p>
+
+      </div>
+
+    }
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
     <footer class="table-footer">
+
+
       <div class="pagination-info">
-        Showing <strong>1-10</strong> of <strong>{{ BarberDto?.length || 0 }}</strong> barbers
+
+        <span class="footer-dot"></span>
+
+        Showing
+
+        <strong>
+          {{ totalRecords === 0 ? 0 : (page - 1) * pageSize + 1 }}-{{ RecordEnd }}
+        </strong>
+
+        of
+
+        <strong>
+          {{ totalRecords }}
+        </strong>
+
+        barbers
+
       </div>
+
+
+      <!-- PAGINATION -->
+
       <div class="pagination-nav">
-        <button class="nav-btn" disabled>&laquo;</button>
-        <button class="nav-btn active">1</button>
-        <button class="nav-btn">2</button>
-        <button class="nav-btn">&raquo;</button>
+
+        <button
+          class="nav-btn"
+          type="button"
+          [disabled]="page <= 1 || Isloading"
+          (click)="ChangePage(page - 1)"
+          aria-label="Previous page"
+        >
+          ‹
+        </button>
+
+
+        @for(pageNumber of PageNumbers; track pageNumber) {
+          <button
+            class="nav-btn"
+            [class.active]="pageNumber === page"
+            [attr.aria-current]="pageNumber === page ? 'page' : null"
+            [disabled]="Isloading"
+            type="button"
+            (click)="ChangePage(pageNumber)"
+          >
+            {{ pageNumber }}
+          </button>
+        }
+
+
+        <button
+          class="nav-btn"
+          type="button"
+          aria-label="Next page"
+          [disabled]="page >= totalPages || Isloading"
+          (click)="ChangePage(page + 1)"
+        >
+          ›
+        </button>
+
       </div>
+
     </footer>
+
   </main>
-  
+
 </div>
+

@@ -52,7 +52,7 @@ export class Sigin {
 
         this.authService.SaveToken(response.token);
 
-        this.router.navigate(['/']);
+        window.location.reload();
 
         this.Isloading.set(false);
       },

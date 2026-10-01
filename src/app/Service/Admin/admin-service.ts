@@ -46,4 +46,26 @@ export class AdminService {
       return this.http.post(`${this.apiUrl}/KickOut`,{BarberId});
     }
     
+    ///
+
+    GetReport(keyword: string = '', page: number = 1)
+{
+  return this.http.get(`${this.apiUrl}/GetReport?keyword=${keyword}&page=${page}`)
+}
+
+DeleteReport(reportId: number)
+{
+  return this.http.delete(`${this.apiUrl}/DeleteReport/${reportId}`)
+}
+
+getEarning() {
+    return this.http.get(`${this.apiUrl}/GetEarning`);
+  }
+
+  // 2. Get Earning Entry By Id
+  getEarningEntry(earningId: number) {
+    return this.http.get(`${this.apiUrl}/GetEarningEntry/${earningId}`);
+  }
+
+
 }
