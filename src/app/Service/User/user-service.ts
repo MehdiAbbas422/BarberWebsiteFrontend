@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-      private apiUrl = '/User';
+      private apiUrl = 'http://BarixSalon.somee.com/api/User';
   
     constructor(private http: HttpClient) {}
 

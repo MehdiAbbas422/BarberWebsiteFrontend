@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class Authentication {
 
-  private apiUrl = '/Auth';
+  private apiUrl = 'http://BarixSalon.somee.com/api/Auth';
 
   constructor(private http: HttpClient) {}
 
