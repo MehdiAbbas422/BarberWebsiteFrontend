@@ -119,7 +119,7 @@
         <!-- =============================================
              GENERAL
         ============================================== -->
-        @if(Role == 'Admin' || 'User')
+        @if(Role == 'Admin' || Role == 'User' || Role == 'MainAdmin' )
         {
             <div class="nav-section">
 
@@ -154,7 +154,7 @@
              ADMIN
         ============================================== -->
 
-        @if (Role === 'Admin') {
+        @if (Role === 'Admin' || Role === 'MainAdmin') {
 
             <div class="nav-section">
 
@@ -330,7 +330,7 @@
              BARBER
         ============================================== -->
 
-        @if (Role === 'Barber') {
+        @if (Role === 'Barber' ) {
 
             <div class="nav-section">
 

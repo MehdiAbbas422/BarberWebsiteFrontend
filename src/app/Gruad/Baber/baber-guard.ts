@@ -21,7 +21,7 @@ export const baberGuard: CanActivateFn = (route, state) => {
   if (token && role == 'Barber') {
     return true;
   }
-  else if(token && role == 'Admin') {
+  else if(token && role == 'Admin' || role == 'MainAdmin') {
     
     return true ;
   }

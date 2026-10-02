@@ -17,7 +17,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('token');
   const role = auth.Role();
   
-  if (token && role == 'Admin') {
+  if (token && role == 'Admin' || role == 'MainAdmin') {
     return true;
   }
   else if(token && role == 'Baber') {

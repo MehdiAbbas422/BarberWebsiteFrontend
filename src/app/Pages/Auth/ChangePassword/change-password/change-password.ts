@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Authentication } from '../../../../Service/Auth/authentication';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-change-password',
@@ -19,7 +21,7 @@ ChangePasswordDto: any = {
 
   Isloading =signal<boolean>(false);
 
-constructor(private authService: Authentication) {}
+constructor(private authService: Authentication, private router:Router) {}
 
 
 
@@ -37,6 +39,7 @@ ChangePassword(newPassword: string)
           console.log(response);
           alert(response.message);
           this.Isloading.set(false);
+          this.router.navigate(['/']);
         },
         error : (err: any) => {
           console.log(err.err);
