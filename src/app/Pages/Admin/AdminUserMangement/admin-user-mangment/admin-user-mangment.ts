@@ -20,7 +20,8 @@ export class AdminUserMangment implements OnInit{
     role:'Admin',
     },
     {role:'Barber'},
-    {role:'User',}
+    {role:'User',},
+    {role:'MainAdmin'}
   
   ]
   Keyword:string = '';
@@ -70,14 +71,16 @@ this.Isloading =false
       this.pageSize = res?.pageSize ?? this.pageSize;
       this.totalPages = res?.totalPages ?? Math.max(1, Math.ceil((res?.totalRecords ?? this.UserList.length) / this.pageSize));
       this.totalRecords = res?.totalRecords ?? this.UserList.length;
-      this.cdr.detectChanges()
+      
       this.Isloading = false;
+this.cdr.detectChanges()
     },
   
     (error) => {
       console.error('Error fetching user list:', error);
       alert(error.error.message || 'An error occurred while fetching the user list.');
      this.Isloading = false
+     this.cdr.detectChanges()
     }
   );
   }
@@ -96,12 +99,13 @@ this.Isloading =false
     this.adminService.UpdateRole(UserId,Role).subscribe(
       (res:any)=>
       {
-        this.Isloading=true;
+      
           this.RoleChange =false;
         let Keyword = this.Keyword
         let page = this.page
        this.GetUserList(Keyword,page);
-     
+     this.Isloading = false 
+     this.cdr.detectChanges()
        alert("User Role Updated SuccessFully")
       },
       (err:any)=>

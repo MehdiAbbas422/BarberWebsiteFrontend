@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class BarberService {
-      private apiUrl = 'https://localhost:7183/api/barber';
+      private apiUrl = 'http://BarixSalon.somee.com/barber';
     
       constructor(private http: HttpClient) {}
 

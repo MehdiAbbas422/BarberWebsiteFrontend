@@ -46,14 +46,15 @@ GetBarberlist()
           this.pageSize = res?.pageSize ?? this.pageSize;
           this.totalPages = res?.totalPages ?? Math.max(1, Math.ceil((res?.totalRecords ?? this.BarberDto.length) / this.pageSize));
           this.totalRecords = res?.totalRecords ?? this.BarberDto.length;
-          this.cdr.detectChanges();
           this.Isloading=false;
+          this.cdr.detectChanges();
       },
       (err:any) =>
       {
         console.log(err)
         alert(err.error.message);
         this.Isloading =false;
+        this.cdr.detectChanges();
       }
     )
 
@@ -69,13 +70,15 @@ ChangePage(page: number): void {
 
 Kickout(BarberId:number)
     {
-        if (this.Isloading) return;
+        
         this.Isloading = true;
         this.admin.KickOut(BarberId).subscribe(
           (res:any)=>
           {
               console.log(res)
               this.GetBarberlist()
+              this.Isloading = false
+              this.cdr.detectChanges();
               alert(res.message);
           },
           (err:any) =>
