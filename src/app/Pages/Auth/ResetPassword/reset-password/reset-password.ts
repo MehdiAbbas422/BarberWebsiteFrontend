@@ -54,7 +54,7 @@ this.Isloading.set(true);
           this.authService.SaveToken(res.token);
           this.ToEmail.set(false);
           this.Isloading.set(false);
-          window.location.reload();
+          this.router.navigate(['/changepassword']);
       },
       (err:any)=>
       {
