@@ -49,7 +49,7 @@ VerfyEmail(OTP: string,Email:string) {
     (response: any) => {
       console.log('Email verification successful:', response);
       
-      this.authService.SaveToken(response.token,);
+      this.authService.SaveToken(response.token);
       
       this.EmailVerfy.set(false);
       this.Isloading.set(false);
