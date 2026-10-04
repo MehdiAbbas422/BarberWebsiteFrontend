@@ -9,6 +9,7 @@
     <span class="logout-icon">↪</span>
 
     <span>Logout</span>
+
   </button>
 </div>
 
@@ -18,97 +19,99 @@
   <!-- =====================================================
        APPROVAL TIME PANEL
   ====================================================== -->
-@if(ApprovedButton)
-{
-  <div
-    class="approval-modal-backdrop"
-    (click)="ApprovedButton = false">
 
-    <section
-      class="approval-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="approval-title"
-      (click)="$event.stopPropagation()">
+  @if(ApprovedButton)
+  {
+    <div
+      class="approval-modal-backdrop"
+      (click)="ApprovedButton = false">
 
-      <button
-        type="button"
-        class="approval-modal-close"
-        (click)="ApprovedButton = false"
-        aria-label="Close">
+      <section
+        class="approval-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="approval-title"
+        (click)="$event.stopPropagation()">
 
-        ×
+        <button
+          type="button"
+          class="approval-modal-close"
+          (click)="ApprovedButton = false"
+          aria-label="Close">
 
-      </button>
+          ×
 
-
-      <div class="approval-icon">
-        ✂
-      </div>
+        </button>
 
 
-      <div class="approval-content">
-
-        <span class="approval-eyebrow">
-          APPOINTMENT APPROVAL
-        </span>
-
-        <h2 id="approval-title">
-          Set Appointment Time
-        </h2>
-
-        <p>
-          Select a suitable time for the customer's appointment.
-        </p>
-
-      </div>
+        <div class="approval-icon">
+          ✂
+        </div>
 
 
-      <div class="approval-form">
+        <div class="approval-content">
 
-        <div class="time-field">
+          <span class="approval-eyebrow">
+            APPOINTMENT APPROVAL
+          </span>
 
-          <label for="bookingTime">
-            Booking Time
-          </label>
+          <h2 id="approval-title">
+            Set Appointment Time
+          </h2>
 
-          <div class="time-input-wrap">
-
-            <span class="time-icon">
-              ◷
-            </span>
-
-            <input
-              id="bookingTime"
-              type="time"
-              [(ngModel)]="Time"
-            />
-
-          </div>
+          <p>
+            Select a suitable time for the customer's appointment.
+          </p>
 
         </div>
 
 
-        <button
-          type="button"
-          class="approve-main-btn"
-          [disabled]="Isloading"
-          (click)="ApprovedCustumer()">
+        <div class="approval-form">
 
-          <span>✓</span>
+          <div class="time-field">
 
-          <span>
-            Approve Appointment
-          </span>
+            <label for="bookingTime">
+              Booking Time
+            </label>
 
-        </button>
+            <div class="time-input-wrap">
 
-      </div>
+              <span class="time-icon">
+                ◷
+              </span>
 
-    </section>
+              <input
+                id="bookingTime"
+                type="time"
+                [(ngModel)]="Time"
+              />
 
-  </div>
-}
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="approve-main-btn"
+            [disabled]="Isloading"
+            (click)="ApprovedCustumer()">
+
+            <span>✓</span>
+
+            <span>
+              Approve Appointment
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+  }
+
 
   <!-- =====================================================
        HERO
@@ -388,161 +391,157 @@
               @for(booking of BookingRequestDto; track $index)
               {
 
-              
+                <tr>
 
-                  <tr>
+                  <!-- BARBER -->
 
-                    <!-- BARBER -->
+                  <td>
 
-                    <td>
+                    <div class="person-cell">
 
-                      <div class="person-cell">
-
-                        <div class="person-avatar barber-avatar">
-                          ✂
-                        </div>
-
-                        <div class="person-info">
-
-                          <strong>
-                            {{ booking.barberName }}
-                          </strong>
-
-                          <span>
-                            Master Barber
-                          </span>
-
-                        </div>
-
+                      <div class="person-avatar barber-avatar">
+                        ✂
                       </div>
 
-                    </td>
+                      <div class="person-info">
 
+                        <strong>
+                          {{ booking.barberName }}
+                        </strong>
 
-                    <!-- CUSTOMER -->
-
-                    <td>
-
-                      <div class="person-cell">
-
-                        <div class="person-avatar customer-avatar">
-                          ◉
-                        </div>
-
-                        <div class="person-info">
-
-                          <strong>
-                            {{ booking.userName }}
-                          </strong>
-
-                          <span>
-                            Appointment Customer
-                          </span>
-
-                        </div>
-
-                      </div>
-
-                    </td>
-
-
-                    <!-- SERVICE -->
-
-                    <td>
-
-                      <div class="service-box">
-
-                        <span class="service-icon">
-                          ✂
-                        </span>
-
-                        <select
-                          class="service-select"
-                          aria-label="Booked service">
-
-                          @for(service of booking.requestService; track $index)
-                          {
-
-                            <option [value]="service.id">
-                              {{ service.serviceName }}
-                            </option>
-
-                          }
-
-                        </select>
-
-                        <span class="select-arrow">
-                          ▾
+                        <span>
+                          Master Barber
                         </span>
 
                       </div>
 
-                    </td>
+                    </div>
+
+                  </td>
 
 
-                    <!-- TIME -->
+                  <!-- CUSTOMER -->
 
-                    <td>
+                  <td>
 
-                      <div class="time-cell">
+                    <div class="person-cell">
 
-                        <span class="time-cell-icon">
-                          ◷
+                      <div class="person-avatar customer-avatar">
+                        ◉
+                      </div>
+
+                      <div class="person-info">
+
+                        <strong>
+                          {{ booking.userName }}
+                        </strong>
+
+                        <span>
+                          Appointment Customer
                         </span>
-
-                        <div>
-
-                          <strong>
-                            {{ booking.bookingTime || 'Not selected' }}
-                          </strong>
-
-                          <span>
-                            Requested time
-                          </span>
-
-                        </div>
 
                       </div>
 
-                    </td>
+                    </div>
+
+                  </td>
 
 
-                    <!-- STATUS -->
+                  <!-- SERVICE -->
 
-                    <td>
+                  <td>
 
-                      <span class="status-badge pending">
+                    <div class="service-box">
 
-                        <span></span>
-
-                        {{ booking.status }}
-
+                      <span class="service-icon">
+                        ✂
                       </span>
 
-                    </td>
+                      <select
+                        class="service-select"
+                        aria-label="Booked service">
+
+                        @for(service of booking.requestService; track $index)
+                        {
+
+                          <option [value]="service.id">
+                            {{ service.serviceName }}
+                          </option>
+
+                        }
+
+                      </select>
+
+                      <span class="select-arrow">
+                        ▾
+                      </span>
+
+                    </div>
+
+                  </td>
 
 
-                    <!-- ACTION -->
+                  <!-- TIME -->
 
-                    <td>
+                  <td>
 
-                      <button
-                        type="button"
-                        class="table-action approve-action"
-                        [disabled]="Isloading"
-                        (click)="Approved(booking.bookedId)">
+                    <div class="time-cell">
 
-                        <span>✓</span>
+                      <span class="time-cell-icon">
+                        ◷
+                      </span>
 
-                        Approve
+                      <div>
 
-                      </button>
+                        <strong>
+                          {{ booking.bookingTime || 'Not selected' }}
+                        </strong>
 
-                    </td>
+                        <span>
+                          Requested time
+                        </span>
 
-                  </tr>
+                      </div>
 
-                
+                    </div>
+
+                  </td>
+
+
+                  <!-- STATUS -->
+
+                  <td>
+
+                    <span class="status-badge pending">
+
+                      <span></span>
+
+                      {{ booking.status }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- ACTION -->
+
+                  <td>
+
+                    <button
+                      type="button"
+                      class="table-action approve-action"
+                      [disabled]="Isloading"
+                      (click)="Approved(booking.bookedId)">
+
+                      <span>✓</span>
+
+                      Approve
+
+                    </button>
+
+                  </td>
+
+                </tr>
 
               }
 
@@ -562,150 +561,146 @@
           @for(booking of BookingRequestDto; track $index)
           {
 
-            
+            <article class="request-card">
 
-              <article class="request-card">
+              <div class="request-card-top">
 
-                <div class="request-card-top">
+                <span class="request-number">
+                  REQUEST #{{ $index + 1 }}
+                </span>
 
-                  <span class="request-number">
-                    REQUEST #{{ $index + 1 }}
+                <span class="status-badge pending">
+
+                  <span></span>
+
+                  Pending
+
+                </span>
+
+              </div>
+
+
+              <div class="mobile-person">
+
+                <div class="mobile-avatar barber-avatar">
+                  ✂
+                </div>
+
+                <div>
+
+                  <span class="mobile-label">
+                    MASTER BARBER
                   </span>
 
-                  <span class="status-badge pending">
-
-                    <span></span>
-
-                    Pending
-
-                  </span>
+                  <h3>
+                    {{ booking.barberName }}
+                  </h3>
 
                 </div>
 
+              </div>
 
-                <div class="mobile-person">
 
-                  <div class="mobile-avatar barber-avatar">
-                    ✂
-                  </div>
+              <div class="mobile-info-grid">
+
+                <!-- CUSTOMER -->
+
+                <div class="mobile-info">
+
+                  <span class="mobile-info-icon">
+                    ◉
+                  </span>
 
                   <div>
 
-                    <span class="mobile-label">
-                      MASTER BARBER
+                    <span>
+                      BOOKED BY
                     </span>
 
-                    <h3>
-                      {{ booking.barberName }}
-                    </h3>
+                    <strong>
+                      {{ booking.userName }}
+                    </strong>
 
                   </div>
 
                 </div>
 
 
-                <div class="mobile-info-grid">
+                <!-- TIME -->
 
-                  <!-- CUSTOMER -->
+                <div class="mobile-info">
 
-                  <div class="mobile-info">
-
-                    <span class="mobile-info-icon">
-                      ◉
-                    </span>
-
-                    <div>
-
-                      <span>
-                        BOOKED BY
-                      </span>
-
-                      <strong>
-                        {{ booking.userName }}
-                      </strong>
-
-                    </div>
-
-                  </div>
-
-
-                  <!-- TIME -->
-
-                  <div class="mobile-info">
-
-                    <span class="mobile-info-icon">
-                      ◷
-                    </span>
-
-                    <div>
-
-                      <span>
-                        REQUESTED TIME
-                      </span>
-
-                      <strong>
-                        {{ booking.bookingTime || 'Not selected' }}
-                      </strong>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <!-- SERVICE -->
-
-                <div class="mobile-service-box">
-
-                  <span>
-                    SELECTED SERVICE
+                  <span class="mobile-info-icon">
+                    ◷
                   </span>
 
-                  <div class="mobile-select-wrap">
-
-                    <span>✂</span>
-
-                    <select
-                      class="mobile-service-select">
-
-                      @for(service of booking.requestService; track $index)
-                      {
-
-                        <option [value]="service.id">
-                          {{ service.serviceName }}
-                        </option>
-
-                      }
-
-                    </select>
+                  <div>
 
                     <span>
-                      ▾
+                      REQUESTED TIME
                     </span>
+
+                    <strong>
+                      {{ booking.bookingTime || 'Not selected' }}
+                    </strong>
 
                   </div>
 
                 </div>
 
+              </div>
 
-                <!-- ACTION -->
 
-                <button
-                  type="button"
-                  class="mobile-approve-btn"
-                  [disabled]="Isloading"
-                  (click)="Approved(booking.bookedId)">
+              <!-- SERVICE -->
 
-                  <span>✓</span>
+              <div class="mobile-service-box">
 
-                  Approve Appointment
+                <span>
+                  SELECTED SERVICE
+                </span>
 
-                </button>
+                <div class="mobile-select-wrap">
 
-              </article>
+                  <span>✂</span>
 
-            
+                  <select
+                    class="mobile-service-select">
+
+                    @for(service of booking.requestService; track $index)
+                    {
+
+                      <option [value]="service.id">
+                        {{ service.serviceName }}
+                      </option>
+
+                    }
+
+                  </select>
+
+                  <span>
+                    ▾
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTION -->
+
+              <button
+                type="button"
+                class="mobile-approve-btn"
+                [disabled]="Isloading"
+                (click)="Approved(booking.bookedId)">
+
+                <span>✓</span>
+
+                Approve Appointment
+
+              </button>
+
+            </article>
 
           }
 
@@ -716,49 +711,82 @@
              PAGINATION - REQUESTS
         ================================================== -->
 
-        <!-- PAGINATION - REQUESTS -->
-<div class="pagination">
-  <div class="pagination-info">
-    Showing
-    <strong>{{ RequestTotalRecords === 0 ? 0 : (RequestPage - 1) * RequestPageSize + 1 }}</strong>
-    -
-    <strong>{{ RequestRecordEnd }}</strong>
-    of
-    <strong>{{ RequestTotalRecords }}</strong>
-    requests
-  </div>
+        <div class="pagination">
 
-  <div class="pagination-buttons">
-    <button
-      type="button"
-      class="page-arrow"
-      aria-label="Previous page"
-      [disabled]="RequestPage <= 1 || RequestLoading"
-      (click)="ChangeRequestPage(RequestPage - 1)">
-      ‹
-    </button>
+          <div class="pagination-info">
 
-    @for(pageNumber of RequestPageNumbers; track pageNumber) {
-      <button
-        type="button"
-        class="page-number"
-        [class.active]="pageNumber === RequestPage"
-        [disabled]="RequestLoading"
-        (click)="ChangeRequestPage(pageNumber)">
-        {{ pageNumber }}
-      </button>
-    }
+            Showing
 
-    <button
-      type="button"
-      class="page-arrow"
-      aria-label="Next page"
-      [disabled]="RequestPage >= RequestTotalPages || RequestLoading"
-      (click)="ChangeRequestPage(RequestPage + 1)">
-      ›
-    </button>
-  </div>
-</div>
+            <strong>
+              {{
+                RequestTotalRecords === 0
+                  ? 0
+                  : (RequestPage - 1) * RequestPageSize + 1
+              }}
+            </strong>
+
+            -
+
+            <strong>
+              {{ RequestRecordEnd }}
+            </strong>
+
+            of
+
+            <strong>
+              {{ RequestTotalRecords }}
+            </strong>
+
+            requests
+
+          </div>
+
+
+          <div class="pagination-buttons">
+
+            <button
+              type="button"
+              class="page-arrow"
+              aria-label="Previous page"
+              [disabled]="RequestPage <= 1 || RequestLoading"
+              (click)="ChangeRequestPage(RequestPage - 1)">
+
+              ‹
+
+            </button>
+
+
+            @for(pageNumber of RequestPageNumbers; track pageNumber)
+            {
+
+              <button
+                type="button"
+                class="page-number"
+                [class.active]="pageNumber === RequestPage"
+                [disabled]="RequestLoading"
+                (click)="ChangeRequestPage(pageNumber)">
+
+                {{ pageNumber }}
+
+              </button>
+
+            }
+
+
+            <button
+              type="button"
+              class="page-arrow"
+              aria-label="Next page"
+              [disabled]="RequestPage >= RequestTotalPages || RequestLoading"
+              (click)="ChangeRequestPage(RequestPage + 1)">
+
+              ›
+
+            </button>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -897,175 +925,173 @@
               @for(booking of ApprovedBookingRequestDto; track $index)
               {
 
-                
+                <tr>
 
-                  <tr>
+                  <!-- BARBER -->
 
-                    <!-- BARBER -->
+                  <td>
 
-                    <td>
+                    <div class="person-cell">
 
-                      <div class="person-cell">
-
-                        <div class="person-avatar barber-avatar">
-                          ✂
-                        </div>
-
-                        <div class="person-info">
-
-                          <strong>
-                            {{ booking.barberName }}
-                          </strong>
-
-                          <span>
-                            Master Barber
-                          </span>
-
-                        </div>
-
+                      <div class="person-avatar barber-avatar">
+                        ✂
                       </div>
 
-                    </td>
+                      <div class="person-info">
 
+                        <strong>
+                          {{ booking.barberName }}
+                        </strong>
 
-                    <!-- CUSTOMER -->
-
-                    <td>
-
-                      <div class="person-cell">
-
-                        <div class="person-avatar customer-avatar">
-                          ◉
-                        </div>
-
-                        <div class="person-info">
-
-                          <strong>
-                            {{ booking.userName }}
-                          </strong>
-
-                          <span>
-                            Confirmed Customer
-                          </span>
-
-                        </div>
-
-                      </div>
-
-                    </td>
-
-
-                    <!-- SERVICE -->
-
-                    <td>
-
-                      <div class="service-box">
-
-                        <span class="service-icon">
-                          ✂
-                        </span>
-
-                        <select
-                          class="service-select">
-
-                          @for(service of booking.requestService; track $index)
-                          {
-
-                            <option [value]="service.id">
-                              {{ service.serviceName }}
-                            </option>
-
-                          }
-
-                        </select>
-
-                        <span class="select-arrow">
-                          ▾
+                        <span>
+                          Master Barber
                         </span>
 
                       </div>
 
-                    </td>
+                    </div>
+
+                  </td>
 
 
-                    <!-- TIME -->
+                  <!-- CUSTOMER -->
 
-                    <td>
+                  <td>
 
-                      <div class="time-cell">
+                    <div class="person-cell">
 
-                        <span class="time-cell-icon">
-                          ◷
+                      <div class="person-avatar customer-avatar">
+                        ◉
+                      </div>
+
+                      <div class="person-info">
+
+                        <strong>
+                          {{ booking.userName }}
+                        </strong>
+
+                        <span>
+                          Confirmed Customer
                         </span>
-
-                        <div>
-
-                          <strong>
-                            {{ booking.bookingTime }}
-                          </strong>
-
-                          <span>
-                            Confirmed time
-                          </span>
-
-                        </div>
 
                       </div>
 
-                    </td>
+                    </div>
+
+                  </td>
 
 
-                    <!-- STATUS -->
+                  <!-- SERVICE -->
 
-                    <td>
+                  <td>
 
-                      <span class="status-badge approved">
+                    <div class="service-box">
 
-                        <span></span>
-
-                        {{ booking.status }}
-
+                      <span class="service-icon">
+                        ✂
                       </span>
 
-                    </td>
+                      <select
+                        class="service-select">
+
+                        @for(service of booking.requestService; track $index)
+                        {
+
+                          <option [value]="service.id">
+                            {{ service.serviceName }}
+                          </option>
+
+                        }
+
+                      </select>
+
+                      <span class="select-arrow">
+                        ▾
+                      </span>
+
+                    </div>
+
+                  </td>
 
 
-                    <!-- ACTIONS -->
+                  <!-- TIME -->
 
-                    <td>
+                  <td>
 
-                      <div class="table-actions approved-table-actions">
+                    <div class="time-cell">
 
-                        <button
-                          type="button"
-                          class="table-action complete-action"
-                          [disabled]="Isloading"
-                          (click)="GetBill(booking.bookedId)"
-                          title="Complete appointment">
+                      <span class="time-cell-icon">
+                        ◷
+                      </span>
 
-                          <span>✓</span>
-                          Complete
+                      <div>
 
-                        </button>
+                        <strong>
+                          {{ booking.bookingTime }}
+                        </strong>
 
-                        <button
-                          type="button"
-                          class="table-action dont-come-action"
-                          [disabled]="DontComeCustomer1"
-                          (click)="DontComeCustomer(booking.bookedId)"
-                          title="Mark customer as not arrived">
-
-                          Don't Come
-
-                        </button>
+                        <span>
+                          Confirmed time
+                        </span>
 
                       </div>
 
-                    </td>
+                    </div>
 
-                  </tr>
+                  </td>
 
-                
+
+                  <!-- STATUS -->
+
+                  <td>
+
+                    <span class="status-badge approved">
+
+                      <span></span>
+
+                      {{ booking.status }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- ACTIONS -->
+
+                  <td>
+
+                    <div class="table-actions approved-table-actions">
+
+                      <button
+                        type="button"
+                        class="table-action complete-action"
+                        [disabled]="Isloading"
+                        (click)="GetBill(booking.bookedId)"
+                        title="Complete appointment">
+
+                        <span>✓</span>
+
+                        Complete
+
+                      </button>
+
+
+                      <button
+                        type="button"
+                        class="table-action dont-come-action"
+                        [disabled]="DontComeCustomer1"
+                        (click)="DontComeCustomer(booking.bookedId)"
+                        title="Mark customer as not arrived">
+
+                        Don't Come
+
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
 
               }
 
@@ -1076,159 +1102,158 @@
         </div>
 
 
-        <!-- MOBILE -->
+        <!-- =================================================
+             MOBILE APPROVED CARDS
+        ================================================== -->
 
         <div class="mobile-request-list">
 
           @for(booking of ApprovedBookingRequestDto; track $index)
           {
 
-            
+            <article class="request-card approved-request-card">
 
-              <article class="request-card approved-request-card">
+              <div class="request-card-top">
 
-                <div class="request-card-top">
+                <span class="request-number">
+                  APPOINTMENT #{{ $index + 1 }}
+                </span>
 
-                  <span class="request-number">
-                    APPOINTMENT #{{ $index + 1 }}
+                <span class="status-badge approved">
+
+                  <span></span>
+
+                  Approved
+
+                </span>
+
+              </div>
+
+
+              <div class="mobile-person">
+
+                <div class="mobile-avatar barber-avatar">
+                  ✂
+                </div>
+
+                <div>
+
+                  <span class="mobile-label">
+                    MASTER BARBER
                   </span>
 
-                  <span class="status-badge approved">
-
-                    <span></span>
-
-                    Approved
-
-                  </span>
+                  <h3>
+                    {{ booking.barberName }}
+                  </h3>
 
                 </div>
 
+              </div>
 
-                <div class="mobile-person">
 
-                  <div class="mobile-avatar barber-avatar">
-                    ✂
-                  </div>
+              <div class="mobile-info-grid">
+
+                <div class="mobile-info">
+
+                  <span class="mobile-info-icon">
+                    ◉
+                  </span>
 
                   <div>
 
-                    <span class="mobile-label">
-                      MASTER BARBER
+                    <span>
+                      CUSTOMER
                     </span>
 
-                    <h3>
-                      {{ booking.barberName }}
-                    </h3>
+                    <strong>
+                      {{ booking.userName }}
+                    </strong>
 
                   </div>
 
                 </div>
 
 
-                <div class="mobile-info-grid">
+                <div class="mobile-info">
 
-                  <div class="mobile-info">
-
-                    <span class="mobile-info-icon">
-                      ◉
-                    </span>
-
-                    <div>
-
-                      <span>
-                        CUSTOMER
-                      </span>
-
-                      <strong>
-                        {{ booking.userName }}
-                      </strong>
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="mobile-info">
-
-                    <span class="mobile-info-icon">
-                      ◷
-                    </span>
-
-                    <div>
-
-                      <span>
-                        BOOKING TIME
-                      </span>
-
-                      <strong>
-                        {{ booking.bookingTime }}
-                      </strong>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="mobile-service-box">
-
-                  <span>
-                    SELECTED SERVICE
+                  <span class="mobile-info-icon">
+                    ◷
                   </span>
 
-                  <div class="mobile-select-wrap">
-
-                    <span>✂</span>
-
-                    <select
-                      class="mobile-service-select">
-
-                      @for(service of booking.requestService; track $index)
-                      {
-
-                        <option [value]="service.id">
-                          {{ service.serviceName }}
-                        </option>
-
-                      }
-
-                    </select>
+                  <div>
 
                     <span>
-                      ▾
+                      BOOKING TIME
                     </span>
+
+                    <strong>
+                      {{ booking.bookingTime }}
+                    </strong>
 
                   </div>
 
                 </div>
 
+              </div>
 
-                <button
-                  type="button"
-                  class="mobile-complete-btn"
-                  [disabled]="Isloading"
-                  (click)="GetBill(booking.bookedId)">
 
-                  <span>✓</span>
+              <div class="mobile-service-box">
 
-                  Complete
+                <span>
+                  SELECTED SERVICE
+                </span>
 
-                </button>
+                <div class="mobile-select-wrap">
 
-                <button
-                  type="button"
-                  class="mobile-dont-come-btn"
-                  [disabled]="DontComeCustomer1"
-                  (click)="DontComeCustomer(booking.bookedId)">
+                  <span>✂</span>
 
-                  Don't Come
+                  <select
+                    class="mobile-service-select">
 
-                </button>
+                    @for(service of booking.requestService; track $index)
+                    {
 
-              </article>
+                      <option [value]="service.id">
+                        {{ service.serviceName }}
+                      </option>
 
-            
+                    }
+
+                  </select>
+
+                  <span>
+                    ▾
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="mobile-complete-btn"
+                [disabled]="Isloading"
+                (click)="GetBill(booking.bookedId)">
+
+                <span>✓</span>
+
+                Complete
+
+              </button>
+
+
+              <button
+                type="button"
+                class="mobile-dont-come-btn"
+                [disabled]="DontComeCustomer1"
+                (click)="DontComeCustomer(booking.bookedId)">
+
+                Don't Come
+
+              </button>
+
+            </article>
 
           }
 
@@ -1239,49 +1264,82 @@
              PAGINATION - APPROVED
         ================================================== -->
 
-     <!-- PAGINATION - APPROVED -->
-<div class="pagination">
-  <div class="pagination-info">
-    Showing
-    <strong>{{ ApprovedTotalRecords === 0 ? 0 : (ApprovedPage - 1) * ApprovedPageSize + 1 }}</strong>
-    -
-    <strong>{{ ApprovedRecordEnd }}</strong>
-    of
-    <strong>{{ ApprovedTotalRecords }}</strong>
-    approved appointments
-  </div>
+        <div class="pagination">
 
-  <div class="pagination-buttons">
-    <button
-      type="button"
-      class="page-arrow"
-      aria-label="Previous page"
-      [disabled]="ApprovedPage <= 1 || ApprovedLoading"
-      (click)="ChangeApprovedPage(ApprovedPage - 1)">
-      ‹
-    </button>
+          <div class="pagination-info">
 
-    @for(pageNumber of ApprovedPageNumbers; track pageNumber) {
-      <button
-        type="button"
-        class="page-number"
-        [class.active]="pageNumber === ApprovedPage"
-        [disabled]="ApprovedLoading"
-        (click)="ChangeApprovedPage(pageNumber)">
-        {{ pageNumber }}
-      </button>
-    }
+            Showing
 
-    <button
-      type="button"
-      class="page-arrow"
-      aria-label="Next page"
-      [disabled]="ApprovedPage >= ApprovedTotalPages || ApprovedLoading"
-      (click)="ChangeApprovedPage(ApprovedPage + 1)">
-      ›
-    </button>
-  </div>
-</div>
+            <strong>
+              {{
+                ApprovedTotalRecords === 0
+                  ? 0
+                  : (ApprovedPage - 1) * ApprovedPageSize + 1
+              }}
+            </strong>
+
+            -
+
+            <strong>
+              {{ ApprovedRecordEnd }}
+            </strong>
+
+            of
+
+            <strong>
+              {{ ApprovedTotalRecords }}
+            </strong>
+
+            approved appointments
+
+          </div>
+
+
+          <div class="pagination-buttons">
+
+            <button
+              type="button"
+              class="page-arrow"
+              aria-label="Previous page"
+              [disabled]="ApprovedPage <= 1 || ApprovedLoading"
+              (click)="ChangeApprovedPage(ApprovedPage - 1)">
+
+              ‹
+
+            </button>
+
+
+            @for(pageNumber of ApprovedPageNumbers; track pageNumber)
+            {
+
+              <button
+                type="button"
+                class="page-number"
+                [class.active]="pageNumber === ApprovedPage"
+                [disabled]="ApprovedLoading"
+                (click)="ChangeApprovedPage(pageNumber)">
+
+                {{ pageNumber }}
+
+              </button>
+
+            }
+
+
+            <button
+              type="button"
+              class="page-arrow"
+              aria-label="Next page"
+              [disabled]="ApprovedPage >= ApprovedTotalPages || ApprovedLoading"
+              (click)="ChangeApprovedPage(ApprovedPage + 1)">
+
+              ›
+
+            </button>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -1291,23 +1349,221 @@
 
 </section>
 
+
+<!-- =====================================================
+     BILL MODAL
+====================================================== -->
+
 @if(BillModal)
 {
-  <div class="bill-modal-backdrop" (click)="CloseBill()">
-    <section class="bill-modal" role="dialog" aria-modal="true" aria-labelledby="bill-modal-title" (click)="$event.stopPropagation()">
-      <h2 id="bill-modal-title">Bill Details</h2>
-       <pre>Barber Name : {{Bill.barberName}}</pre>
-      <pre>Booked By : {{Bill.userName}}</pre>
-      @for(Service of Bill.billServices;track $index)
-      {
-          <pre>Service Name : {{Service.serviceName}}</pre>
-          <pre>Service Price : {{Service.servicePrice}}</pre>
-      }
-      <pre>Total Bill : {{Bill.totalBill}}</pre>
-      <div class="bill-modal-actions">
-        <button type="button" (click)="CloseBill()">Cancel</button>
-        <button type="button" (click)="ConfirmPayment()" [disabled]="!BillId || Isloading">Confirm Payment</button>
+  <div
+    class="bill-modal-backdrop"
+    (click)="CloseBill()">
+
+    <section
+      class="bill-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bill-modal-title"
+      (click)="$event.stopPropagation()">
+
+
+      <!-- BILL HEADER -->
+
+      <div class="bill-modal-header">
+
+        <div class="bill-modal-title">
+
+          <div class="bill-modal-icon">
+            ✂
+          </div>
+
+          <div class="bill-modal-heading">
+
+            <span class="bill-modal-eyebrow">
+              BARBER SHOP INVOICE
+            </span>
+
+            <h2 id="bill-modal-title">
+              Bill Details
+            </h2>
+
+            <p class="bill-modal-subtitle">
+              Appointment service summary and final payment
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="bill-modal-close"
+          (click)="CloseBill()"
+          aria-label="Close bill">
+
+          ×
+
+        </button>
+
       </div>
+
+
+      <!-- BILL BODY -->
+
+      <div class="bill-modal-body">
+
+
+        <!-- CUSTOMER / BARBER INFO -->
+
+        <div class="bill-info-grid">
+
+          <div class="bill-info-card">
+
+            <span class="bill-info-label">
+              BARBER
+            </span>
+
+            <span class="bill-info-value">
+              {{ Bill.barberName }}
+            </span>
+
+          </div>
+
+
+          <div class="bill-info-card">
+
+            <span class="bill-info-label">
+              BOOKED BY
+            </span>
+
+            <span class="bill-info-value">
+              {{ Bill.userName }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- SERVICE DETAILS -->
+
+        <div class="bill-receipt">
+
+          <div class="bill-receipt-header">
+
+            <div>
+
+              <span class="bill-receipt-eyebrow">
+                SERVICE DETAILS
+              </span>
+
+              <h3>
+                Selected Services
+              </h3>
+
+            </div>
+
+            <span class="bill-receipt-count">
+              {{ Bill.billServices.length }}
+            </span>
+
+          </div>
+
+
+          <div class="bill-service-list">
+
+            @for(Service of Bill.billServices; track $index)
+            {
+
+              <div class="bill-service-row">
+
+                <div class="bill-service-number">
+                  {{ $index + 1 }}
+                </div>
+
+
+                <div class="bill-service-info">
+
+                  <strong>
+                    {{ Service.serviceName }}
+                  </strong>
+
+                  <span>
+                    Salon Service
+                  </span>
+
+                </div>
+
+
+                <div class="bill-service-price">
+                  {{ Service.servicePrice }}
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="bill-total">
+
+          <div class="bill-total-label">
+
+            <span>
+              TOTAL AMOUNT
+            </span>
+
+            <strong>
+              Final appointment bill
+            </strong>
+
+          </div>
+
+          <div class="bill-total-amount">
+            {{ Bill.totalBill }}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="bill-modal-actions">
+
+        <button
+          type="button"
+          class="secondary-btn"
+          (click)="CloseBill()">
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="confirm-payment-btn"
+          (click)="ConfirmPayment()"
+          [disabled]="!BillId || Isloading">
+
+          <span>✓</span>
+
+          Confirm Payment
+
+        </button>
+
+      </div>
+
     </section>
+
   </div>
 }

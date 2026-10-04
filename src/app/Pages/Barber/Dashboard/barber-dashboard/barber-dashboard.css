@@ -4,9 +4,12 @@
 
 :host {
   display: block;
+
   width: 100%;
   min-height: 100%;
+
   background: #080808;
+
   color: #f5f2eb;
 
   --gold: #d6a85c;
@@ -30,9 +33,11 @@
   box-sizing: border-box;
 }
 
+
 * {
   box-sizing: border-box;
 }
+
 
 .booking-page {
   width: 100%;
@@ -54,20 +59,25 @@
   overflow-x: hidden;
 }
 
+
 /* =========================================================
    LOGOUT
 ========================================================= */
 
 .top-action-bar {
   position: absolute;
+
   top: 24px;
   right: 30px;
+
   z-index: 20;
 }
+
 
 .logout-btn {
   display: inline-flex;
   align-items: center;
+
   gap: 9px;
 
   padding: 11px 17px;
@@ -92,10 +102,13 @@
     background 0.25s ease;
 }
 
+
 .logout-icon {
   font-size: 18px;
+
   color: var(--gold-light);
 }
+
 
 .logout-btn:hover {
   transform: translateY(-2px);
@@ -105,6 +118,7 @@
   background: rgba(214, 168, 92, 0.08);
 }
 
+
 /* =========================================================
    APPROVAL MODAL
 ========================================================= */
@@ -112,11 +126,13 @@
 .approval-modal-backdrop,
 .bill-modal-backdrop {
   position: fixed;
+
   inset: 0;
 
   z-index: 2000;
 
   display: grid;
+
   place-items: center;
 
   padding: 20px;
@@ -125,6 +141,7 @@
 
   backdrop-filter: blur(8px);
 }
+
 
 .approval-modal {
   position: relative;
@@ -136,6 +153,7 @@
   overflow: hidden;
 
   border: 1px solid rgba(214, 168, 92, 0.35);
+
   border-radius: 24px;
 
   background:
@@ -152,10 +170,12 @@
   animation: approvalModalIn 0.3s ease;
 }
 
+
 .approval-modal::before {
   content: "";
 
   position: absolute;
+
   top: 0;
   left: 0;
   right: 0;
@@ -172,8 +192,10 @@
     );
 }
 
+
 .approval-modal-close {
   position: absolute;
+
   top: 16px;
   right: 16px;
 
@@ -181,9 +203,11 @@
   height: 34px;
 
   display: grid;
+
   place-items: center;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 10px;
 
   background: rgba(255, 255, 255, 0.04);
@@ -200,6 +224,7 @@
     background 0.2s ease;
 }
 
+
 .approval-modal-close:hover {
   color: var(--gold-light);
 
@@ -208,16 +233,19 @@
   background: rgba(214, 168, 92, 0.08);
 }
 
+
 .approval-icon {
   width: 62px;
   height: 62px;
 
   display: grid;
+
   place-items: center;
 
   margin-bottom: 20px;
 
   border: 1px solid rgba(214, 168, 92, 0.35);
+
   border-radius: 18px;
 
   background:
@@ -232,6 +260,7 @@
   font-size: 25px;
 }
 
+
 .approval-eyebrow {
   display: block;
 
@@ -245,6 +274,7 @@
   letter-spacing: 0.2em;
 }
 
+
 .approval-content h2 {
   margin: 0;
 
@@ -255,17 +285,21 @@
   font-size: 27px;
 }
 
+
 .approval-content p {
   margin: 9px 0 0;
 
   color: var(--muted);
 
   font-size: 12px;
+
   line-height: 1.7;
 }
 
+
 .approval-form {
   display: flex;
+
   align-items: end;
 
   gap: 12px;
@@ -273,9 +307,11 @@
   margin-top: 24px;
 }
 
+
 .time-field {
   flex: 1;
 }
+
 
 .time-field label {
   display: block;
@@ -292,9 +328,11 @@
   text-transform: uppercase;
 }
 
+
 .time-input-wrap {
   position: relative;
 }
+
 
 .time-icon {
   position: absolute;
@@ -311,6 +349,7 @@
   z-index: 2;
 }
 
+
 .time-input-wrap input {
   width: 100%;
   height: 45px;
@@ -318,6 +357,7 @@
   padding: 0 12px 0 38px;
 
   border: 1px solid rgba(255, 255, 255, 0.12);
+
   border-radius: 11px;
 
   outline: none;
@@ -336,6 +376,7 @@
     box-shadow 0.2s ease;
 }
 
+
 .time-input-wrap input:focus {
   border-color: var(--gold);
 
@@ -344,12 +385,16 @@
     0 0 20px rgba(214, 168, 92, 0.06);
 }
 
+
 .approve-main-btn {
   min-width: 190px;
+
   height: 45px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 9px;
@@ -357,6 +402,7 @@
   padding: 0 18px;
 
   border: 1px solid rgba(214, 168, 92, 0.5);
+
   border-radius: 11px;
 
   background:
@@ -378,6 +424,7 @@
     box-shadow 0.25s ease;
 }
 
+
 .approve-main-btn:hover {
   transform: translateY(-2px);
 
@@ -385,10 +432,13 @@
     0 12px 32px rgba(214, 168, 92, 0.25);
 }
 
+
 button:disabled {
   cursor: not-allowed;
+
   opacity: 0.55;
 }
+
 
 /* =========================================================
    HERO
@@ -400,6 +450,7 @@ button:disabled {
   min-height: 440px;
 
   display: flex;
+
   align-items: center;
 
   overflow: hidden;
@@ -407,20 +458,26 @@ button:disabled {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+
 .hero-image {
   position: absolute;
+
   inset: 0;
 
-  background-image: url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85");
+  background-image:
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85");
 
   background-size: cover;
+
   background-position: center 40%;
 
   transform: scale(1.03);
 }
 
+
 .hero-overlay {
   position: absolute;
+
   inset: 0;
 
   background:
@@ -433,8 +490,10 @@ button:disabled {
     );
 }
 
+
 .hero-pattern {
   position: absolute;
+
   inset: 0;
 
   background-image:
@@ -458,8 +517,10 @@ button:disabled {
     );
 }
 
+
 .hero-content {
   position: relative;
+
   z-index: 2;
 
   width: min(1180px, calc(100% - 40px));
@@ -469,8 +530,10 @@ button:disabled {
   padding: 90px 0 75px;
 }
 
+
 .hero-badge {
   display: inline-flex;
+
   align-items: center;
 
   gap: 9px;
@@ -480,6 +543,7 @@ button:disabled {
   padding: 9px 13px;
 
   border: 1px solid rgba(214, 168, 92, 0.28);
+
   border-radius: 999px;
 
   background: rgba(214, 168, 92, 0.07);
@@ -493,6 +557,7 @@ button:disabled {
 
   letter-spacing: 0.17em;
 }
+
 
 .live-dot {
   width: 7px;
@@ -511,6 +576,7 @@ button:disabled {
     0 0 12px rgba(88, 214, 141, 0.5);
 }
 
+
 .hero-content h1 {
   max-width: 720px;
 
@@ -527,6 +593,7 @@ button:disabled {
   letter-spacing: -0.045em;
 }
 
+
 .hero-content h1 span {
   display: block;
 
@@ -534,6 +601,7 @@ button:disabled {
 
   font-style: italic;
 }
+
 
 .hero-content p {
   max-width: 580px;
@@ -547,16 +615,19 @@ button:disabled {
   line-height: 1.8;
 }
 
+
 .hero-line {
   width: 210px;
 
   display: flex;
+
   align-items: center;
 
   gap: 12px;
 
   margin-top: 28px;
 }
+
 
 .hero-line span {
   flex: 1;
@@ -571,6 +642,7 @@ button:disabled {
     );
 }
 
+
 .hero-line span:last-child {
   background:
     linear-gradient(
@@ -580,13 +652,17 @@ button:disabled {
     );
 }
 
+
 .hero-line i {
   color: var(--gold-light);
+
   font-style: normal;
 }
 
+
 .hero-meta {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 12px;
@@ -594,8 +670,10 @@ button:disabled {
   margin-top: 30px;
 }
 
+
 .hero-meta-item {
   display: flex;
+
   align-items: center;
 
   gap: 8px;
@@ -603,6 +681,7 @@ button:disabled {
   padding: 10px 13px;
 
   border: 1px solid rgba(255, 255, 255, 0.09);
+
   border-radius: 10px;
 
   background: rgba(0, 0, 0, 0.25);
@@ -610,15 +689,18 @@ button:disabled {
   backdrop-filter: blur(8px);
 }
 
+
 .hero-meta-item span {
   color: var(--gold-light);
 }
+
 
 .hero-meta-item strong {
   color: rgba(255, 255, 255, 0.75);
 
   font-size: 10px;
 }
+
 
 /* =========================================================
    NAVIGATION
@@ -636,12 +718,14 @@ button:disabled {
   gap: 15px;
 }
 
+
 .booking-nav-btn {
   position: relative;
 
   min-height: 90px;
 
   display: flex;
+
   align-items: center;
 
   gap: 15px;
@@ -649,6 +733,7 @@ button:disabled {
   padding: 17px 20px;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 17px;
 
   background:
@@ -672,13 +757,16 @@ button:disabled {
     background 0.3s ease;
 }
 
+
 .booking-nav-btn::before {
   content: "";
 
   position: absolute;
 
   left: 0;
+
   top: 0;
+
   bottom: 0;
 
   width: 3px;
@@ -690,11 +778,13 @@ button:disabled {
   transition: transform 0.3s ease;
 }
 
+
 .booking-nav-btn:hover {
   transform: translateY(-3px);
 
   border-color: rgba(214, 168, 92, 0.3);
 }
+
 
 .booking-nav-btn.active {
   border-color: rgba(214, 168, 92, 0.4);
@@ -707,9 +797,11 @@ button:disabled {
     );
 }
 
+
 .booking-nav-btn.active::before {
   transform: scaleY(1);
 }
+
 
 .nav-icon-wrap {
   width: 49px;
@@ -718,6 +810,7 @@ button:disabled {
   flex: 0 0 49px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 14px;
@@ -731,8 +824,10 @@ button:disabled {
   font-size: 19px;
 }
 
+
 .nav-text {
   display: flex;
+
   flex-direction: column;
 
   gap: 5px;
@@ -740,15 +835,20 @@ button:disabled {
   min-width: 0;
 }
 
+
 .nav-text strong {
   color: #fff;
+
   font-size: 14px;
 }
 
+
 .nav-text small {
   color: var(--muted);
+
   font-size: 11px;
 }
+
 
 .nav-arrow {
   margin-left: auto;
@@ -760,9 +860,11 @@ button:disabled {
   transition: transform 0.25s ease;
 }
 
+
 .booking-nav-btn:hover .nav-arrow {
   transform: translateX(4px);
 }
+
 
 /* =========================================================
    SECTION
@@ -774,15 +876,19 @@ button:disabled {
   margin: 55px auto 80px;
 }
 
+
 .section-heading {
   display: flex;
+
   align-items: end;
+
   justify-content: space-between;
 
   gap: 25px;
 
   margin-bottom: 25px;
 }
+
 
 .section-eyebrow {
   display: block;
@@ -792,10 +898,12 @@ button:disabled {
   color: var(--gold-light);
 
   font-size: 10px;
+
   font-weight: 900;
 
   letter-spacing: 0.2em;
 }
+
 
 .section-title-area h2 {
   margin: 0;
@@ -806,6 +914,7 @@ button:disabled {
 
   font-size: clamp(30px, 4vw, 43px);
 }
+
 
 .section-title-area p {
   max-width: 650px;
@@ -819,14 +928,17 @@ button:disabled {
   line-height: 1.7;
 }
 
+
 .heading-decoration {
   min-width: 150px;
 
   display: flex;
+
   align-items: center;
 
   gap: 10px;
 }
+
 
 .heading-decoration span {
   flex: 1;
@@ -841,6 +953,7 @@ button:disabled {
     );
 }
 
+
 .heading-decoration span:last-child {
   background:
     linear-gradient(
@@ -850,11 +963,13 @@ button:disabled {
     );
 }
 
+
 .heading-decoration i {
   color: var(--gold-light);
 
   font-style: normal;
 }
+
 
 /* =========================================================
    TABLE CARD
@@ -864,6 +979,7 @@ button:disabled {
   position: relative;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 23px;
 
   background:
@@ -879,6 +995,7 @@ button:disabled {
 
   overflow: hidden;
 }
+
 
 .requests-table-card::before {
   content: "";
@@ -900,11 +1017,14 @@ button:disabled {
   pointer-events: none;
 }
 
+
 .table-top {
   position: relative;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -914,6 +1034,7 @@ button:disabled {
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+
 .table-eyebrow {
   display: block;
 
@@ -922,10 +1043,12 @@ button:disabled {
   color: var(--gold);
 
   font-size: 9px;
+
   font-weight: 900;
 
   letter-spacing: 0.2em;
 }
+
 
 .table-heading h3 {
   margin: 0;
@@ -935,6 +1058,7 @@ button:disabled {
   font-size: 18px;
 }
 
+
 .table-heading p {
   margin: 5px 0 0;
 
@@ -943,8 +1067,10 @@ button:disabled {
   font-size: 11px;
 }
 
+
 .table-live {
   display: inline-flex;
+
   align-items: center;
 
   gap: 8px;
@@ -952,6 +1078,7 @@ button:disabled {
   padding: 9px 12px;
 
   border: 1px solid rgba(88, 214, 141, 0.15);
+
   border-radius: 999px;
 
   background: rgba(88, 214, 141, 0.05);
@@ -959,10 +1086,12 @@ button:disabled {
   color: #9bdcb7;
 
   font-size: 10px;
+
   font-weight: 800;
 
   white-space: nowrap;
 }
+
 
 .approved-live {
   border-color: rgba(214, 168, 92, 0.18);
@@ -971,6 +1100,7 @@ button:disabled {
 
   color: var(--gold-light);
 }
+
 
 /* =========================================================
    TABLE
@@ -988,6 +1118,7 @@ button:disabled {
     transparent;
 }
 
+
 .booking-table {
   width: 100%;
 
@@ -995,6 +1126,7 @@ button:disabled {
 
   border-collapse: collapse;
 }
+
 
 .booking-table th {
   padding: 15px 18px;
@@ -1008,6 +1140,7 @@ button:disabled {
   text-align: left;
 
   font-size: 9px;
+
   font-weight: 900;
 
   letter-spacing: 0.12em;
@@ -1017,6 +1150,7 @@ button:disabled {
   white-space: nowrap;
 }
 
+
 .booking-table th span {
   margin-right: 7px;
 
@@ -1024,6 +1158,7 @@ button:disabled {
 
   font-size: 8px;
 }
+
 
 .booking-table td {
   padding: 18px;
@@ -1033,17 +1168,21 @@ button:disabled {
   vertical-align: middle;
 }
 
+
 .booking-table tbody tr {
   transition: background 0.25s ease;
 }
+
 
 .booking-table tbody tr:hover {
   background: rgba(214, 168, 92, 0.035);
 }
 
+
 .booking-table tbody tr:last-child td {
   border-bottom: none;
 }
+
 
 /* =========================================================
    PEOPLE
@@ -1051,12 +1190,14 @@ button:disabled {
 
 .person-cell {
   display: flex;
+
   align-items: center;
 
   gap: 11px;
 
   min-width: 175px;
 }
+
 
 .person-avatar {
   width: 43px;
@@ -1065,12 +1206,14 @@ button:disabled {
   flex: 0 0 43px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 13px;
 
   font-size: 16px;
 }
+
 
 .barber-avatar {
   background:
@@ -1085,6 +1228,7 @@ button:disabled {
   color: var(--gold-light);
 }
 
+
 .customer-avatar {
   background:
     linear-gradient(
@@ -1098,14 +1242,17 @@ button:disabled {
   color: #bcb8b0;
 }
 
+
 .person-info {
   min-width: 0;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 4px;
 }
+
 
 .person-info strong {
   max-width: 150px;
@@ -1121,6 +1268,7 @@ button:disabled {
   white-space: nowrap;
 }
 
+
 .person-info span {
   color: #696660;
 
@@ -1128,6 +1276,7 @@ button:disabled {
 
   white-space: nowrap;
 }
+
 
 /* =========================================================
    SERVICE / TIME / STATUS
@@ -1139,8 +1288,10 @@ button:disabled {
   min-width: 185px;
 
   display: flex;
+
   align-items: center;
 }
+
 
 .service-icon {
   position: absolute;
@@ -1154,8 +1305,10 @@ button:disabled {
   pointer-events: none;
 }
 
+
 .service-select {
   width: 100%;
+
   height: 42px;
 
   padding: 0 35px;
@@ -1163,6 +1316,7 @@ button:disabled {
   appearance: none;
 
   border: 1px solid rgba(255, 255, 255, 0.09);
+
   border-radius: 10px;
 
   outline: none;
@@ -1176,6 +1330,7 @@ button:disabled {
   cursor: pointer;
 }
 
+
 .select-arrow {
   position: absolute;
 
@@ -1186,8 +1341,10 @@ button:disabled {
   pointer-events: none;
 }
 
+
 .time-cell {
   display: flex;
+
   align-items: center;
 
   gap: 9px;
@@ -1195,11 +1352,13 @@ button:disabled {
   min-width: 135px;
 }
 
+
 .time-cell-icon {
   width: 31px;
   height: 31px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 9px;
@@ -1209,6 +1368,7 @@ button:disabled {
   color: var(--gold);
 }
 
+
 .time-cell strong {
   display: block;
 
@@ -1216,6 +1376,7 @@ button:disabled {
 
   font-size: 11px;
 }
+
 
 .time-cell span:not(.time-cell-icon) {
   display: block;
@@ -1227,8 +1388,10 @@ button:disabled {
   font-size: 8px;
 }
 
+
 .status-badge {
   display: inline-flex;
+
   align-items: center;
 
   gap: 7px;
@@ -1238,10 +1401,12 @@ button:disabled {
   border-radius: 999px;
 
   font-size: 9px;
+
   font-weight: 900;
 
   white-space: nowrap;
 }
+
 
 .status-badge > span {
   width: 6px;
@@ -1249,6 +1414,7 @@ button:disabled {
 
   border-radius: 50%;
 }
+
 
 .status-badge.pending {
   border: 1px solid rgba(231, 168, 78, 0.18);
@@ -1258,9 +1424,11 @@ button:disabled {
   color: #e8bd75;
 }
 
+
 .status-badge.pending > span {
   background: var(--orange);
 }
+
 
 .status-badge.approved {
   border: 1px solid rgba(88, 214, 141, 0.17);
@@ -1270,9 +1438,11 @@ button:disabled {
   color: #8bd9ac;
 }
 
+
 .status-badge.approved > span {
   background: var(--green);
 }
+
 
 /* =========================================================
    DESKTOP TABLE ACTIONS
@@ -1280,6 +1450,7 @@ button:disabled {
 
 .table-actions {
   display: flex;
+
   align-items: center;
 
   gap: 8px;
@@ -1287,15 +1458,19 @@ button:disabled {
   min-width: 205px;
 }
 
+
 .approved-table-actions {
   flex-wrap: nowrap;
 }
+
 
 .table-action {
   height: 38px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 7px;
@@ -1305,6 +1480,7 @@ button:disabled {
   border-radius: 9px;
 
   font-size: 10px;
+
   font-weight: 900;
 
   white-space: nowrap;
@@ -1318,9 +1494,11 @@ button:disabled {
     opacity 0.2s ease;
 }
 
+
 .table-action:hover:not(:disabled) {
   transform: translateY(-2px);
 }
+
 
 .approve-action {
   border: 1px solid rgba(214, 168, 92, 0.25);
@@ -1330,9 +1508,11 @@ button:disabled {
   color: var(--gold-light);
 }
 
+
 .approve-action:hover:not(:disabled) {
   background: rgba(214, 168, 92, 0.16);
 }
+
 
 .complete-action {
   border: 1px solid rgba(88, 214, 141, 0.2);
@@ -1342,9 +1522,11 @@ button:disabled {
   color: #8de0ad;
 }
 
+
 .complete-action:hover:not(:disabled) {
   background: rgba(88, 214, 141, 0.14);
 }
+
 
 .dont-come-action {
   border: 1px solid rgba(231, 110, 96, 0.3);
@@ -1354,11 +1536,13 @@ button:disabled {
   color: #f09a8e;
 }
 
+
 .dont-come-action:hover:not(:disabled) {
   border-color: rgba(231, 110, 96, 0.5);
 
   background: rgba(231, 110, 96, 0.15);
 }
+
 
 /* =========================================================
    MOBILE CARDS
@@ -1368,10 +1552,12 @@ button:disabled {
   display: none;
 }
 
+
 .request-card {
   padding: 19px;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 17px;
 
   background:
@@ -1385,9 +1571,12 @@ button:disabled {
     0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
+
 .request-card-top {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 10px;
@@ -1397,23 +1586,28 @@ button:disabled {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+
 .request-number {
   color: #66635e;
 
   font-size: 9px;
+
   font-weight: 900;
 
   letter-spacing: 0.14em;
 }
 
+
 .mobile-person {
   display: flex;
+
   align-items: center;
 
   gap: 13px;
 
   margin: 18px 0;
 }
+
 
 .mobile-avatar {
   width: 51px;
@@ -1422,10 +1616,12 @@ button:disabled {
   flex: 0 0 51px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 15px;
 }
+
 
 .mobile-label {
   display: block;
@@ -1435,10 +1631,12 @@ button:disabled {
   color: #69655f;
 
   font-size: 8px;
+
   font-weight: 900;
 
   letter-spacing: 0.14em;
 }
+
 
 .mobile-person h3 {
   margin: 0;
@@ -1447,6 +1645,7 @@ button:disabled {
 
   font-size: 15px;
 }
+
 
 .mobile-info-grid {
   display: grid;
@@ -1458,8 +1657,10 @@ button:disabled {
   margin-bottom: 13px;
 }
 
+
 .mobile-info {
   display: flex;
+
   align-items: center;
 
   gap: 10px;
@@ -1467,10 +1668,12 @@ button:disabled {
   padding: 12px;
 
   border: 1px solid rgba(255, 255, 255, 0.06);
+
   border-radius: 11px;
 
   background: rgba(0, 0, 0, 0.18);
 }
+
 
 .mobile-info-icon {
   width: 30px;
@@ -1479,6 +1682,7 @@ button:disabled {
   flex: 0 0 30px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 8px;
@@ -1488,9 +1692,11 @@ button:disabled {
   color: var(--gold);
 }
 
+
 .mobile-info div {
   min-width: 0;
 }
+
 
 .mobile-info div span {
   display: block;
@@ -1500,8 +1706,10 @@ button:disabled {
   color: #64615b;
 
   font-size: 7px;
+
   font-weight: 900;
 }
+
 
 .mobile-info strong {
   display: block;
@@ -1517,9 +1725,11 @@ button:disabled {
   white-space: nowrap;
 }
 
+
 .mobile-service-box {
   margin-top: 12px;
 }
+
 
 .mobile-service-box > span {
   display: block;
@@ -1529,17 +1739,21 @@ button:disabled {
   color: #64615b;
 
   font-size: 8px;
+
   font-weight: 900;
 
   letter-spacing: 0.12em;
 }
 
+
 .mobile-select-wrap {
   position: relative;
 
   display: flex;
+
   align-items: center;
 }
+
 
 .mobile-select-wrap > span:first-child {
   position: absolute;
@@ -1551,6 +1765,7 @@ button:disabled {
   color: var(--gold);
 }
 
+
 .mobile-select-wrap > span:last-child {
   position: absolute;
 
@@ -1561,8 +1776,10 @@ button:disabled {
   pointer-events: none;
 }
 
+
 .mobile-service-select {
   width: 100%;
+
   height: 43px;
 
   appearance: none;
@@ -1570,6 +1787,7 @@ button:disabled {
   padding: 0 34px;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 10px;
 
   outline: none;
@@ -1581,15 +1799,18 @@ button:disabled {
   font-size: 10px;
 }
 
+
 .mobile-approve-btn,
 .mobile-complete-btn,
 .mobile-dont-come-btn {
   width: 100%;
+
   height: 45px;
 
   border-radius: 10px;
 
   font-size: 10px;
+
   font-weight: 900;
 
   cursor: pointer;
@@ -1598,6 +1819,7 @@ button:disabled {
     transform 0.2s ease,
     background 0.2s ease;
 }
+
 
 .mobile-approve-btn {
   margin-top: 14px;
@@ -1614,6 +1836,7 @@ button:disabled {
   color: var(--gold-light);
 }
 
+
 .mobile-complete-btn {
   margin-top: 14px;
 
@@ -1623,6 +1846,7 @@ button:disabled {
 
   color: #8bdaac;
 }
+
 
 .mobile-dont-come-btn {
   margin-top: 10px;
@@ -1634,13 +1858,16 @@ button:disabled {
   color: #f09a8e;
 }
 
+
 /* =========================================================
    PAGINATION
 ========================================================= */
 
 .pagination {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
@@ -1650,22 +1877,27 @@ button:disabled {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+
 .pagination-info {
   color: #66635d;
 
   font-size: 10px;
 }
 
+
 .pagination-info strong {
   color: #bdb8af;
 }
 
+
 .pagination-buttons {
   display: flex;
+
   align-items: center;
 
   gap: 6px;
 }
+
 
 .page-number,
 .page-arrow {
@@ -1673,9 +1905,11 @@ button:disabled {
   height: 34px;
 
   display: grid;
+
   place-items: center;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 8px;
 
   background: #111;
@@ -1683,6 +1917,7 @@ button:disabled {
   color: #85817a;
 
   font-size: 11px;
+
   font-weight: 800;
 
   cursor: pointer;
@@ -1693,6 +1928,7 @@ button:disabled {
     background 0.2s ease;
 }
 
+
 .page-number:hover:not(:disabled),
 .page-arrow:hover:not(:disabled) {
   border-color: rgba(214, 168, 92, 0.3);
@@ -1701,6 +1937,7 @@ button:disabled {
 
   background: rgba(214, 168, 92, 0.06);
 }
+
 
 .page-number.active {
   border-color: var(--gold);
@@ -1714,6 +1951,7 @@ button:disabled {
 
   color: #0b0b0b;
 }
+
 
 /* =========================================================
    BILL MODAL — PREMIUM INVOICE
@@ -1735,38 +1973,42 @@ button:disabled {
   backdrop-filter: blur(12px);
 }
 
-/* Main modal */
 
 .bill-modal {
   position: relative;
 
-  width: min(590px, 100%);
+  width: min(600px, 100%);
 
   max-height: min(88vh, 760px);
 
+  display: flex;
+
+  flex-direction: column;
+
   overflow: hidden;
 
-  border: 1px solid rgba(214, 168, 92, 0.28);
+  border: 1px solid rgba(214, 168, 92, 0.3);
 
   border-radius: 24px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(25, 24, 21, 0.99),
-      rgba(10, 10, 10, 0.99)
+      #191815,
+      #0a0a09 75%
     );
 
   color: #f5f2eb;
 
   box-shadow:
-    0 40px 120px rgba(0, 0, 0, 0.75),
+    0 40px 120px rgba(0, 0, 0, 0.8),
     0 0 70px rgba(214, 168, 92, 0.08);
 
   animation: billModalIn 0.3s ease;
 }
 
-/* Luxury gold line */
+
+/* GOLD TOP LINE */
 
 .bill-modal::before {
   content: "";
@@ -1779,6 +2021,8 @@ button:disabled {
 
   height: 3px;
 
+  z-index: 10;
+
   background:
     linear-gradient(
       90deg,
@@ -1789,11 +2033,10 @@ button:disabled {
       var(--gold-dark),
       transparent
     );
-
-  z-index: 5;
 }
 
-/* Ambient glow */
+
+/* AMBIENT GLOW */
 
 .bill-modal::after {
   content: "";
@@ -1815,61 +2058,82 @@ button:disabled {
   pointer-events: none;
 }
 
-/* Header */
+
+/* =========================================================
+   BILL HEADER
+========================================================= */
 
 .bill-modal-header {
   position: relative;
+
   z-index: 2;
 
   display: flex;
-  align-items: flex-start;
+
+  align-items: center;
+
   justify-content: space-between;
 
-  gap: 20px;
+  gap: 18px;
 
-  padding: 27px 28px 22px;
+  padding: 24px 27px 21px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(214, 168, 92, 0.075),
+      rgba(255, 255, 255, 0.012)
+    );
 }
 
+
 .bill-modal-title {
+  min-width: 0;
+
   display: flex;
+
   align-items: center;
 
   gap: 14px;
 }
 
-.bill-modal-icon {
-  width: 48px;
-  height: 48px;
 
-  flex: 0 0 48px;
+.bill-modal-icon {
+  width: 50px;
+  height: 50px;
+
+  flex: 0 0 50px;
 
   display: grid;
+
   place-items: center;
 
-  border: 1px solid rgba(214, 168, 92, 0.3);
+  border: 1px solid rgba(214, 168, 92, 0.32);
 
-  border-radius: 14px;
+  border-radius: 15px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(214, 168, 92, 0.17),
-      rgba(214, 168, 92, 0.04)
+      rgba(214, 168, 92, 0.18),
+      rgba(214, 168, 92, 0.035)
     );
 
   color: var(--gold-light);
 
-  font-size: 19px;
+  font-size: 20px;
 
   box-shadow:
     inset 0 0 20px rgba(214, 168, 92, 0.025);
 }
 
+
 .bill-modal-heading {
   min-width: 0;
 }
+
 
 .bill-modal-eyebrow {
   display: block;
@@ -1879,6 +2143,7 @@ button:disabled {
   color: var(--gold-light);
 
   font-size: 8px;
+
   font-weight: 900;
 
   letter-spacing: 0.22em;
@@ -1886,17 +2151,22 @@ button:disabled {
   text-transform: uppercase;
 }
 
+
 .bill-modal h2 {
   margin: 0;
 
   color: #fff;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  font-size: 25px;
+  font-size: 26px;
 
   line-height: 1.1;
 }
+
 
 .bill-modal-subtitle {
   margin: 6px 0 0;
@@ -1908,13 +2178,15 @@ button:disabled {
   line-height: 1.5;
 }
 
-.bill-modal-close {
-  width: 35px;
-  height: 35px;
 
-  flex: 0 0 35px;
+.bill-modal-close {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
 
   display: grid;
+
   place-items: center;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1925,7 +2197,7 @@ button:disabled {
 
   color: #969189;
 
-  font-size: 20px;
+  font-size: 21px;
 
   cursor: pointer;
 
@@ -1935,6 +2207,7 @@ button:disabled {
     border-color 0.2s ease,
     transform 0.2s ease;
 }
+
 
 .bill-modal-close:hover {
   transform: rotate(3deg);
@@ -1946,17 +2219,23 @@ button:disabled {
   background: rgba(214, 168, 92, 0.08);
 }
 
-/* Bill content */
+
+/* =========================================================
+   BILL BODY
+========================================================= */
 
 .bill-modal-body {
   position: relative;
+
   z-index: 2;
 
-  max-height: calc(88vh - 175px);
+  flex: 1;
+
+  min-height: 0;
 
   overflow-y: auto;
 
-  padding: 23px 28px;
+  padding: 22px 27px;
 
   scrollbar-width: thin;
 
@@ -1965,13 +2244,16 @@ button:disabled {
     transparent;
 }
 
+
 .bill-modal-body::-webkit-scrollbar {
   width: 5px;
 }
 
+
 .bill-modal-body::-webkit-scrollbar-track {
   background: transparent;
 }
+
 
 .bill-modal-body::-webkit-scrollbar-thumb {
   border-radius: 999px;
@@ -1979,43 +2261,11 @@ button:disabled {
   background: rgba(214, 168, 92, 0.35);
 }
 
+
 .bill-modal-body::-webkit-scrollbar-thumb:hover {
   background: rgba(214, 168, 92, 0.55);
 }
 
-/* Bill pre / generated receipt */
-
-.bill-modal pre {
-  margin: 0;
-
-  max-height: none;
-
-  overflow: visible;
-
-  white-space: pre-wrap;
-
-  overflow-wrap: anywhere;
-
-  color: #d6d1c7;
-
-  font-family:
-    "Inter",
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  font-size: 12px;
-
-  line-height: 1.75;
-}
-
-/* If backend returns plain bill text */
-
-.bill-modal pre::selection {
-  background: rgba(214, 168, 92, 0.25);
-
-  color: #fff;
-}
 
 /* =========================================================
    BILL INFORMATION CARDS
@@ -2028,8 +2278,9 @@ button:disabled {
 
   gap: 10px;
 
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
+
 
 .bill-info-card {
   min-width: 0;
@@ -2048,6 +2299,7 @@ button:disabled {
     );
 }
 
+
 .bill-info-label {
   display: block;
 
@@ -2056,12 +2308,14 @@ button:disabled {
   color: #68645e;
 
   font-size: 7px;
+
   font-weight: 900;
 
   letter-spacing: 0.15em;
 
   text-transform: uppercase;
 }
+
 
 .bill-info-value {
   display: block;
@@ -2071,6 +2325,7 @@ button:disabled {
   color: #eeeae2;
 
   font-size: 11px;
+
   font-weight: 800;
 
   text-overflow: ellipsis;
@@ -2078,16 +2333,17 @@ button:disabled {
   white-space: nowrap;
 }
 
+
 /* =========================================================
-   BILL RECEIPT WRAPPER
+   BILL RECEIPT
 ========================================================= */
 
 .bill-receipt {
   position: relative;
 
-  margin-top: 5px;
+  margin-top: 0;
 
-  padding: 20px;
+  padding: 17px;
 
   border: 1px solid rgba(214, 168, 92, 0.14);
 
@@ -2097,17 +2353,19 @@ button:disabled {
     linear-gradient(
       145deg,
       rgba(214, 168, 92, 0.045),
-      rgba(255, 255, 255, 0.015)
+      rgba(255, 255, 255, 0.012)
     );
 }
+
 
 .bill-receipt::before {
   content: "";
 
   position: absolute;
 
-  left: 20px;
-  right: 20px;
+  left: 18px;
+  right: 18px;
+
   top: 0;
 
   height: 1px;
@@ -2121,20 +2379,208 @@ button:disabled {
     );
 }
 
+
+.bill-receipt-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.bill-receipt-eyebrow {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--gold);
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+.bill-receipt-header h3 {
+  margin: 0;
+
+  color: #eeeae2;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.bill-receipt-count {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(214, 168, 92, 0.22);
+
+  border-radius: 8px;
+
+  background: rgba(214, 168, 92, 0.07);
+
+  color: var(--gold-light);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   SERVICE LIST
+   IMPORTANT:
+   No pre elements here.
+   No default margins.
+   No artificial empty space.
+========================================================= */
+
+.bill-service-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+.bill-service-row {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 12px 2px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.bill-service-row:last-child {
+  border-bottom: none;
+
+  padding-bottom: 3px;
+}
+
+
+.bill-service-number {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(214, 168, 92, 0.15);
+
+  border-radius: 8px;
+
+  background: rgba(214, 168, 92, 0.045);
+
+  color: var(--gold);
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+
+.bill-service-info {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.bill-service-info strong {
+  overflow: hidden;
+
+  color: #e8e3da;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.bill-service-info span {
+  color: #67635c;
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+
+.bill-service-price {
+  color: var(--gold-light);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
 /* =========================================================
    BILL TOTAL
 ========================================================= */
 
 .bill-total {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 20px;
 
-  margin-top: 17px;
+  margin-top: 15px;
 
-  padding: 17px 18px;
+  padding: 16px 17px;
 
   border: 1px solid rgba(214, 168, 92, 0.25);
 
@@ -2151,17 +2597,21 @@ button:disabled {
     inset 0 0 25px rgba(214, 168, 92, 0.025);
 }
 
+
 .bill-total-label {
   display: flex;
+
   flex-direction: column;
 
   gap: 3px;
 }
 
+
 .bill-total-label span {
   color: #777169;
 
   font-size: 8px;
+
   font-weight: 900;
 
   letter-spacing: 0.16em;
@@ -2169,11 +2619,13 @@ button:disabled {
   text-transform: uppercase;
 }
 
+
 .bill-total-label strong {
   color: #ddd8cf;
 
-  font-size: 11px;
+  font-size: 10px;
 }
+
 
 .bill-total-amount {
   color: var(--gold-light);
@@ -2184,6 +2636,7 @@ button:disabled {
     serif;
 
   font-size: 25px;
+
   font-weight: 700;
 
   white-space: nowrap;
@@ -2192,21 +2645,25 @@ button:disabled {
     0 0 20px rgba(214, 168, 92, 0.14);
 }
 
+
 /* =========================================================
    BILL MODAL ACTIONS
 ========================================================= */
 
 .bill-modal-actions {
   position: relative;
+
   z-index: 3;
 
   display: flex;
+
   align-items: center;
+
   justify-content: flex-end;
 
   gap: 10px;
 
-  padding: 18px 28px 23px;
+  padding: 17px 27px 21px;
 
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 
@@ -2218,31 +2675,24 @@ button:disabled {
     );
 }
 
+
 .bill-modal-actions button {
   min-height: 42px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 7px;
 
   padding: 0 17px;
 
-  border: 1px solid rgba(214, 168, 92, 0.3);
-
   border-radius: 10px;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(214, 168, 92, 0.15),
-      rgba(214, 168, 92, 0.055)
-    );
-
-  color: var(--gold-light);
-
   font-size: 10px;
+
   font-weight: 900;
 
   cursor: pointer;
@@ -2254,21 +2704,59 @@ button:disabled {
     box-shadow 0.2s ease;
 }
 
-.bill-modal-actions button:hover:not(:disabled) {
+
+/* CANCEL */
+
+.bill-modal-actions .secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #aaa59b;
+}
+
+
+.bill-modal-actions .secondary-btn:hover:not(:disabled) {
   transform: translateY(-2px);
 
-  border-color: rgba(214, 168, 92, 0.55);
+  border-color: rgba(255, 255, 255, 0.18);
+
+  background: rgba(255, 255, 255, 0.065);
+
+  color: #e6e1d8;
+
+  box-shadow: none;
+}
+
+
+/* CONFIRM PAYMENT */
+
+.bill-modal-actions .confirm-payment-btn {
+  border: 1px solid rgba(214, 168, 92, 0.5);
 
   background:
     linear-gradient(
       135deg,
-      rgba(214, 168, 92, 0.23),
-      rgba(214, 168, 92, 0.08)
+      #d6a85c,
+      #a97636
     );
 
+  color: #0b0b0b;
+
   box-shadow:
-    0 10px 25px rgba(214, 168, 92, 0.1);
+    0 8px 25px rgba(214, 168, 92, 0.12);
 }
+
+
+.bill-modal-actions .confirm-payment-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: rgba(240, 201, 120, 0.75);
+
+  box-shadow:
+    0 12px 30px rgba(214, 168, 92, 0.25);
+}
+
 
 .bill-modal-actions button:disabled {
   cursor: not-allowed;
@@ -2276,31 +2764,13 @@ button:disabled {
   opacity: 0.45;
 }
 
-/* Secondary button if present */
-
-.bill-modal-actions .secondary-btn {
-  border-color: rgba(255, 255, 255, 0.1);
-
-  background: rgba(255, 255, 255, 0.035);
-
-  color: #aaa59b;
-}
-
-.bill-modal-actions .secondary-btn:hover:not(:disabled) {
-  border-color: rgba(255, 255, 255, 0.18);
-
-  background: rgba(255, 255, 255, 0.06);
-
-  color: #e6e1d8;
-
-  box-shadow: none;
-}
 
 /* =========================================================
    BILL MODAL ANIMATION
 ========================================================= */
 
 @keyframes billModalIn {
+
   from {
     opacity: 0;
 
@@ -2316,9 +2786,12 @@ button:disabled {
       translateY(0)
       scale(1);
   }
+
 }
 
+
 @keyframes approvalModalIn {
+
   from {
     opacity: 0;
 
@@ -2334,7 +2807,9 @@ button:disabled {
       translateY(0)
       scale(1);
   }
+
 }
+
 
 /* =========================================================
    TABLET
@@ -2346,30 +2821,38 @@ button:disabled {
     padding: 80px 0 65px;
   }
 
+
   .booking-table {
     min-width: 900px;
   }
+
 
   .booking-section {
     margin-top: 45px;
   }
 
+
   .person-info strong {
     max-width: 120px;
   }
+
 
   .table-actions {
     min-width: 195px;
   }
 
+
   .table-action {
     padding: 0 10px;
   }
 
+
   .bill-modal {
     width: min(560px, 100%);
   }
+
 }
+
 
 /* =========================================================
    MOBILE / TABLET
@@ -2379,20 +2862,25 @@ button:disabled {
 
   .top-action-bar {
     top: 17px;
+
     right: 17px;
   }
+
 
   .logout-btn {
     padding: 9px 12px;
   }
 
+
   .logout-btn span:last-child {
     display: none;
   }
 
+
   .booking-hero {
     min-height: 510px;
   }
+
 
   .hero-content {
     width: calc(100% - 32px);
@@ -2400,13 +2888,16 @@ button:disabled {
     padding-top: 105px;
   }
 
+
   .hero-content h1 {
     font-size: clamp(43px, 12vw, 65px);
   }
 
+
   .hero-content p {
     font-size: 13px;
   }
+
 
   .hero-meta {
     display: grid;
@@ -2414,9 +2905,11 @@ button:disabled {
     grid-template-columns: 1fr 1fr;
   }
 
+
   .hero-meta-item:last-child {
     grid-column: 1 / -1;
   }
+
 
   .booking-navigation {
     width: calc(100% - 32px);
@@ -2426,27 +2919,33 @@ button:disabled {
     margin-top: 18px;
   }
 
+
   .booking-section {
     width: calc(100% - 32px);
 
     margin-top: 38px;
   }
 
+
   .section-heading {
     align-items: flex-start;
   }
+
 
   .heading-decoration {
     display: none;
   }
 
+
   .table-top {
     padding: 20px;
   }
 
+
   .booking-table-wrapper {
     display: none;
   }
+
 
   .mobile-request-list {
     display: grid;
@@ -2456,6 +2955,7 @@ button:disabled {
     padding: 15px;
   }
 
+
   .pagination {
     flex-direction: column;
 
@@ -2464,13 +2964,16 @@ button:disabled {
     padding: 16px;
   }
 
+
   .pagination-info {
     text-align: center;
   }
 
+
   .pagination-buttons {
     justify-content: center;
   }
+
 
   .approval-form {
     display: grid;
@@ -2478,17 +2981,20 @@ button:disabled {
     grid-template-columns: 1fr 1fr;
   }
 
+
   .approve-main-btn {
     width: 100%;
 
     min-width: 0;
   }
 
+
   /* BILL MODAL */
 
   .bill-modal-backdrop {
     padding: 15px;
   }
+
 
   .bill-modal {
     width: 100%;
@@ -2498,24 +3004,30 @@ button:disabled {
     border-radius: 20px;
   }
 
+
   .bill-modal-header {
     padding: 22px 20px 18px;
   }
 
+
   .bill-modal-body {
     padding: 20px;
 
-    max-height: calc(90vh - 160px);
+    max-height: none;
   }
+
 
   .bill-modal-actions {
     padding: 15px 20px 20px;
   }
 
+
   .bill-total-amount {
     font-size: 22px;
   }
+
 }
+
 
 /* =========================================================
    MOBILE
@@ -2527,6 +3039,7 @@ button:disabled {
     background-position: 62% center;
   }
 
+
   .hero-overlay {
     background:
       linear-gradient(
@@ -2536,15 +3049,18 @@ button:disabled {
       );
   }
 
+
   .hero-content {
     padding-top: 115px;
 
     padding-bottom: 50px;
   }
 
+
   .hero-badge {
     font-size: 8px;
   }
+
 
   .hero-content h1 {
     font-size: 48px;
@@ -2552,25 +3068,30 @@ button:disabled {
     line-height: 1.02;
   }
 
+
   .hero-content p {
     margin-top: 18px;
 
     line-height: 1.7;
   }
 
+
   .hero-meta {
     grid-template-columns: 1fr;
   }
 
+
   .hero-meta-item:last-child {
     grid-column: auto;
   }
+
 
   .booking-nav-btn {
     min-height: 78px;
 
     padding: 14px;
   }
+
 
   .nav-icon-wrap {
     width: 42px;
@@ -2579,21 +3100,26 @@ button:disabled {
     flex-basis: 42px;
   }
 
+
   .nav-text strong {
     font-size: 12px;
   }
+
 
   .nav-text small {
     font-size: 9px;
   }
 
+
   .section-title-area h2 {
     font-size: 31px;
   }
 
+
   .section-title-area p {
     font-size: 11px;
   }
+
 
   .table-top {
     align-items: flex-start;
@@ -2603,23 +3129,28 @@ button:disabled {
     gap: 13px;
   }
 
+
   .table-live {
     align-self: flex-start;
   }
+
 
   .mobile-info-grid {
     grid-template-columns: 1fr;
   }
 
+
   .request-card {
     padding: 15px;
   }
+
 
   .status-badge {
     font-size: 8px;
 
     padding: 7px 8px;
   }
+
 
   /* APPROVAL MODAL */
 
@@ -2631,9 +3162,11 @@ button:disabled {
     border-radius: 20px;
   }
 
+
   .approval-content h2 {
     font-size: 23px;
   }
+
 
   .approval-form {
     grid-template-columns: 1fr;
@@ -2641,9 +3174,11 @@ button:disabled {
     gap: 10px;
   }
 
+
   .pagination-buttons {
     flex-wrap: wrap;
   }
+
 
   /* BILL MODAL */
 
@@ -2651,15 +3186,18 @@ button:disabled {
     border-radius: 18px;
   }
 
+
   .bill-modal-header {
     padding: 20px 17px 17px;
 
     gap: 12px;
   }
 
+
   .bill-modal-title {
     gap: 11px;
   }
+
 
   .bill-modal-icon {
     width: 42px;
@@ -2672,13 +3210,16 @@ button:disabled {
     font-size: 16px;
   }
 
+
   .bill-modal h2 {
     font-size: 21px;
   }
 
+
   .bill-modal-subtitle {
     font-size: 9px;
   }
+
 
   .bill-modal-close {
     width: 32px;
@@ -2689,15 +3230,11 @@ button:disabled {
     font-size: 18px;
   }
 
+
   .bill-modal-body {
     padding: 17px;
   }
 
-  .bill-modal pre {
-    font-size: 11px;
-
-    line-height: 1.65;
-  }
 
   .bill-info-grid {
     grid-template-columns: 1fr;
@@ -2705,13 +3242,46 @@ button:disabled {
     gap: 8px;
   }
 
+
   .bill-info-card {
     padding: 11px 12px;
   }
 
+
   .bill-receipt {
-    padding: 15px;
+    padding: 14px;
   }
+
+
+  .bill-receipt-header h3 {
+    font-size: 13px;
+  }
+
+
+  .bill-service-row {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+
+    gap: 9px;
+
+    padding: 11px 1px;
+  }
+
+
+  .bill-service-number {
+    width: 27px;
+    height: 27px;
+  }
+
+
+  .bill-service-info strong {
+    font-size: 10px;
+  }
+
+
+  .bill-service-price {
+    font-size: 13px;
+  }
+
 
   .bill-total {
     align-items: flex-start;
@@ -2723,9 +3293,11 @@ button:disabled {
     padding: 14px;
   }
 
+
   .bill-total-amount {
     font-size: 23px;
   }
+
 
   .bill-modal-actions {
     display: grid;
@@ -2737,6 +3309,7 @@ button:disabled {
     padding: 14px 17px 17px;
   }
 
+
   .bill-modal-actions button {
     width: 100%;
 
@@ -2744,7 +3317,9 @@ button:disabled {
 
     padding: 0 10px;
   }
+
 }
+
 
 /* =========================================================
    VERY SMALL MOBILE
@@ -2756,14 +3331,17 @@ button:disabled {
     font-size: 41px;
   }
 
+
   .booking-navigation,
   .booking-section {
     width: calc(100% - 22px);
   }
 
+
   .mobile-person h3 {
     font-size: 14px;
   }
+
 
   .page-number,
   .page-arrow {
@@ -2771,10 +3349,12 @@ button:disabled {
     height: 31px;
   }
 
+
   .approval-modal-backdrop,
   .bill-modal-backdrop {
     padding: 10px;
   }
+
 
   /* BILL MODAL */
 
@@ -2784,29 +3364,41 @@ button:disabled {
     border-radius: 16px;
   }
 
+
   .bill-modal-header {
     padding: 17px 14px 15px;
   }
 
+
   .bill-modal-body {
     padding: 14px;
 
-    max-height: calc(94vh - 150px);
+    max-height: none;
   }
+
 
   .bill-modal-actions {
     padding: 12px 14px 14px;
   }
 
+
   .bill-modal-actions button {
     font-size: 9px;
   }
+
 
   .bill-total-amount {
     font-size: 21px;
   }
 
-  .bill-modal pre {
-    font-size: 10px;
+
+  .bill-service-info strong {
+    font-size: 9px;
   }
+
+
+  .bill-service-price {
+    font-size: 12px;
+  }
+
 }
