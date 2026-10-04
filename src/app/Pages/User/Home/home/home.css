@@ -2657,8 +2657,6 @@
 ============================================================ */
 
 .service-content {
-   
-    margin-top: -8px;
   
   width: min(1180px, 90%);
   margin: 45px auto 0;
@@ -3005,7 +3003,7 @@
   }
 
   .service-content {
-    margin-top: 0px;
+    margin-top: 35px;
   }
 
   .service-card {
@@ -3085,7 +3083,7 @@
   .booking-content,
   .service-content {
     width: 92%;
-    margin-top: 0px;
+    margin-top: 30px;
   }
 
   .section-heading {
@@ -3846,7 +3844,8 @@
   }
 }
 @media (max-width: 700px) {
-  .service-nav-item {
-    margin-top: -8px;
+  .service-content {
+    margin-top: 5px !important;
   }
+
 }
