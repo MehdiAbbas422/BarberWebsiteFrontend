@@ -2659,7 +2659,7 @@
 .service-content {
   
   width: min(1180px, 90%);
-  margin: 45px auto 0;
+  margin: 5px auto 0;
 }
 
 .service-heading {
@@ -3003,7 +3003,7 @@
   }
 
   .service-content {
-    margin-top: 35px;
+    
   }
 
   .service-card {
@@ -3083,7 +3083,7 @@
   .booking-content,
   .service-content {
     width: 92%;
-    margin-top: 30px;
+
   }
 
   .section-heading {
