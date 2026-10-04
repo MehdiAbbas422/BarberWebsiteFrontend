@@ -38,7 +38,7 @@ Sigup(SigupDto: any) {
     },
     (error: any) => {
       console.error('Signup failed:', error);
-      this.messageModal.show(error?.error?.message)
+      this.messageModal.showHttpError(error, error?.error?.message)
       this.Isloading.set(false);
     }
   );  
@@ -59,7 +59,7 @@ VerfyEmail(OTP: string,Email:string) {
     },
     (error: any) => {
       console.error('Email verification failed:', error);
-      this.messageModal.show(error?.error?.message)
+      this.messageModal.showHttpError(error, error?.error?.message)
       this.Isloading.set(false);
     }
   );
@@ -77,7 +77,7 @@ ResendOTP(Email:string)
     },
     (error: any) => {
       console.error('OTP resend failed:', error);
-      this.messageModal.show(error?.error?.message)
+      this.messageModal.showHttpError(error, error?.error?.message)
       this.Isloading.set(false);
     }
   );

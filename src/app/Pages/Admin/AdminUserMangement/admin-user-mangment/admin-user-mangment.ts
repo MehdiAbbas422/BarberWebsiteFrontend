@@ -67,12 +67,6 @@ this.Isloading =false
     this.adminService.GetUser(Keyword,page).subscribe(
       (res:any) => {
         console.log('User list fetched successfully:', res);
-      if (res == null) {
-        this.Isloading = false;
-        this.cdr.detectChanges();
-        this.messageModal.show(null);
-        return;
-      }
       this.UserList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
       this.page = res?.pageNumber ?? this.page;
       this.pageSize = res?.pageSize ?? this.pageSize;
@@ -85,7 +79,7 @@ this.cdr.detectChanges()
   
     (error) => {
       console.error('Error fetching user list:', error);
-      this.messageModal.show(error?.error?.message || 'An error occurred while fetching the user list.');
+      this.messageModal.showHttpError(error, error?.error?.message || 'An error occurred while fetching the user list.');
      this.Isloading = false
      this.cdr.detectChanges()
     }
@@ -117,7 +111,7 @@ this.cdr.detectChanges()
       },
       (err:any)=>
       {
-        this.messageModal.show(err?.error?.message)
+        this.messageModal.showHttpError(err, err?.error?.message)
         console.log(err)
         this.Isloading=false
       }

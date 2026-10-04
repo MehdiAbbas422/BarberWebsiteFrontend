@@ -63,7 +63,7 @@ export class Sigin {
 
         console.error('Sigin failed:', error);
 
-        this.messageModal.show(error?.error?.message);
+        this.messageModal.showHttpError(error, error?.error?.message);
 
         this.Isloading.set(false);
       }

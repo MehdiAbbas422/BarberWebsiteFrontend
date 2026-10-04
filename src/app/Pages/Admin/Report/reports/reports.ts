@@ -33,12 +33,6 @@ export class Reports implements OnInit {
     this.Isloading = true;
     this.adminService.GetReport(this.keyword, this.page).subscribe({
       next: (res: any) => {
-        if (res == null) {
-          this.Isloading = false;
-          this.cdr.detectChanges();
-          this.messageModal.show(null);
-          return;
-        }
         console.log(res);
         this.reports = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
         this.page = res?.pageNumber ?? this.page;
@@ -53,6 +47,7 @@ export class Reports implements OnInit {
       error: (err: any) => {
         this.Isloading = false;
         console.error(err);
+        this.messageModal.showHttpError(err);
         this.cdr.detectChanges();
       }
     });
@@ -85,6 +80,7 @@ export class Reports implements OnInit {
       error: (err: any) => {
         this.Isloading = false;
         console.error(err);
+        this.messageModal.showHttpError(err);
         this.cdr.detectChanges();
       }
     });

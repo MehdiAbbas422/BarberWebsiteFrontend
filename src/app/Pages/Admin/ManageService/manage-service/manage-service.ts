@@ -48,11 +48,7 @@ GetServiceList(){
     this.admin.GetService(this.Keyword,this.Page).subscribe(
       (res:any) =>
       {
-          if (res == null) {
-            this.Isloading.set(false);
-            this.messageModal.show(null);
-            return;
-          }
+        
           console.log(res)
           this.ServiceList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
           this.Page = res?.pageNumber ?? this.Page;
@@ -66,7 +62,7 @@ GetServiceList(){
       (err:any) =>
       {
           console.log(err)
-          this.messageModal.show(err?.error?.message)
+          this.messageModal.showHttpError(err, err?.error?.message)
           this.Isloading.set(false)
       }
       
@@ -100,7 +96,7 @@ CreateService()
     {
       console.log(err);
       this.ResetInput()
-      this.messageModal.show('Some thing is wrong');
+      this.messageModal.showHttpError(err, 'Some thing is wrong');
       this.Isloading.set(false)
       
     }
@@ -133,7 +129,7 @@ UpdateService()
     (err:any) =>
     {
         console.log(err)
-        this.messageModal.show(err?.error?.message);
+      this.messageModal.showHttpError(err, err?.error?.message);
         this.Isloading.set(false)
     }
 
@@ -155,7 +151,7 @@ DeleteService(Id:number)
   {
       console.log(err);
       this.Isloading.set(false)
-      this.messageModal.show(err?.error?.message)
+      this.messageModal.showHttpError(err, err?.error?.message)
       
   }
   )

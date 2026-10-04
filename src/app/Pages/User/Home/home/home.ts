@@ -84,7 +84,7 @@ BookingRequest(BarberId:number)
       console.log(this.Service)
         console.log(err)
         this.Isloading = false;
-        this.ShowMessage(err?.error?.message)
+        this.ShowHttpError(err, err?.error?.message)
     }
   )
 }
@@ -100,12 +100,6 @@ GetBarber(Keyword:string,Page:number)
    this.user.GetBarber(Keyword,Page).subscribe(
     (res:any) =>
     {
-        if (res == null) {
-          this.Isloading = false;
-          this.cdr.detectChanges();
-          this.ShowMessage(null);
-          return;
-        }
         console.log(res)
         this.BarberDto = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
         this.Page = res?.pageNumber ?? this.Page;
@@ -122,7 +116,7 @@ GetBarber(Keyword:string,Page:number)
       console.log(err)
       this.Isloading= false
       this.cdr.detectChanges()
-      this.ShowMessage(err?.error?.message)
+      this.ShowHttpError(err, err?.error?.message)
     }
    )
 }
@@ -133,12 +127,6 @@ GetBookedRequest()
   this.user.GetBookingRequest(this.Page1).subscribe(
     (res:any)=>
     {
-      if (res == null) {
-        this.Isloading = false;
-        this.cdr.detectChanges();
-        this.ShowMessage(null);
-        return;
-      }
       this.BookingRequestDto = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
       this.Page1 = res?.pageNumber ?? this.Page1;
       this.BookingPageSize = res?.pageSize ?? this.BookingPageSize;
@@ -153,7 +141,7 @@ GetBookedRequest()
       console.log(err)
       this.Isloading = false
       this.cdr.detectChanges()
-      this.ShowMessage(err?.error?.message)
+      this.ShowHttpError(err, err?.error?.message)
 
     }
   )
@@ -171,12 +159,6 @@ GetBill(BookedId:number)
   this.user.GetBill(BookedId).subscribe(
     (res:any) =>
     {
-      if (res == null) {
-        this.Isloading = false;
-        this.cdr.detectChanges();
-        this.ShowMessage(null);
-        return;
-      }
       console.log(res)
       this.Bill = res;
       this.ShowBillModal = true;
@@ -187,7 +169,7 @@ GetBill(BookedId:number)
       {
         this.Isloading = false
         console.log(err)
-        this.ShowMessage(err?.error?.message)
+        this.ShowHttpError(err, err?.error?.message)
       }  
   )
 }
@@ -213,7 +195,7 @@ RemoveBooking(BookedId:number)
       {
         this.Isloading = false
         console.log(err)
-        this.ShowMessage(err?.error?.message)
+        this.ShowHttpError(err, err?.error?.message)
       } 
   )
 }
@@ -242,7 +224,7 @@ SendReport()
       {
         console.log(err)
         this.Isloading =false
-        this.ShowMessage(err?.error?.message)
+        this.ShowHttpError(err, err?.error?.message)
       } 
   )
 }
@@ -260,6 +242,16 @@ ShowMessage(message: unknown): void
   this.message11 = text || 'Maybe your token has expired. Please sign in again.';
   this.Message12 = true;
   this.cdr.detectChanges();
+}
+
+ShowHttpError(error: { status?: number }, fallbackMessage?: unknown): void
+{
+  if (error?.status === 401 || error?.status === 403) {
+    this.ShowMessage('Maybe your token has expired. Please sign in again.');
+    return;
+  }
+
+  this.ShowMessage(fallbackMessage);
 }
 
 ModalClose(): void
@@ -295,12 +287,6 @@ GetService()
   this.user.GetService().subscribe(
     (res:any) =>
     {
-      if (res == null) {
-        this.Isloading = false;
-        this.cdr.detectChanges();
-        this.ShowMessage(null);
-        return;
-      }
       console.log(res)
       this.ServiceList = res;
       this.cdr.detectChanges()
@@ -310,7 +296,7 @@ GetService()
     {
       console.log(err)
       this.Isloading = false
-      this.ShowMessage(err?.error?.message)
+      this.ShowHttpError(err, err?.error?.message)
     }
   )
 }

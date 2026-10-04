@@ -44,7 +44,7 @@ ChangePassword(newPassword: string)
         },
         error : (err: any) => {
           console.log(err.err);
-          this.messageModal.show(err?.error?.message);
+          this.messageModal.showHttpError(err, err?.error?.message);
           this.Isloading.set(false);
         }
        });

@@ -44,10 +44,6 @@ export class Dashboard implements OnInit {
     this.adminService.getEarning().subscribe({
       next: (res: any) => {
         console.log(res)
-        if (res == null) {
-          this.messageModal.show(null);
-          return;
-        }
         // Simple direct mapping
         this.earnings = res.data ;
         this.totalCustomers = res.totalCustumer || 0;
@@ -55,6 +51,7 @@ export class Dashboard implements OnInit {
       },
       error: (err:any) => {
         console.log(err)
+        this.messageModal.showHttpError(err);
         this.errorMessage = 'Unable to load earnings.';
       }
     });
@@ -76,11 +73,6 @@ export class Dashboard implements OnInit {
     this.adminService.getEarningEntry(earningId).subscribe({
       next: (res: any) => {
         console.log(res)
-        if (res == null) {
-          this.isLoadingEntry = false;
-          this.messageModal.show(null);
-          return;
-        }
         this.earningEntries = res.data1 || [];
         this.ManualEntryDto = res.data2 || [];
         this.isLoadingEntry = false;
@@ -89,6 +81,7 @@ export class Dashboard implements OnInit {
       },
       error: (err:any) => {
         console.log(err)
+        this.messageModal.showHttpError(err);
         this.isLoadingEntry = false;
         this.errorMessage = 'Unable to load earning entries.';
       }

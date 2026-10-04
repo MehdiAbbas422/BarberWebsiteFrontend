@@ -31,12 +31,6 @@ this.Isloading = true
  this.barber.ManualEntryService().subscribe(
   (res:any) => 
   {
-     if (res == null) {
-       this.Isloading = false;
-       this.cdr.detectChanges();
-       this.messageModal.show(null);
-       return;
-     }
      this.ServiceDto = res
      console.log(res)
      this.cdr.detectChanges()
@@ -45,6 +39,7 @@ this.Isloading = true
   (err:any)=>
   {
       console.log(err)
+      this.messageModal.showHttpError(err);
       this.Isloading = false
 
   }
@@ -79,7 +74,7 @@ ManualEntryFunction()
     {
         console.log(err)
         this.Isloading = false
-        this.messageModal.show(err?.error?.message);
+      this.messageModal.showHttpError(err, err?.error?.message);
     }
   )
 }

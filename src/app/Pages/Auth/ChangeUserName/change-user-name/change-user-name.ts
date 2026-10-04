@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormsModule } from '@angular/forms';
 import { Authentication } from '../../../../Service/Auth/authentication';
 import { Router } from '@angular/router';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 @Component({
   selector: 'app-change-user-name',
   imports: [FormsModule],
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class ChangeUserName {
   private readonly authService = inject(Authentication);
   private readonly router = inject(Router)
+  private readonly messageModal = inject(MessageModalService);
 
   name = '';
   isLoading = signal(false);
@@ -35,6 +37,7 @@ export class ChangeUserName {
       },
       error: (err:any) => {
         console.log(err)
+        this.messageModal.showHttpError(err);
         this.message.set('Unable to update your username. Please try again.');
         this.messageType.set('error');
         this.isLoading.set(false);

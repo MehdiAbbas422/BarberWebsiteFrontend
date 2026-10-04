@@ -156,12 +156,6 @@ DontComeCustomer1 = false
 
     this.barber.GetBookingRequest(this.RequestPage).subscribe({
       next: (res: any) => {
-        if (res == null) {
-          this.RequestLoading = false;
-          this.cdr.detectChanges();
-          this.messageModal.show(null);
-          return;
-        }
         console.log('Booking Request Response:', res);
 
         const data = this.ExtractData(res);
@@ -219,7 +213,7 @@ DontComeCustomer1 = false
         this.RequestLoading = false;
         this.cdr.detectChanges();
 
-        this.messageModal.show(
+        this.messageModal.showHttpError(err,
           err?.error?.message ||
           err?.message ||
           'Error fetching booking requests'
@@ -252,12 +246,6 @@ DontComeCustomer1 = false
 
     this.barber.GetApprovedBookingRequest(this.ApprovedPage).subscribe({
       next: (res: any) => {
-        if (res == null) {
-          this.ApprovedLoading = false;
-          this.cdr.detectChanges();
-          this.messageModal.show(null);
-          return;
-        }
         console.log('Approved Response:', res);
 
         const data = this.ExtractData(res);
@@ -313,7 +301,7 @@ DontComeCustomer1 = false
         this.ApprovedLoading = false;
         this.cdr.detectChanges();
 
-        this.messageModal.show(
+        this.messageModal.showHttpError(err,
           err?.error?.message ||
           err?.message ||
           'Error fetching approved customers'
@@ -380,7 +368,7 @@ DontComeCustomer1 = false
         console.log('Approved error:', err);
         this.Isloading = false;
 
-        this.messageModal.show(
+        this.messageModal.showHttpError(err,
           err?.error?.message ||
           'Something is wrong'
         );
@@ -415,7 +403,7 @@ DontComeCustomer1 = false
   this.cdr.detectChanges();
       console.log(err);
 
-      this.messageModal.show(
+      this.messageModal.showHttpError(err,
         err?.error?.message ||
         'Could not update booking'
       );
@@ -434,12 +422,6 @@ DontComeCustomer1 = false
 
     this.barber.GetBill(bookedId).subscribe({
       next: (res: any) => {
-        if (res == null) {
-          this.Isloading = false;
-          this.cdr.detectChanges();
-          this.messageModal.show(null);
-          return;
-        }
         this.Bill = res;
         this.BillId = this.Bill?.billId ?? 0;
 
@@ -454,7 +436,7 @@ DontComeCustomer1 = false
         this.Isloading = false;
         console.log(err);
 
-        this.messageModal.show(
+        this.messageModal.showHttpError(err,
           err?.error?.message ||
           'Could not load bill'
         );
@@ -489,7 +471,7 @@ DontComeCustomer1 = false
         this.Isloading = false;
         console.log(err);
 
-        this.messageModal.show(
+        this.messageModal.showHttpError(err,
           err?.error?.message ||
           'Could not confirm payment'
         );
