@@ -995,7 +995,1719 @@
               (click)="ChangeBookingPageNumber(Page1 - 1)">
 
               ←
+   <section class="booking-page">
+
+  <!-- =========================
+       TOP ACTION
+  ========================== -->
+
+  <div class="top-action-bar">
+
+    <button
+      type="button"
+      class="logout-btn"
+      (click)="logout()">
+
+      <span class="logout-icon">↪</span>
+      <span>Logout</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header class="booking-hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <span class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        SALON APPOINTMENTS
+      </span>
+
+      <h1>
+        Book Your
+        <span>Perfect Look</span>
+      </h1>
+
+      <p>
+        Choose your preferred barber and services,
+        then send your appointment request in just a few clicks.
+      </p>
+
+      <div class="hero-line">
+        <span></span>
+        <i>✦</i>
+        <span></span>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       INTERNAL NAVIGATION
+  ========================== -->
+
+  <nav
+    class="booking-navigation"
+    aria-label="Booking navigation">
+
+    <button
+      type="button"
+      class="booking-nav-item"
+      [class.active]="BookingPage == 'Booking'"
+      (click)="ChangeBookingPage('Booking')">
+
+      <span class="nav-icon">✂</span>
+
+      <span class="nav-content">
+        <strong>Booking</strong>
+        <small>Choose barber & service</small>
+      </span>
+
+      <span class="nav-arrow">→</span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="booking-nav-item"
+      [class.active]="BookingPage == 'BookingRequest'"
+      (click)="ChangeBookingPage('BookingRequest')">
+
+      <span class="nav-icon">◷</span>
+
+      <span class="nav-content">
+        <strong>Booking Requests</strong>
+        <small>View your appointments</small>
+      </span>
+
+      <span class="nav-arrow">→</span>
+
+    </button>
+
+        <button
+      type="button"
+      class="booking-nav-item service-nav-item"
+      [class.active]="BookingPage == 'Service'"
+      (click)="ChangeBookingPage('Service')">
+
+      <span class="nav-icon">◷</span>
+
+      <span class="nav-content">
+        <strong>Service Detail</strong>
+        <small>View your appointments</small>
+      </span>
+
+      <span class="nav-arrow">→</span>
+
+    </button>
+
+  </nav>
+
+
+  <!-- =====================================================
+       BOOKING PAGE
+  ====================================================== -->
+
+  @if(BookingPage == 'Booking')
+  {
+
+    <section class="booking-content">
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="section-eyebrow">
+            MAKE AN APPOINTMENT
+          </span>
+
+          <h2>
+            Choose Your Barber
+          </h2>
+
+          <p>
+            Find your preferred barber and select the services
+            you want for your appointment.
+          </p>
+
+        </div>
+
+        <div class="heading-decoration">
+          <span></span>
+          <i>✦</i>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           SEARCH
+      ========================== -->
+
+      <div class="booking-search-toolbar">
+
+        <div class="booking-search-box">
+
+          <span class="booking-search-icon">
+            ⌕
+          </span>
+
+          <input
+            type="search"
+            placeholder="Search barber or service..."
+            aria-label="Search barber or service"
+            [(ngModel)]="Keyword"
+          />
+
+          <span class="booking-search-hint">
+            SEARCH
+          </span>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="booking-search-button"
+          (click)="Search()"
+          [disabled]="Isloading">
+
+          <span>⌕</span>
+          Search
+
+        </button>
+
+
+        <div class="available-counter">
+
+          <span></span>
+
+          <strong>
+            {{ BarberDto.length }}
+          </strong>
+
+          <small>
+            Barbers Available
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           BARBER TABLE
+      ========================== -->
+
+      <div class="booking-table-card">
+
+        <div class="booking-table-header">
+
+          <div>
+
+            <span class="table-eyebrow">
+              AVAILABLE BARBERS
+            </span>
+
+            <h3>
+              Select Your Services
+            </h3>
+
+          </div>
+
+          <div class="available-label">
+            <span></span>
+            Available Now
+          </div>
+
+        </div>
+
+
+        <div class="booking-table-wrapper">
+
+          <table class="booking-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  <span>01</span>
+                  Barber
+                </th>
+
+                <th>
+                  <span>02</span>
+                  Services
+                </th>
+
+                <th>
+                  <span>03</span>
+                  Appointment
+                </th>
+
+                <th>
+                  <span>04</span>
+                  Actions
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for(barber of BarberDto; track $index)
+              {
+
+                <tr>
+
+                  <!-- BARBER -->
+
+                  <td data-label="Barber">
+
+                    <div class="barber-cell">
+
+                      <div class="barber-avatar">
+
+                        <span>
+                          {{ barber.name.charAt(0) }}
+                        </span>
+
+                        <i></i>
+
+                      </div>
+
+                      <div class="barber-information">
+
+                        <strong>
+                          {{ barber.name }}
+                        </strong>
+
+                        <span>
+                          Master Barber
+                        </span>
+
+                        <small class="barber-rating">
+                          ★★★★★
+                        </small>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- SERVICES -->
+
+                  <td data-label="Services">
+
+                    <div class="services-list">
+
+                      @for(service of barber.barberServices; track $index)
+                      {
+
+                        <label class="service-checkbox">
+
+                          <input
+                            type="checkbox"
+                            [value]="service.serviceId"
+                            (change)="OnServiceChange($event, service.serviceId)"
+                          />
+
+                          <span class="custom-checkbox">
+                            <span class="check-mark">✓</span>
+                          </span>
+
+                          <span class="service-name">
+                            {{ service.serviceName }}
+                          </span>
+
+                        </label>
+
+                      }
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- APPOINTMENT -->
+
+                  <td data-label="Appointment">
+
+                    <button
+                      type="button"
+                      class="book-now-btn"
+                      (click)="BookingRequest(barber.id)">
+
+                      <span>
+                        Book Appointment
+                      </span>
+
+                      <i>
+                        →
+                      </i>
+
+                    </button>
+
+                  </td>
+
+
+                  <!-- REPORT -->
+
+                  <td data-label="Actions">
+
+                    <button
+                      type="button"
+                      class="report-table-btn"
+                      (click)="OpenReport(barber)">
+
+                      <span>⚑</span>
+                      Report
+
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           DESKTOP / TABLET PAGINATION
+      ================================================== -->
+
+      <div class="booking-pagination-area">
+
+        <div class="pagination-info">
+          Showing
+          <strong>1</strong>
+          to
+          <strong>{{ BarberDto.length }}</strong>
+          barbers
+        </div>
+
+        <div class="pagination">
+
+          <button type="button" class="pagination-btn" aria-label="Previous page">
+            ←
+            <span>Previous</span>
+          </button>
+
+          <button type="button" class="pagination-number active">1</button>
+          <button type="button" class="pagination-number">2</button>
+          <button type="button" class="pagination-number">3</button>
+          <span class="pagination-dots">...</span>
+          <button type="button" class="pagination-number">8</button>
+
+          <button type="button" class="pagination-btn" aria-label="Next page">
+            <span>Next</span>
+            →
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           MOBILE BARBER CARDS
+           Same Angular data/actions as desktop table.
+      ================================================== -->
+
+      <div class="mobile-barber-list">
+
+        @for(barber of BarberDto; track $index)
+        {
+
+          <article class="mobile-barber-card">
+
+            <div class="mobile-barber-card-top">
+
+              <div class="mobile-barber-profile">
+
+                <div class="mobile-barber-card-avatar">
+                  <span>{{ barber.name.charAt(0) }}</span>
+                  <i></i>
+                </div>
+
+                <div class="mobile-barber-card-info">
+                  <span>MASTER BARBER</span>
+                  <h3>{{ barber.name }}</h3>
+                  <small>★★★★★</small>
+                </div>
+
+              </div>
+
+              <div class="mobile-barber-available">
+                <i></i>
+                AVAILABLE
+              </div>
+
+            </div>
+
+
+            <div class="mobile-card-divider"></div>
+
+
+            <div class="mobile-card-section">
+
+              <div class="mobile-card-section-title">
+                <span>✂</span>
+                <div>
+                  <strong>Select Services</strong>
+                  <small>Choose one or more services</small>
+                </div>
+              </div>
+
+              <div class="mobile-card-services">
+
+                @for(service of barber.barberServices; track $index)
+                {
+
+                  <label class="mobile-service-checkbox">
+
+                    <input
+                      type="checkbox"
+                      [value]="service.serviceId"
+                      (change)="OnServiceChange($event, service.serviceId)"
+                    />
+
+                    <span class="mobile-custom-checkbox">
+                      <span>✓</span>
+                    </span>
+
+                    <span class="mobile-service-name">
+                      {{ service.serviceName }}
+                    </span>
+
+                  </label>
+
+                }
+
+              </div>
+
+            </div>
+
+
+            <div class="mobile-card-actions">
+
+              <button
+                type="button"
+                class="mobile-report-btn"
+                (click)="OpenReport(barber)">
+                <span>⚑</span>
+                Report
+              </button>
+
+              <button
+                type="button"
+                class="mobile-book-btn"
+                (click)="BookingRequest(barber.id)">
+                <span>Book Appointment</span>
+                <i>→</i>
+              </button>
+
+            </div>
+
+          </article>
+
+        }
+
+        @if(BarberDto.length === 0)
+        {
+          <div class="mobile-barber-empty">
+            <div>✂</div>
+            <strong>No Barbers Available</strong>
+            <span>Try another search or check again later.</span>
+          </div>
+        }
+
+      </div>
+
+
+      <!-- =================================================
+           MOBILE BARBER PAGINATION
+      ================================================== -->
+
+      <div class="booking-mobile-pagination">
+
+        <button type="button" class="mobile-pagination-btn" aria-label="Previous page">
+          ←
+        </button>
+
+        <div class="booking-mobile-page-info">
+          <span>PAGE</span>
+          <strong>1</strong>
+          <span>OF 8</span>
+        </div>
+
+        <div class="booking-mobile-page-numbers">
+          <button type="button" class="active">1</button>
+          <button type="button">2</button>
+          <button type="button">3</button>
+          <span>…</span>
+          <button type="button">8</button>
+        </div>
+
+        <button type="button" class="mobile-pagination-btn" aria-label="Next page">
+          →
+        </button>
+
+      </div>
+
+    </section>
+
+  }
+
+
+  <!-- =====================================================
+       BOOKING REQUESTS
+  ====================================================== -->
+
+  @if(BookingPage == 'BookingRequest')
+  {
+
+    <section class="booking-content requests-content">
+
+      <!-- =========================
+           HEADING
+      ========================== -->
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="section-eyebrow">
+            APPOINTMENT HISTORY
+          </span>
+
+          <h2>
+            Your Booking Requests
+          </h2>
+
+          <p>
+            Search and review your salon appointments,
+            selected services and booking status.
+          </p>
+
+        </div>
+
+        <div class="heading-decoration">
+          <span></span>
+          <i>✦</i>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           REQUEST SEARCH TOOLBAR
+      ========================== -->
+
+      <div class="request-toolbar">
+
+        <div class="search-area">
+
+          <div class="search-input-wrapper">
+
+            <span class="search-icon">
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              placeholder="Search barber, customer or service..."
+              aria-label="Search booking requests"
+            />
+
+            <span class="search-shortcut">
+              SEARCH
+            </span>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="search-btn">
+
+            <span>⌕</span>
+            Search
+
+          </button>
+
+        </div>
+
+
+        <div class="request-count">
+
+          <span class="count-live"></span>
+
+          <span>
+            Total Requests
+          </span>
+
+          <strong>
+            {{ BookingRequestDto.length }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           REQUEST TABLE CARD
+      ========================== -->
+
+      <div class="requests-table-card">
+
+        <div class="requests-table-top">
+
+          <div>
+
+            <span class="table-eyebrow">
+              APPOINTMENTS
+            </span>
+
+            <h3>
+              Recent Booking Requests
+            </h3>
+
+          </div>
+
+          <div class="live-status">
+
+            <span></span>
+            Requests Active
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             DESKTOP TABLE
+        ========================== -->
+
+        <div class="booking-table-wrapper request-table-wrapper">
+
+          <table class="booking-table request-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  <span>01</span>
+                  Barber
+                </th>
+
+                <th>
+                  <span>02</span>
+                  Booked By
+                </th>
+
+                <th>
+                  <span>03</span>
+                  Booked Service
+                </th>
+
+                <th>
+                  <span>04</span>
+                  Appointment
+                </th>
+
+                <th>
+                  <span>05</span>
+                  Status
+                </th>
+
+                <th>
+                  Actions
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for(booking of BookingRequestDto; track $index)
+              {
+
+                <tr>
+
+                  <!-- BARBER -->
+
+                  <td data-label="Barber">
+
+                    <div class="table-person">
+
+                      <div class="table-avatar barber-avatar-table">
+
+                        <span>
+                          {{ booking.barberName.charAt(0) }}
+                        </span>
+
+                        <i></i>
+
+                      </div>
+
+                      <div class="table-person-info">
+
+                        <strong>
+                          {{ booking.barberName }}
+                        </strong>
+
+                        <small>
+                          Master Barber
+                        </small>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- USER -->
+
+                  <td data-label="Booked By">
+
+                    <div class="table-person">
+
+                      <div class="table-avatar customer-avatar">
+
+                        <span>
+                          {{ booking.userName.charAt(0) }}
+                        </span>
+
+                      </div>
+
+                      <div class="table-person-info">
+
+                        <strong>
+                          {{ booking.userName }}
+                        </strong>
+
+                        <small>
+                          Customer
+                        </small>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- SERVICE -->
+
+                  <td data-label="Booked Service">
+
+                    <div class="service-select-box">
+
+                      <span class="service-icon">
+                        ✂
+                      </span>
+
+                      <select class="service-select">
+
+                        @for(service of booking.requestService; track $index)
+                        {
+
+                          <option [value]="service.id">
+                            {{ service.serviceName }}
+                          </option>
+
+                        }
+
+                      </select>
+
+                      <span class="select-arrow">
+                        ▾
+                      </span>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- TIME -->
+
+                  <td data-label="Appointment">
+
+                    <button
+                      type="button"
+                      class="time-trigger"
+                      (click)="OpenTimeModal(booking.bookingTime)">
+
+                      <span class="time-trigger-icon">
+                        ◷
+                      </span>
+
+                      <span class="time-trigger-content">
+
+                        <strong>
+                          View Time
+                        </strong>
+
+                        <small>
+                          Appointment time
+                        </small>
+
+                      </span>
+
+                      <span class="time-trigger-arrow">
+                        →
+                      </span>
+
+                    </button>
+
+                  </td>
+
+
+                  <!-- STATUS -->
+
+                  <td data-label="Status">
+
+                    <div
+                      class="booking-status"
+                      [class.pending]="booking.status === 'Pending'"
+                      [class.approved]="booking.status === 'Approved'"
+                      [class.completed]="booking.status === 'Completed'"
+                      [class.rejected]="booking.status === 'Rejected'">
+
+                      <span class="status-dot"></span>
+
+                      <span>
+                        {{ booking.status }}
+                      </span>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- ACTIONS -->
+
+                  <td data-label="Actions">
+
+                    <div class="booking-actions">
+
+                      <button
+                        type="button"
+                        class="bill-btn"
+                        (click)="GetBill(booking.bookedId)">
+
+                        <span>▣</span>
+                        Bill
+
+                      </button>
+
+                      <button
+                        type="button"
+                        class="remove-btn"
+                        (click)="RemoveBooking(booking.bookedId)">
+
+                        <span>×</span>
+                        Remove
+
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- =========================
+             PAGINATION
+        ========================== -->
+
+        <div class="pagination-area">
+
+          <div class="pagination-info">
+
+            Showing
+
+            <strong>1</strong>
+
+            to
+
+            <strong>
+              {{ BookingRequestDto.length }}
+            </strong>
+
+            booking requests
+
+          </div>
+
+
+          <div class="pagination">
+
+            <button
+              type="button"
+              class="pagination-btn">
+
+              ←
               <span>Previous</span>
+
+            </button>
+
+            <button
+              type="button"
+              class="pagination-number active">
+              1
+            </button>
+
+            <button
+              type="button"
+              class="pagination-number">
+              2
+            </button>
+
+            <button
+              type="button"
+              class="pagination-number">
+              3
+            </button>
+
+            <span class="pagination-dots">
+              ...
+            </span>
+
+            <button
+              type="button"
+              class="pagination-number">
+              8
+            </button>
+
+            <button
+              type="button"
+              class="pagination-btn">
+
+              <span>Next</span>
+              →
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           MOBILE REQUEST CARDS
+      ================================================== -->
+
+      <div class="mobile-request-list">
+
+        @for(booking of BookingRequestDto; track $index)
+        {
+
+          <article class="request-card">
+
+            <!-- TOP -->
+
+            <div class="request-card-top">
+
+              <div>
+
+                <span class="appointment-label">
+                  APPOINTMENT
+                </span>
+
+                <strong>
+                  #{{ $index + 1 }}
+                </strong>
+
+              </div>
+
+              <span class="mobile-status-badge">
+
+                <span></span>
+
+                {{ booking.status }}
+
+              </span>
+
+            </div>
+
+
+            <!-- BARBER -->
+
+            <div class="mobile-barber">
+
+              <div class="mobile-barber-avatar">
+
+                <span>
+                  {{ booking.barberName.charAt(0) }}
+                </span>
+
+                <i></i>
+
+              </div>
+
+
+              <div class="mobile-barber-info">
+
+                <span>
+                  MASTER BARBER
+                </span>
+
+                <h3>
+                  {{ booking.barberName }}
+                </h3>
+
+                <div class="mobile-rating">
+                  ★★★★★
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="mobile-details">
+
+              <!-- BOOKED BY -->
+
+              <div class="mobile-detail">
+
+                <div class="mobile-detail-icon">
+                  ◉
+                </div>
+
+                <div class="mobile-detail-content">
+
+                  <span>
+                    BOOKED BY
+                  </span>
+
+                  <strong>
+                    {{ booking.userName }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- SERVICE -->
+
+              <div class="mobile-detail">
+
+                <div class="mobile-detail-icon">
+                  ✂
+                </div>
+
+                <div class="mobile-detail-content">
+
+                  <span>
+                    BOOKED SERVICE
+                  </span>
+
+                  <div class="mobile-select-wrapper">
+
+                    <select class="mobile-service-select">
+
+                      @for(service of booking.requestService; track $index)
+                      {
+
+                        <option [value]="service.id">
+                          {{ service.serviceName }}
+                        </option>
+
+                      }
+
+                    </select>
+
+                    <span>▾</span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- TIME -->
+
+              <div class="mobile-detail">
+
+                <div class="mobile-detail-icon">
+                  ◷
+                </div>
+
+                <div class="mobile-detail-content">
+
+                  <span>
+                    BOOKING TIME
+                  </span>
+
+                  <button
+                    type="button"
+                    class="mobile-time-button"
+                    (click)="OpenTimeModal(booking.bookingTime)">
+
+                    <strong>
+                      View Appointment Time
+                    </strong>
+
+                    <span>
+                      →
+                    </span>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <!-- STATUS -->
+
+              <div class="mobile-detail">
+
+                <div class="mobile-detail-icon">
+                  ✓
+                </div>
+
+                <div class="mobile-detail-content">
+
+                  <span>
+                    BOOKING STATUS
+                  </span>
+
+                  <strong class="mobile-status-text">
+                    {{ booking.status }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="mobile-booking-actions">
+
+                <button
+                  type="button"
+                  class="bill-btn"
+                  (click)="GetBill(booking.bookedId)">
+
+                  <span>▣</span>
+                  Bill
+
+                </button>
+
+                <button
+                  type="button"
+                  class="remove-btn"
+                  (click)="RemoveBooking(booking.bookedId)">
+
+                  <span>×</span>
+                  Remove Booking
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+
+      <!-- MOBILE PAGINATION -->
+
+      <div class="mobile-pagination">
+
+        <button
+          type="button"
+          class="mobile-page-arrow">
+
+          ←
+
+        </button>
+
+        <div class="mobile-page-current">
+
+          <span>PAGE</span>
+
+          <strong>1</strong>
+
+          <span>OF 8</span>
+
+        </div>
+
+        <button
+          type="button"
+          class="mobile-page-arrow">
+
+          →
+
+        </button>
+
+      </div>
+
+    </section>
+
+  }
+
+</section>
+
+
+<!-- =====================================================
+     BILL MODAL
+====================================================== -->
+
+@if(ShowBillModal)
+{
+
+  <div
+    class="booking-modal-backdrop"
+    (click)="ShowBillModal = false">
+
+    <section
+      class="booking-modal bill-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bill-title"
+      (click)="$event.stopPropagation()">
+
+      <div class="modal-top">
+
+        <div>
+
+          <span class="modal-eyebrow">
+            PAYMENT SUMMARY
+          </span>
+
+          <h2 id="bill-title">
+            Your Bill
+          </h2>
+
+        </div>
+
+        <button
+          type="button"
+          class="modal-close-btn"
+          (click)="CloseBill()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <!-- BILL PERSON -->
+
+      <div class="bill-information">
+
+        <div class="bill-info-item">
+
+          <span>
+            BARBER
+          </span>
+
+          <strong>
+            {{ Bill.barberName }}
+          </strong>
+
+        </div>
+
+
+        <div class="bill-info-item">
+
+          <span>
+            BOOKED BY
+          </span>
+
+          <strong>
+            {{ Bill.userName }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- SERVICES -->
+
+      <div class="bill-services">
+
+        <div class="bill-section-title">
+          <span>✂</span>
+          Selected Services
+        </div>
+
+        @for(Service of Bill.billServices; track $index)
+        {
+
+          <div class="bill-service-row">
+
+            <div>
+
+              <strong>
+                {{ Service.serviceName }}
+              </strong>
+
+              <span>
+                Service
+              </span>
+
+            </div>
+
+            <strong class="bill-price">
+              {{ Service.servicePrice }}
+            </strong>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- TOTAL -->
+
+      <div class="bill-total">
+
+        <span>
+          Total Bill
+        </span>
+
+        <strong>
+          {{ Bill.totalBill }}
+        </strong>
+
+      </div>
+
+
+      <div class="booking-modal-actions">
+
+        <button
+          type="button"
+          class="modal-primary-btn"
+          (click)="CloseBill()">
+
+          Done
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+}
+
+
+<!-- =====================================================
+     REPORT MODAL
+====================================================== -->
+
+@if(ShowReportModal)
+{
+
+  <div
+    class="booking-modal-backdrop"
+    (click)="CloseReport()">
+
+    <section
+      class="booking-modal report-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="report-title"
+      (click)="$event.stopPropagation()">
+
+      <div class="modal-top">
+
+        <div>
+
+          <span class="modal-eyebrow">
+            BARBER FEEDBACK
+          </span>
+
+          <h2 id="report-title">
+            Report Barber
+          </h2>
+
+        </div>
+
+        <button
+          type="button"
+          class="modal-close-btn"
+          (click)="CloseReport()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <p class="report-description">
+        Please describe the issue you experienced with this barber.
+      </p>
+
+
+      <div class="report-textarea-wrapper">
+
+        <textarea
+          [(ngModel)]="ReportDetail"
+          placeholder="Write your report detail here...">
+        </textarea>
+
+        <span>
+          REPORT
+        </span>
+
+      </div>
+
+
+      <div class="booking-modal-actions">
+
+        <button
+          type="button"
+          class="modal-secondary-btn"
+          (click)="CloseReport()">
+
+          Cancel
+
+        </button>
+
+        <button
+          type="button"
+          class="modal-primary-btn"
+          (click)="SendReport()"
+          [disabled]="!ReportDetail.trim()">
+
+          Send Report
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+}
+
+
+<!-- =====================================================
+     TIME MODAL
+====================================================== -->
+
+@if(ShowTimeModal)
+{
+
+  <div
+    class="booking-modal-backdrop"
+    (click)="CloseTimeModal()">
+
+    <section
+      class="booking-modal time-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="time-title"
+      (click)="$event.stopPropagation()">
+
+      <div class="modal-top">
+
+        <div>
+
+          <span class="modal-eyebrow">
+            APPOINTMENT DETAILS
+          </span>
+
+          <h2 id="time-title">
+            Appointment Time
+          </h2>
+
+        </div>
+
+        <button
+          type="button"
+          class="modal-close-btn"
+          (click)="CloseTimeModal()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="time-modal-content">
+
+        <div class="large-time-icon">
+          ◷
+        </div>
+
+        <span>
+          YOUR APPOINTMENT IS SCHEDULED FOR
+        </span>
+
+        <strong>
+          {{ SelectedBookingTime }}
+        </strong>
+
+        <small>
+          Please arrive a few minutes before your appointment.
+        </small>
+
+      </div>
+
+
+      <div class="booking-modal-actions">
+
+        <button
+          type="button"
+          class="modal-primary-btn"
+          (click)="CloseTimeModal()">
+
+          Got It
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+}
+@if(BookingPage == 'Service')
+{
+  <section class="service-content">
+
+    <div class="section-heading service-heading">
+      <div>
+        <span class="section-eyebrow">OUR SERVICE MENU</span>
+        <h2>Services & Pricing</h2>
+        <p>
+          Explore the available salon services and their current prices.
+          Choose the service that fits your look and budget.
+        </p>
+      </div>
+
+      <div class="heading-decoration">
+        <span></span>
+        <i>✦</i>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="service-summary">
+      <div class="service-summary-icon">✂</div>
+      <div class="service-summary-text">
+        <span>PREMIUM SALON SERVICES</span>
+        <strong>{{ ServiceList.length }} Services Available</strong>
+      </div>
+      <div class="service-summary-mark">RECO</div>
+    </div>
+
+    <div class="service-grid">
+      @for(service of ServiceList; track $index)
+      {
+        <article class="service-card">
+          <div class="service-card-top">
+            <div class="service-number">
+              {{ ($index + 1).toString().padStart(2, '0') }}
+            </div>
+
+            <div class="service-card-icon">✂</div>
+
+            <span class="service-card-status">
+              <i></i>
+              AVAILABLE
+            </span>
+          </div>
+
+          <div class="service-card-body">
+            <span class="service-card-label">SALON SERVICE</span>
+            <h3>{{ service.serviceName }}</h3>
+            <p>
+              Professional salon service performed by our experienced barber team.
+            </p>
+          </div>
+
+          <div class="service-card-bottom">
+            <div>
+              <span>STARTING FROM</span>
+              <strong>Rs. {{ service.price }}</strong>
+            </div>
+
+            <div class="service-card-arrow">→</div>
+          </div>
+        </article>
+      }
+
+      @if(ServiceList.length === 0)
+      {
+        <div class="service-empty-state">
+          <div class="service-empty-icon">✂</div>
+          <strong>No Services Available</strong>
+          <span>Services will appear here when they are added.</span>
+        </div>
+      }
+    </div>
+
+  </section>
+}           <span>Previous</span>
 
             </button>
 
