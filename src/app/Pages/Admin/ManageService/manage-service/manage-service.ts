@@ -48,7 +48,11 @@ GetServiceList(){
     this.admin.GetService(this.Keyword,this.Page).subscribe(
       (res:any) =>
       {
-        
+          if (res == null) {
+            this.Isloading.set(false);
+            this.messageModal.show(null);
+            return;
+          }
           console.log(res)
           this.ServiceList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
           this.Page = res?.pageNumber ?? this.Page;

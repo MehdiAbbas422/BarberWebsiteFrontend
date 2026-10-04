@@ -67,6 +67,12 @@ this.Isloading =false
     this.adminService.GetUser(Keyword,page).subscribe(
       (res:any) => {
         console.log('User list fetched successfully:', res);
+      if (res == null) {
+        this.Isloading = false;
+        this.cdr.detectChanges();
+        this.messageModal.show(null);
+        return;
+      }
       this.UserList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
       this.page = res?.pageNumber ?? this.page;
       this.pageSize = res?.pageSize ?? this.pageSize;

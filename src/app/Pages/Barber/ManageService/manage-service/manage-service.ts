@@ -38,7 +38,12 @@ GetServiceList(){
     this.barber.GetService(this.Keyword,this.Page).subscribe(
       (res:any) =>
       {
-        
+          if (res == null) {
+            this.Isloading = false;
+            this.cdr.detectChanges();
+            this.messageModal.show(null);
+            return;
+          }
           console.log(res)
           this.ServiceList = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
           this.Page = res?.pageNumber ?? this.Page;
@@ -91,6 +96,12 @@ GetBarberService()
   this.barber.GetBarberService().subscribe(
     (res:any)=>
     {
+        if (res == null) {
+          this.Isloading = false;
+          this.cdr.detectChanges();
+          this.messageModal.show(null);
+          return;
+        }
         console.log(res)
         this.BarberServiceList = res
         this.cdr.detectChanges();

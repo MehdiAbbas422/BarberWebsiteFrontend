@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { AdminService } from '../../../../Service/Admin/admin-service';
 import { ChangeDetectorRef } from '@angular/core';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 // Strongly-typed interfaces
 export interface EarningSummary {
   earningId: number;
@@ -28,6 +29,7 @@ export interface EarningEntry {
 export class Dashboard implements OnInit {
   private readonly adminService = inject(AdminService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly messageModal = inject(MessageModalService);
 
   earnings: EarningSummary[] = [];
   earningEntries: EarningEntry[] = [];
@@ -42,6 +44,10 @@ export class Dashboard implements OnInit {
     this.adminService.getEarning().subscribe({
       next: (res: any) => {
         console.log(res)
+        if (res == null) {
+          this.messageModal.show(null);
+          return;
+        }
         // Simple direct mapping
         this.earnings = res.data ;
         this.totalCustomers = res.totalCustumer || 0;
@@ -70,6 +76,11 @@ export class Dashboard implements OnInit {
     this.adminService.getEarningEntry(earningId).subscribe({
       next: (res: any) => {
         console.log(res)
+        if (res == null) {
+          this.isLoadingEntry = false;
+          this.messageModal.show(null);
+          return;
+        }
         this.earningEntries = res.data1 || [];
         this.ManualEntryDto = res.data2 || [];
         this.isLoadingEntry = false;

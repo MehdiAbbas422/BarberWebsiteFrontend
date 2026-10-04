@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AdminService } from '../../../../Service/Admin/admin-service';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-reports',
@@ -22,7 +23,7 @@ export class Reports implements OnInit {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
-  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) {}
+  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef, private messageModal: MessageModalService) {}
 
   ngOnInit(): void {
     this.GetReports();
@@ -32,6 +33,12 @@ export class Reports implements OnInit {
     this.Isloading = true;
     this.adminService.GetReport(this.keyword, this.page).subscribe({
       next: (res: any) => {
+        if (res == null) {
+          this.Isloading = false;
+          this.cdr.detectChanges();
+          this.messageModal.show(null);
+          return;
+        }
         console.log(res);
         this.reports = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
         this.page = res?.pageNumber ?? this.page;

@@ -42,6 +42,12 @@ GetBarberlist()
       (res:any)=>
       {
         console.log(res)
+          if (res == null) {
+            this.Isloading = false;
+            this.cdr.detectChanges();
+            this.messageModal.show(null);
+            return;
+          }
           this.BarberDto = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
           this.page = res?.pageNumber ?? this.page;
           this.pageSize = res?.pageSize ?? this.pageSize;

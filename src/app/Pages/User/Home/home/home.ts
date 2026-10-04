@@ -100,6 +100,12 @@ GetBarber(Keyword:string,Page:number)
    this.user.GetBarber(Keyword,Page).subscribe(
     (res:any) =>
     {
+        if (res == null) {
+          this.Isloading = false;
+          this.cdr.detectChanges();
+          this.ShowMessage(null);
+          return;
+        }
         console.log(res)
         this.BarberDto = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
         this.Page = res?.pageNumber ?? this.Page;
@@ -127,6 +133,12 @@ GetBookedRequest()
   this.user.GetBookingRequest(this.Page1).subscribe(
     (res:any)=>
     {
+      if (res == null) {
+        this.Isloading = false;
+        this.cdr.detectChanges();
+        this.ShowMessage(null);
+        return;
+      }
       this.BookingRequestDto = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
       this.Page1 = res?.pageNumber ?? this.Page1;
       this.BookingPageSize = res?.pageSize ?? this.BookingPageSize;
@@ -159,6 +171,12 @@ GetBill(BookedId:number)
   this.user.GetBill(BookedId).subscribe(
     (res:any) =>
     {
+      if (res == null) {
+        this.Isloading = false;
+        this.cdr.detectChanges();
+        this.ShowMessage(null);
+        return;
+      }
       console.log(res)
       this.Bill = res;
       this.ShowBillModal = true;
@@ -277,6 +295,12 @@ GetService()
   this.user.GetService().subscribe(
     (res:any) =>
     {
+      if (res == null) {
+        this.Isloading = false;
+        this.cdr.detectChanges();
+        this.ShowMessage(null);
+        return;
+      }
       console.log(res)
       this.ServiceList = res;
       this.cdr.detectChanges()

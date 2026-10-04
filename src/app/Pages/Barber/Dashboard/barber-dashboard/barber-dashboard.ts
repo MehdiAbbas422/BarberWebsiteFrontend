@@ -156,6 +156,12 @@ DontComeCustomer1 = false
 
     this.barber.GetBookingRequest(this.RequestPage).subscribe({
       next: (res: any) => {
+        if (res == null) {
+          this.RequestLoading = false;
+          this.cdr.detectChanges();
+          this.messageModal.show(null);
+          return;
+        }
         console.log('Booking Request Response:', res);
 
         const data = this.ExtractData(res);
@@ -246,6 +252,12 @@ DontComeCustomer1 = false
 
     this.barber.GetApprovedBookingRequest(this.ApprovedPage).subscribe({
       next: (res: any) => {
+        if (res == null) {
+          this.ApprovedLoading = false;
+          this.cdr.detectChanges();
+          this.messageModal.show(null);
+          return;
+        }
         console.log('Approved Response:', res);
 
         const data = this.ExtractData(res);
@@ -422,6 +434,12 @@ DontComeCustomer1 = false
 
     this.barber.GetBill(bookedId).subscribe({
       next: (res: any) => {
+        if (res == null) {
+          this.Isloading = false;
+          this.cdr.detectChanges();
+          this.messageModal.show(null);
+          return;
+        }
         this.Bill = res;
         this.BillId = this.Bill?.billId ?? 0;
 
