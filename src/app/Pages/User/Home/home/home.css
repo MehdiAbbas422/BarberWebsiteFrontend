@@ -2657,9 +2657,8 @@
 ============================================================ */
 
 .service-content {
-  
   width: min(1180px, 90%);
-  margin: 5px auto 0;
+  margin: 45px auto 0;
 }
 
 .service-heading {
@@ -3003,7 +3002,7 @@
   }
 
   .service-content {
-    
+    margin-top: 35px;
   }
 
   .service-card {
@@ -3083,7 +3082,7 @@
   .booking-content,
   .service-content {
     width: 92%;
-
+    margin-top: 30px;
   }
 
   .section-heading {
@@ -3842,10 +3841,4 @@
   .booking-mobile-page-numbers button {
     -webkit-tap-highlight-color: transparent;
   }
-}
-@media (max-width: 700px) {
-  .service-content {
-    margin-top: 5px !important;
-  }
-
 }

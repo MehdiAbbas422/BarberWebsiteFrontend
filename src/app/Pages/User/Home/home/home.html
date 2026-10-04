@@ -1291,7 +1291,84 @@
     </section>
 
   }
+@if(BookingPage == 'Service')
+{
+  <section class="service-content">
 
+    <div class="section-heading service-heading">
+      <div>
+        <span class="section-eyebrow">OUR SERVICE MENU</span>
+        <h2>Services & Pricing</h2>
+        <p>
+          Explore the available salon services and their current prices.
+          Choose the service that fits your look and budget.
+        </p>
+      </div>
+
+      <div class="heading-decoration">
+        <span></span>
+        <i>✦</i>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="service-summary">
+      <div class="service-summary-icon">✂</div>
+      <div class="service-summary-text">
+        <span>PREMIUM SALON SERVICES</span>
+        <strong>{{ ServiceList.length }} Services Available</strong>
+      </div>
+      <div class="service-summary-mark">RECO</div>
+    </div>
+
+    <div class="service-grid">
+      @for(service of ServiceList; track $index)
+      {
+        <article class="service-card">
+          <div class="service-card-top">
+            <div class="service-number">
+              {{ ($index + 1).toString().padStart(2, '0') }}
+            </div>
+
+            <div class="service-card-icon">✂</div>
+
+            <span class="service-card-status">
+              <i></i>
+              AVAILABLE
+            </span>
+          </div>
+
+          <div class="service-card-body">
+            <span class="service-card-label">SALON SERVICE</span>
+            <h3>{{ service.serviceName }}</h3>
+            <p>
+              Professional salon service performed by our experienced barber team.
+            </p>
+          </div>
+
+          <div class="service-card-bottom">
+            <div>
+              <span>STARTING FROM</span>
+              <strong>Rs. {{ service.price }}</strong>
+            </div>
+
+            <div class="service-card-arrow">→</div>
+          </div>
+        </article>
+      }
+
+      @if(ServiceList.length === 0)
+      {
+        <div class="service-empty-state">
+          <div class="service-empty-icon">✂</div>
+          <strong>No Services Available</strong>
+          <span>Services will appear here when they are added.</span>
+        </div>
+      }
+    </div>
+
+  </section>
+}
 </section>
 
 
@@ -1618,82 +1695,4 @@
 
   </div>
 
-}
-@if(BookingPage == 'Service')
-{
-  <section class="service-content">
-
-    <div class="section-heading service-heading">
-      <div>
-        <span class="section-eyebrow">OUR SERVICE MENU</span>
-        <h2>Services & Pricing</h2>
-        <p>
-          Explore the available salon services and their current prices.
-          Choose the service that fits your look and budget.
-        </p>
-      </div>
-
-      <div class="heading-decoration">
-        <span></span>
-        <i>✦</i>
-        <span></span>
-      </div>
-    </div>
-
-    <div class="service-summary">
-      <div class="service-summary-icon">✂</div>
-      <div class="service-summary-text">
-        <span>PREMIUM SALON SERVICES</span>
-        <strong>{{ ServiceList.length }} Services Available</strong>
-      </div>
-      <div class="service-summary-mark">RECO</div>
-    </div>
-
-    <div class="service-grid">
-      @for(service of ServiceList; track $index)
-      {
-        <article class="service-card">
-          <div class="service-card-top">
-            <div class="service-number">
-              {{ ($index + 1).toString().padStart(2, '0') }}
-            </div>
-
-            <div class="service-card-icon">✂</div>
-
-            <span class="service-card-status">
-              <i></i>
-              AVAILABLE
-            </span>
-          </div>
-
-          <div class="service-card-body">
-            <span class="service-card-label">SALON SERVICE</span>
-            <h3>{{ service.serviceName }}</h3>
-            <p>
-              Professional salon service performed by our experienced barber team.
-            </p>
-          </div>
-
-          <div class="service-card-bottom">
-            <div>
-              <span>STARTING FROM</span>
-              <strong>Rs. {{ service.price }}</strong>
-            </div>
-
-            <div class="service-card-arrow">→</div>
-          </div>
-        </article>
-      }
-
-      @if(ServiceList.length === 0)
-      {
-        <div class="service-empty-state">
-          <div class="service-empty-icon">✂</div>
-          <strong>No Services Available</strong>
-          <span>Services will appear here when they are added.</span>
-        </div>
-      }
-    </div>
-
-  </section>
 }
