@@ -17,7 +17,7 @@ export class MessageModalService {
       : undefined;
 
     if (status === 401 || status === 403) {
-      this.show('Maybe your token has expired. Please sign in again.');
+      this.show('Maybe your token has expired. Please signin again.');
       return;
     }
 
