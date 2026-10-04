@@ -200,7 +200,7 @@
           <span></span>
 
           <strong>
-            {{ BarberDto.length }}
+            {{ BarberTotalRecords }}
           </strong>
 
           <small>
@@ -358,6 +358,7 @@
                     <button
                       type="button"
                       class="book-now-btn"
+                      [disabled]="Isloading"
                       (click)="BookingRequest(barber.id)">
 
                       <span>
@@ -410,26 +411,24 @@
 
         <div class="pagination-info">
           Showing
-          <strong>1</strong>
+          <strong>{{ BarberTotalRecords === 0 ? 0 : (Page - 1) * BarberPageSize + 1 }}</strong>
           to
-          <strong>{{ BarberDto.length }}</strong>
+          <strong>{{ BarberRecordEnd }}</strong>
           barbers
         </div>
 
         <div class="pagination">
 
-          <button type="button" class="pagination-btn" aria-label="Previous page">
+          <button type="button" class="pagination-btn" aria-label="Previous page" [disabled]="Page <= 1 || Isloading" (click)="ChangeBarberPage(Page - 1)">
             ←
             <span>Previous</span>
           </button>
 
-          <button type="button" class="pagination-number active">1</button>
-          <button type="button" class="pagination-number">2</button>
-          <button type="button" class="pagination-number">3</button>
-          <span class="pagination-dots">...</span>
-          <button type="button" class="pagination-number">8</button>
+          @for(pageNumber of BarberPageNumbers; track pageNumber) {
+            <button type="button" class="pagination-number" [class.active]="pageNumber === Page" [disabled]="Isloading" (click)="ChangeBarberPage(pageNumber)">{{ pageNumber }}</button>
+          }
 
-          <button type="button" class="pagination-btn" aria-label="Next page">
+          <button type="button" class="pagination-btn" aria-label="Next page" [disabled]="Page >= BarberTotalPages || Isloading" (click)="ChangeBarberPage(Page + 1)">
             <span>Next</span>
             →
           </button>
@@ -532,6 +531,7 @@
               <button
                 type="button"
                 class="mobile-book-btn"
+                [disabled]="Isloading"
                 (click)="BookingRequest(barber.id)">
                 <span>Book Appointment</span>
                 <i>→</i>
@@ -561,25 +561,23 @@
 
       <div class="booking-mobile-pagination">
 
-        <button type="button" class="mobile-pagination-btn" aria-label="Previous page">
+        <button type="button" class="mobile-pagination-btn" aria-label="Previous page" [disabled]="Page <= 1 || Isloading" (click)="ChangeBarberPage(Page - 1)">
           ←
         </button>
 
         <div class="booking-mobile-page-info">
           <span>PAGE</span>
-          <strong>1</strong>
-          <span>OF 8</span>
+          <strong>{{ Page }}</strong>
+          <span>OF {{ BarberTotalPages }}</span>
         </div>
 
         <div class="booking-mobile-page-numbers">
-          <button type="button" class="active">1</button>
-          <button type="button">2</button>
-          <button type="button">3</button>
-          <span>…</span>
-          <button type="button">8</button>
+          @for(pageNumber of BarberPageNumbers; track pageNumber) {
+            <button type="button" [class.active]="pageNumber === Page" [disabled]="Isloading" (click)="ChangeBarberPage(pageNumber)">{{ pageNumber }}</button>
+          }
         </div>
 
-        <button type="button" class="mobile-pagination-btn" aria-label="Next page">
+        <button type="button" class="mobile-pagination-btn" aria-label="Next page" [disabled]="Page >= BarberTotalPages || Isloading" (click)="ChangeBarberPage(Page + 1)">
           →
         </button>
 
@@ -679,7 +677,7 @@
           </span>
 
           <strong>
-            {{ BookingRequestDto.length }}
+            {{ BookingTotalRecords }}
           </strong>
 
         </div>
@@ -931,6 +929,7 @@
                       <button
                         type="button"
                         class="bill-btn"
+                        [disabled]="Isloading"
                         (click)="GetBill(booking.bookedId)">
 
                         <span>▣</span>
@@ -941,6 +940,7 @@
                       <button
                         type="button"
                         class="remove-btn"
+                        [disabled]="Isloading"
                         (click)="RemoveBooking(booking.bookedId)">
 
                         <span>×</span>
@@ -973,12 +973,12 @@
 
             Showing
 
-            <strong>1</strong>
+            <strong>{{ BookingTotalRecords === 0 ? 0 : (Page1 - 1) * BookingPageSize + 1 }}</strong>
 
             to
 
             <strong>
-              {{ BookingRequestDto.length }}
+              {{ BookingRecordEnd }}
             </strong>
 
             booking requests
@@ -990,44 +990,24 @@
 
             <button
               type="button"
-              class="pagination-btn">
+              class="pagination-btn"
+              [disabled]="Page1 <= 1 || Isloading"
+              (click)="ChangeBookingPageNumber(Page1 - 1)">
 
               ←
               <span>Previous</span>
 
             </button>
 
-            <button
-              type="button"
-              class="pagination-number active">
-              1
-            </button>
+            @for(pageNumber of BookingPageNumbers; track pageNumber) {
+              <button type="button" class="pagination-number" [class.active]="pageNumber === Page1" [disabled]="Isloading" (click)="ChangeBookingPageNumber(pageNumber)">{{ pageNumber }}</button>
+            }
 
             <button
               type="button"
-              class="pagination-number">
-              2
-            </button>
-
-            <button
-              type="button"
-              class="pagination-number">
-              3
-            </button>
-
-            <span class="pagination-dots">
-              ...
-            </span>
-
-            <button
-              type="button"
-              class="pagination-number">
-              8
-            </button>
-
-            <button
-              type="button"
-              class="pagination-btn">
+              class="pagination-btn"
+              [disabled]="Page1 >= BookingTotalPages || Isloading"
+              (click)="ChangeBookingPageNumber(Page1 + 1)">
 
               <span>Next</span>
               →
@@ -1242,6 +1222,7 @@
                 <button
                   type="button"
                   class="bill-btn"
+                  [disabled]="Isloading"
                   (click)="GetBill(booking.bookedId)">
 
                   <span>▣</span>
@@ -1252,6 +1233,7 @@
                 <button
                   type="button"
                   class="remove-btn"
+                  [disabled]="Isloading"
                   (click)="RemoveBooking(booking.bookedId)">
 
                   <span>×</span>
@@ -1276,7 +1258,9 @@
 
         <button
           type="button"
-          class="mobile-page-arrow">
+          class="mobile-page-arrow"
+          [disabled]="Page1 <= 1 || Isloading"
+          (click)="ChangeBookingPageNumber(Page1 - 1)">
 
           ←
 
@@ -1286,15 +1270,17 @@
 
           <span>PAGE</span>
 
-          <strong>1</strong>
+          <strong>{{ Page1 }}</strong>
 
-          <span>OF 8</span>
+          <span>OF {{ BookingTotalPages }}</span>
 
         </div>
 
         <button
           type="button"
-          class="mobile-page-arrow">
+          class="mobile-page-arrow"
+          [disabled]="Page1 >= BookingTotalPages || Isloading"
+          (click)="ChangeBookingPageNumber(Page1 + 1)">
 
           →
 
@@ -1535,7 +1521,7 @@
           type="button"
           class="modal-primary-btn"
           (click)="SendReport()"
-          [disabled]="!ReportDetail.trim()">
+          [disabled]="!ReportDetail.trim() || Isloading">
 
           Send Report
 
