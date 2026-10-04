@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Authentication } from '../../../../Service/Auth/authentication';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ ChangePasswordDto: any = {
 
   Isloading =signal<boolean>(false);
 
-constructor(private authService: Authentication, private router:Router) {}
+constructor(private authService: Authentication, private router:Router, private messageModal:MessageModalService) {}
 
 
 
@@ -30,20 +31,20 @@ ChangePassword(newPassword: string)
       this.Isloading.set(true);
       if(newPassword !== this.ChangePasswordDto.ConfirmPassword)
       {
-        alert("Password and Confirm Password do not match");
+        this.messageModal.show('Password and Confirm Password do not match');
         this.Isloading.set(false);
         return;
       }
        this.authService.ChangePassword(newPassword).subscribe({
         next: (response: any) => {
           console.log(response);
-          alert(response.message);
+          this.messageModal.show(response?.message);
           this.Isloading.set(false);
           this.router.navigate(['/']);
         },
         error : (err: any) => {
           console.log(err.err);
-          alert(err.error.message);
+          this.messageModal.show(err?.error?.message);
           this.Isloading.set(false);
         }
        });

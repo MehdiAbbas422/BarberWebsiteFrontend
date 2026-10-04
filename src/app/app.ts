@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
     Router,
     NavigationEnd
 } from '@angular/router';
 import { Sidebar } from './Component/Sidebar/sidebar/sidebar';
+import { MessageModalService } from './shared/message-modal.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,Sidebar],
@@ -13,6 +14,7 @@ import { Sidebar } from './Component/Sidebar/sidebar/sidebar';
 })
 export class App {
   protected readonly title = signal('barber-salon-ui');
+    readonly messageModal = inject(MessageModalService);
 
     showSidebar = true;
 

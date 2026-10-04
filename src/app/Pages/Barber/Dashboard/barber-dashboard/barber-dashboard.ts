@@ -4,6 +4,7 @@ import { Authentication } from '../../../../Service/Auth/authentication';
 import { BarberService } from '../../../../Service/Barber/barber-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-barber-dashboard',
@@ -86,7 +87,8 @@ DontComeCustomer1 = false
     private routes: Router,
     private auth: Authentication,
     private barber: BarberService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private messageModal: MessageModalService
   ) {}
 
   ngOnInit(): void {
@@ -211,7 +213,7 @@ DontComeCustomer1 = false
         this.RequestLoading = false;
         this.cdr.detectChanges();
 
-        alert(
+        this.messageModal.show(
           err?.error?.message ||
           err?.message ||
           'Error fetching booking requests'
@@ -299,7 +301,7 @@ DontComeCustomer1 = false
         this.ApprovedLoading = false;
         this.cdr.detectChanges();
 
-        alert(
+        this.messageModal.show(
           err?.error?.message ||
           err?.message ||
           'Error fetching approved customers'
@@ -333,12 +335,12 @@ DontComeCustomer1 = false
 
   ApprovedCustumer(): void {
     if (!this.Time) {
-      alert('Please select appointment time');
+      this.messageModal.show('Please select appointment time');
       return;
     }
 
     if (!this.BookedId) {
-      alert('Invalid booking selected');
+      this.messageModal.show('Invalid booking selected');
       return;
     }
 
@@ -359,14 +361,14 @@ DontComeCustomer1 = false
         this.GetApprovedCustumer();
         this.GetBookedRequest();
 
-        alert(res?.message || 'Customer is approved');
+        this.messageModal.show(res?.message || 'Customer is approved');
       },
 
       error: (err: any) => {
         console.log('Approved error:', err);
         this.Isloading = false;
 
-        alert(
+        this.messageModal.show(
           err?.error?.message ||
           'Something is wrong'
         );
@@ -388,7 +390,7 @@ DontComeCustomer1 = false
     (res: any) => {
       console.log(res)
       this.DontComeCustomer1 = false;
-      alert(res?.message || 'Customer marked as did not come');
+      this.messageModal.show(res?.message || 'Customer marked as did not come');
       this.Isloading = false;
         this.cdr.detectChanges();
       this.GetApprovedCustumer();
@@ -401,7 +403,7 @@ DontComeCustomer1 = false
   this.cdr.detectChanges();
       console.log(err);
 
-      alert(
+      this.messageModal.show(
         err?.error?.message ||
         'Could not update booking'
       );
@@ -434,7 +436,7 @@ DontComeCustomer1 = false
         this.Isloading = false;
         console.log(err);
 
-        alert(
+        this.messageModal.show(
           err?.error?.message ||
           'Could not load bill'
         );
@@ -462,14 +464,14 @@ DontComeCustomer1 = false
         // Refresh approved list because this customer is no longer pending.
         this.GetApprovedCustumer();
 
-        alert(res?.message || 'Payment confirmed');
+        this.messageModal.show(res?.message || 'Payment confirmed');
       },
 
       error: (err: any) => {
         this.Isloading = false;
         console.log(err);
 
-        alert(
+        this.messageModal.show(
           err?.error?.message ||
           'Could not confirm payment'
         );

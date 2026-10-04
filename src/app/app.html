@@ -13,3 +13,20 @@
     <router-outlet></router-outlet>
 
 }
+
+@if (messageModal.isOpen()) {
+    <div class="app-message-backdrop">
+        <section
+            class="app-message-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="app-message-title">
+            <span class="app-message-mark" aria-hidden="true">!</span>
+            <span class="app-message-eyebrow">SALON NOTICE</span>
+            <h2 id="app-message-title">{{ messageModal.message() }}</h2>
+            <button type="button" class="app-message-button" (click)="messageModal.close()" autofocus>
+                Okay
+            </button>
+        </section>
+    </div>
+}

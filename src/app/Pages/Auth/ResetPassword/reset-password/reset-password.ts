@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Authentication } from '../../../../Service/Auth/authentication';
 import { RouterLink } from '@angular/router';
 import {Router} from '@angular/router';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,7 @@ OTP :string ='';
 ToEmail = signal(false);
 Isloading = signal(false); 
 
-  constructor(private authService: Authentication, private router: Router) {}
+  constructor(private authService: Authentication, private router: Router, private messageModal:MessageModalService) {}
 
   ResetPassword(ResetPasswordDto: any) {
 
@@ -29,14 +30,14 @@ this.Isloading.set(true);
       (response: any) => {
         console.log(response)
         this.Isloading.set(false);
-        alert(response.message)
+        this.messageModal.show(response?.message)
         this.ToEmail.set(true);
 
       },
      (err:any)=>
      {
       console.log(err);
-      alert(err.err.message);
+      this.messageModal.show(err?.error?.message || err?.message);
       this.Isloading.set(false);
      } 
     );
@@ -50,7 +51,7 @@ this.Isloading.set(true);
       (res:any)=>
       {
           console.log(res)
-          alert(res.message);
+          this.messageModal.show(res?.message);
           this.authService.SaveToken(res.token);
           this.ToEmail.set(false);
           this.Isloading.set(false);
@@ -59,7 +60,7 @@ this.Isloading.set(true);
       (err:any)=>
       {
           console.log(err)
-          alert(err.error.message)
+          this.messageModal.show(err?.error?.message)
           this.Isloading.set(false);
 
       }

@@ -1696,3 +1696,25 @@
   </div>
 
 }
+
+@if(Message12)
+{
+  <div class="booking-modal-backdrop message-modal-backdrop">
+    <section
+      class="booking-modal message-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="message-modal-title">
+      <div class="message-modal-mark" aria-hidden="true">!</div>
+
+      <span class="modal-eyebrow">SALON NOTICE</span>
+      <h2 id="message-modal-title">{{ message11 }}</h2>
+
+      <div class="booking-modal-actions">
+        <button type="button" class="modal-primary-btn" (click)="ModalClose()">
+          Okay
+        </button>
+      </div>
+    </section>
+  </div>
+}

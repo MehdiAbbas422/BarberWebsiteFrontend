@@ -15,6 +15,8 @@ import { ChangeDetectorRef } from '@angular/core';
 export class Home implements OnInit{
   BookingPage:string = 'Booking';
   Isloading:boolean =false;
+  Message12 = false;
+  message11 = '';
   Service:number[]=[]
   BarberDto:any[] = [];
   BookingRequestDto:any[] = [];
@@ -75,14 +77,14 @@ BookingRequest(BarberId:number)
         this.GetBarber(this.Keyword,this.Page);
         this.GetBookedRequest();
         this.Isloading = false;
-        alert(res.message)
+        this.ShowMessage(res?.message)
     },
     (err:any)=>
     {
       console.log(this.Service)
         console.log(err)
         this.Isloading = false;
-        alert(err.error.message)
+        this.ShowMessage(err?.error?.message)
     }
   )
 }
@@ -114,7 +116,7 @@ GetBarber(Keyword:string,Page:number)
       console.log(err)
       this.Isloading= false
       this.cdr.detectChanges()
-      alert(err.error.message)
+      this.ShowMessage(err?.error?.message)
     }
    )
 }
@@ -139,7 +141,7 @@ GetBookedRequest()
       console.log(err)
       this.Isloading = false
       this.cdr.detectChanges()
-      alert(err.error.message)
+      this.ShowMessage(err?.error?.message)
 
     }
   )
@@ -150,8 +152,8 @@ GetBill(BookedId:number)
   this.Isloading = true
   if(BookedId === null || BookedId === undefined)
   {
-      alert(" Please select a valid booking to view the bill.");
       this.Isloading = false;
+      this.ShowMessage('Please select a valid booking to view the bill.');
       return;
   }
   this.user.GetBill(BookedId).subscribe(
@@ -167,7 +169,7 @@ GetBill(BookedId:number)
       {
         this.Isloading = false
         console.log(err)
-        alert(err.error.message || 'Bill load nahi ho saka')
+        this.ShowMessage(err?.error?.message)
       }  
   )
 }
@@ -187,13 +189,13 @@ RemoveBooking(BookedId:number)
     {
       this.GetBookedRequest()
       this.Isloading = false
-      alert(res.message)
+      this.ShowMessage(res?.message)
     } ,
     (err:any) =>
       {
         this.Isloading = false
         console.log(err)
-          alert(err.error.message || 'Booking remove nahi ho saki')
+        this.ShowMessage(err?.error?.message)
       } 
   )
 }
@@ -216,13 +218,13 @@ SendReport()
     {
       this.CloseReport();
       this.Isloading = false
-      alert('Report sent');
+      this.ShowMessage('Report sent');
     },
     (err:any) => 
       {
         console.log(err)
         this.Isloading =false
-          alert(err.error.message || 'Report send nahi ho saki')
+        this.ShowMessage(err?.error?.message)
       } 
   )
 }
@@ -232,6 +234,23 @@ CloseReport()
   this.ShowReportModal = false;
   this.SelectedBooking = null;
   this.ReportDetail = '';
+}
+
+ShowMessage(message: unknown): void
+{
+  const text = typeof message === 'string' ? message.trim() : '';
+  this.message11 = text || 'Maybe your token has expired. Please sign in again.';
+  this.Message12 = true;
+  this.cdr.detectChanges();
+}
+
+ModalClose(): void
+{
+  this.Isloading = true;
+  this.message11 = '';
+  this.Message12 = false;
+  this.Isloading = false;
+  this.cdr.detectChanges();
 }
 
 ChangeBookingPage(Name:string)
@@ -267,7 +286,7 @@ GetService()
     {
       console.log(err)
       this.Isloading = false
-      alert(err.error.message || 'Service load nahi ho saka')
+      this.ShowMessage(err?.error?.message)
     }
   )
 }

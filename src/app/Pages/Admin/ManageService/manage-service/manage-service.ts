@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { Signal } from '@angular/core';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 
 @Component({
@@ -34,7 +35,7 @@ UpdateInputService:any={
   Price: 0
 }
 
-constructor(private admin:AdminService,private cdr:ChangeDetectorRef){}
+constructor(private admin:AdminService,private cdr:ChangeDetectorRef,private messageModal:MessageModalService){}
 
 
 ngOnInit(): void {
@@ -61,7 +62,7 @@ GetServiceList(){
       (err:any) =>
       {
           console.log(err)
-          alert(err.error.message)
+          this.messageModal.show(err?.error?.message)
           this.Isloading.set(false)
       }
       
@@ -88,14 +89,14 @@ CreateService()
       this.ResetInput()
       this.GetServiceList()
       this.cdr.detectChanges()
-      alert("Service Is Created")
+      this.messageModal.show('Service Is Created')
       this.Isloading.set(false)
     },
     (err:any)=>
     {
       console.log(err);
       this.ResetInput()
-      alert("Some thing is wrong");
+      this.messageModal.show('Some thing is wrong');
       this.Isloading.set(false)
       
     }
@@ -122,13 +123,13 @@ UpdateService()
     {
       this.ResetInput()
       this.GetServiceList()
-      alert(res.message);
+      this.messageModal.show(res?.message);
       this.Isloading.set(false)
     },
     (err:any) =>
     {
         console.log(err)
-        alert(err.error.message);
+        this.messageModal.show(err?.error?.message);
         this.Isloading.set(false)
     }
 
@@ -143,14 +144,14 @@ DeleteService(Id:number)
     {
      
       this.GetServiceList()
-      alert("Service Deleted")
+      this.messageModal.show('Service Deleted')
       this.Isloading.set(false)
     },
   (err:any) =>
   {
       console.log(err);
       this.Isloading.set(false)
-      alert(err.error.message)
+      this.messageModal.show(err?.error?.message)
       
   }
   )

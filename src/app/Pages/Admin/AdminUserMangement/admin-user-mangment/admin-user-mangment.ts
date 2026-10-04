@@ -3,6 +3,7 @@ import { AdminService } from '../../../../Service/Admin/admin-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class AdminUserMangment implements OnInit{
   Isloading:boolean = false;
 
 
-constructor(private adminService: AdminService,private cdr:ChangeDetectorRef) {}
+constructor(private adminService: AdminService,private cdr:ChangeDetectorRef,private messageModal:MessageModalService) {}
 
   ngOnInit() {
     this.GetUserList(this.Keyword, this.page);
@@ -78,7 +79,7 @@ this.cdr.detectChanges()
   
     (error) => {
       console.error('Error fetching user list:', error);
-      alert(error.error.message || 'An error occurred while fetching the user list.');
+      this.messageModal.show(error?.error?.message || 'An error occurred while fetching the user list.');
      this.Isloading = false
      this.cdr.detectChanges()
     }
@@ -106,11 +107,11 @@ this.cdr.detectChanges()
        this.GetUserList(Keyword,page);
      this.Isloading = false 
      this.cdr.detectChanges()
-       alert("User Role Updated SuccessFully")
+      this.messageModal.show('User Role Updated Successfully')
       },
       (err:any)=>
       {
-        alert(err.error.message)
+        this.messageModal.show(err?.error?.message)
         console.log(err)
         this.Isloading=false
       }

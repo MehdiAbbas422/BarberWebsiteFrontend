@@ -3332,6 +3332,56 @@
   }
 }
 
+.message-modal {
+  width: min(440px, 100%);
+  padding: clamp(20px, 5vw, 30px);
+  text-align: center;
+}
+
+.message-modal-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-bright);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.message-modal .modal-eyebrow {
+  margin-bottom: 10px;
+}
+
+.message-modal h2 {
+  overflow-wrap: anywhere;
+  font-size: clamp(17px, 4vw, 21px);
+  line-height: 1.55;
+}
+
+.message-modal .booking-modal-actions {
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.message-modal .modal-primary-btn {
+  min-width: 120px;
+  min-height: 44px;
+}
+
+@media (max-width: 560px) {
+  .message-modal-backdrop {
+    padding: 14px;
+  }
+
+  .message-modal {
+    padding: 22px 18px;
+  }
+}
+
 /* ============================================================
    TOUCH DEVICES
 ============================================================ */

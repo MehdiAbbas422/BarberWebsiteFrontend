@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { BarberService } from '../../../../Service/Barber/barber-service';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ SelectedItem:number[] = []
 CustumerName:string = ''
 Isloading : boolean = false
 
-constructor(private barber:BarberService, private cdr:ChangeDetectorRef){}
+constructor(private barber:BarberService, private cdr:ChangeDetectorRef,private messageModal:MessageModalService){}
 
 ngOnInit(): void {
   this.GetService()
@@ -66,13 +67,13 @@ ManualEntryFunction()
         console.log(res)
         this.Isloading = false
         this.GetService()
-        alert(res.message)
+        this.messageModal.show(res?.message)
     },
     (err:any)=>
     {
         console.log(err)
         this.Isloading = false
-        alert(err.error.message);
+        this.messageModal.show(err?.error?.message);
     }
   )
 }

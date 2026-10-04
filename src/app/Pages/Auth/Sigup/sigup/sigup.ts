@@ -3,6 +3,7 @@ import { Authentication } from '../../../../Service/Auth/authentication';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-sigup',
@@ -22,7 +23,7 @@ export class Sigup {
 
   OTP:string = '';
 
-constructor(private authService: Authentication) {}
+constructor(private authService: Authentication, private messageModal:MessageModalService) {}
 
 
 Sigup(SigupDto: any) {
@@ -30,14 +31,14 @@ Sigup(SigupDto: any) {
   this.authService.Signup(SigupDto).subscribe(
     (response: any) => {
       console.log('Signup successful:', response);
-      alert(response.message)
+      this.messageModal.show(response?.message)
       this.Isloading.set(false);
       this.EmailVerfy.set(true);
       
     },
     (error: any) => {
       console.error('Signup failed:', error);
-      alert(error.error.message)
+      this.messageModal.show(error?.error?.message)
       this.Isloading.set(false);
     }
   );  
@@ -58,7 +59,7 @@ VerfyEmail(OTP: string,Email:string) {
     },
     (error: any) => {
       console.error('Email verification failed:', error);
-      alert(error.error.message)
+      this.messageModal.show(error?.error?.message)
       this.Isloading.set(false);
     }
   );
@@ -70,13 +71,13 @@ ResendOTP(Email:string)
   this.authService.ResendOtp(Email).subscribe(
     (response: any) => {
       console.log('OTP resend successful:', response);
-      alert(response.message)
+      this.messageModal.show(response?.message)
       this.Isloading.set(false);
       // Handle successful OTP resend, e.g., show a success message
     },
     (error: any) => {
       console.error('OTP resend failed:', error);
-      alert(error.error.message)
+      this.messageModal.show(error?.error?.message)
       this.Isloading.set(false);
     }
   );

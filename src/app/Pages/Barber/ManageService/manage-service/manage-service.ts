@@ -3,6 +3,7 @@ import { BarberService } from '../../../../Service/Barber/barber-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-manage-service',
@@ -22,7 +23,7 @@ TotalPages = 1;
 TotalRecords = 0;
 get PageNumbers(): number[] { return Array.from({ length: this.TotalPages }, (_, index) => index + 1); }
 get RecordEnd(): number { return Math.min(this.Page * this.PageSize, this.TotalRecords); }
-constructor(private barber:BarberService,private cdr:ChangeDetectorRef){}
+constructor(private barber:BarberService,private cdr:ChangeDetectorRef,private messageModal:MessageModalService){}
 
 
 ngOnInit(): void {
@@ -50,7 +51,7 @@ GetServiceList(){
       (err:any) =>
       {
           console.log(err)
-          alert(err.error.message)
+          this.messageModal.show(err?.error?.message)
           this.Isloading =false
       }
       
@@ -72,14 +73,14 @@ AddService(ServiceId:number)
       console.log(res)
        this.GetBarberService();
       this.Isloading =false;
-        alert(res.message);
+        this.messageModal.show(res?.message);
     },
     (err:any) =>
     {
       console.log(err)
        this.GetServiceList()
       this.Isloading =false;
-      alert(err.error.message);
+      this.messageModal.show(err?.error?.message);
     }
   )
 }
@@ -98,7 +99,7 @@ GetBarberService()
     (err:any)=>{
       console.log(err)
       this.Isloading = false;
-      alert(err.error.message);
+      this.messageModal.show(err?.error?.message);
     }
   )
 
@@ -112,13 +113,13 @@ DeleteService(Id:number)
     {
         this.GetBarberService()
         this.Isloading=false;
-        alert(res.message);
+        this.messageModal.show(res?.message);
     },
     (err:any)=>
     {
         console.log(err);
         this.Isloading=false;
-        alert(err.error.message)
+        this.messageModal.show(err?.error?.message)
     }
   )
 }

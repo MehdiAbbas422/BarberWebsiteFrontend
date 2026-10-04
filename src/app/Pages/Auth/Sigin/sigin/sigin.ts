@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-sigin',
@@ -37,7 +38,8 @@ export class Sigin {
 
   constructor(
     private authService: Authentication,
-    private router: Router
+    private router: Router,
+    private messageModal: MessageModalService
   ) {}
 
   Sigin(SiginDto: any) {
@@ -61,7 +63,7 @@ export class Sigin {
 
         console.error('Sigin failed:', error);
 
-        alert(error.error.message);
+        this.messageModal.show(error?.error?.message);
 
         this.Isloading.set(false);
       }

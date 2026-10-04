@@ -3,6 +3,7 @@ import { AdminService } from '../../../../Service/Admin/admin-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { MessageModalService } from '../../../../shared/message-modal.service';
 
 @Component({
   selector: 'app-admin-employmangment',
@@ -26,7 +27,7 @@ get PageNumbers(): number[] {
 }
 get RecordEnd(): number { return Math.min(this.page * this.pageSize, this.totalRecords); }
 
-constructor(private admin:AdminService,private cdr:ChangeDetectorRef){}
+constructor(private admin:AdminService,private cdr:ChangeDetectorRef,private messageModal:MessageModalService){}
 
 
 ngOnInit()
@@ -52,7 +53,7 @@ GetBarberlist()
       (err:any) =>
       {
         console.log(err)
-        alert(err.error.message);
+        this.messageModal.show(err?.error?.message);
         this.Isloading =false;
         this.cdr.detectChanges();
       }
@@ -79,13 +80,13 @@ Kickout(BarberId:number)
               this.GetBarberlist()
               this.Isloading = false
               this.cdr.detectChanges();
-              alert(res.message);
+              this.messageModal.show(res?.message);
           },
           (err:any) =>
           {
             
             console.log(err);
-            alert(err.error.message);
+            this.messageModal.show(err?.error?.message);
             this.Isloading = false;
           }
         )
