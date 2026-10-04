@@ -3842,3 +3842,8 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+@media (max-width: 700px) {
+  .service-nav-item {
+    margin-top: -8px;
+  }
+}
