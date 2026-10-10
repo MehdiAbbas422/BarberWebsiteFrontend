@@ -438,3 +438,90 @@ button:disabled {
 	}
 
 }
+
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+========================================================= */
+
+:host-context(.theme-light) {
+	color: #1c1c1a;
+	background: #ffffff;
+}
+
+:host-context(.theme-light) .username-page {
+	background:
+		radial-gradient(
+			ellipse at 15% 10%,
+			rgb(201 160 82 / 8%),
+			transparent 38%
+		),
+		radial-gradient(
+			ellipse at 85% 90%,
+			rgb(201 160 82 / 4%),
+			transparent 35%
+		),
+		linear-gradient(
+			135deg,
+			#ffffff,
+			#f6f7f9
+		);
+}
+
+:host-context(.theme-light) .username-panel {
+	background: #ffffff;
+
+	box-shadow:
+		0 24px 70px rgb(0 0 0 / 8%);
+}
+
+:host-context(.theme-light) h1 {
+	color: #1c1c1a;
+}
+
+:host-context(.theme-light) .description {
+	color: #55524b;
+}
+
+:host-context(.theme-light) label {
+	color: #1c1c1a;
+}
+
+:host-context(.theme-light) input {
+	border: 1px solid rgba(0, 0, 0, 0.14);
+
+	color: #1c1c1a;
+
+	background: #ffffff;
+}
+
+:host-context(.theme-light) input::placeholder {
+	color: #9a958c;
+}
+
+:host-context(.theme-light) input:hover {
+	border-color: rgba(0, 0, 0, 0.24);
+}
+
+:host-context(.theme-light) input:focus {
+	background: #ffffff;
+
+	box-shadow:
+		0 0 0 3px rgb(214 181 109 / 18%);
+}
+
+:host-context(.theme-light) .status {
+	background: rgb(0 0 0 / 3%);
+}
+
+:host-context(.theme-light) .success {
+	color: #2e7d32;
+
+	border: 1px solid rgb(46 125 50 / 25%);
+}
+
+:host-context(.theme-light) .error {
+	color: #c62828;
+
+	border: 1px solid rgb(198 40 40 / 25%);
+}

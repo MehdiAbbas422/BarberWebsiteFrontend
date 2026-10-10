@@ -1797,3 +1797,310 @@ tbody tr:last-child td {
     }
 
 }
+
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+========================================================= */
+
+/* ---- variables: flip neutrals only (gold kept) ---- */
+
+:host-context(.theme-light) .dashboard {
+
+    --black: #ffffff;
+    --black-2: #f7f8fa;
+    --panel: #ffffff;
+    --panel-2: #f7f7f5;
+
+    --white: #1c1c1a;
+    --text: #55524b;
+    --muted: #8a857c;
+
+    --line: rgba(0,0,0,.08);
+
+    color: var(--white);
+
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            rgba(201,160,82,.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(201,160,82,.035),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7f8fa 55%,
+            #ffffff
+        );
+}
+
+
+/* ---- hero: keep the dark photo banner, keep heading readable ---- */
+
+:host-context(.theme-light) .hero-left h1 {
+
+    color: #f4f1e9;
+}
+
+
+/* ---- stat cards ---- */
+
+:host-context(.theme-light) .stat-card {
+
+    background: #ffffff;
+
+    border-color: rgba(0,0,0,.08);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.06);
+}
+
+
+:host-context(.theme-light) .stat-label {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .stat-info strong {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .stat-info small {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .live-indicator {
+
+    color: #8a857c;
+}
+
+
+/* ---- analytics / entries surfaces ---- */
+
+:host-context(.theme-light) .analytics-card,
+:host-context(.theme-light) .entries-card {
+
+    background: #ffffff;
+
+    border-color: rgba(0,0,0,.08);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.08);
+}
+
+
+:host-context(.theme-light) .analytics-header h2,
+:host-context(.theme-light) .entries-header h2 {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .analytics-header p,
+:host-context(.theme-light) .entries-header p {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .analytics-badge strong {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .analytics-badge small {
+
+    color: #8a857c;
+}
+
+
+/* ---- chart ---- */
+
+:host-context(.theme-light) .chart {
+
+    border-bottom-color: rgba(0,0,0,.08);
+}
+
+
+:host-context(.theme-light) .chart-lines span {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,0,0,.06),
+            transparent
+        );
+}
+
+
+:host-context(.theme-light) .bar-area {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.02)
+        );
+}
+
+
+:host-context(.theme-light) .bar-label {
+
+    color: #8a857c;
+}
+
+
+/* ---- close button ---- */
+
+:host-context(.theme-light) .close-button {
+
+    color: #55524b;
+
+    border-color: rgba(0,0,0,.08);
+
+    background: #ffffff;
+}
+
+
+/* ---- tabs ---- */
+
+:host-context(.theme-light) .entry-tabs {
+
+    border-color: rgba(0,0,0,.08);
+
+    background: rgba(0,0,0,.04);
+}
+
+
+:host-context(.theme-light) .entry-tabs button {
+
+    color: #55524b;
+}
+
+
+:host-context(.theme-light) .entry-tabs button:hover {
+
+    color: #1c1c1a;
+}
+
+
+/* ---- table ---- */
+
+:host-context(.theme-light) .table-container {
+
+    border-color: rgba(0,0,0,.08);
+
+    background: #ffffff;
+}
+
+
+:host-context(.theme-light) thead {
+
+    background: #f7f7f5;
+}
+
+
+:host-context(.theme-light) th {
+
+    color: #8a857c;
+
+    border-bottom-color: rgba(0,0,0,.08);
+}
+
+
+:host-context(.theme-light) td {
+
+    color: #55524b;
+
+    border-bottom-color: rgba(0,0,0,.05);
+}
+
+
+:host-context(.theme-light) .barber strong {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .email {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .time {
+
+    color: #55524b;
+
+    background: rgba(0,0,0,.04);
+}
+
+
+/* ---- empty ---- */
+
+:host-context(.theme-light) .empty-state strong {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .empty-state p {
+
+    color: #8a857c;
+}
+
+
+/* ---- status ---- */
+
+:host-context(.theme-light) .error-message {
+
+    color: #b04a4a;
+
+    border-color: rgba(180,60,60,.28);
+
+    background: rgba(180,60,60,.08);
+}
+
+
+:host-context(.theme-light) .loading-message {
+
+    color: #55524b;
+
+    border-color: rgba(0,0,0,.08);
+
+    background: rgba(0,0,0,.02);
+}
+
+
+/* ---- mobile card table ---- */
+
+@media (max-width: 650px) {
+
+    :host-context(.theme-light) .table-container {
+
+        border-color: transparent;
+
+        background: transparent;
+    }
+
+
+    :host-context(.theme-light) tbody tr {
+
+        border-color: rgba(0,0,0,.06);
+
+        background: #ffffff;
+    }
+
+}

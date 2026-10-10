@@ -3402,3 +3402,441 @@ button:disabled {
   }
 
 }
+
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+========================================================= */
+
+:host-context(.theme-light) {
+  background: #ffffff;
+  color: #1c1c1a;
+
+  --black: #ffffff;
+  --black-2: #f7f7f5;
+  --black-3: #ffffff;
+
+  --card: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+
+  --text: #1c1c1a;
+  --muted: #8a857c;
+}
+
+:host-context(.theme-light) .booking-page {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(214, 168, 92, 0.06),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 40%,
+      rgba(214, 168, 92, 0.04),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f7f8fa
+    );
+}
+
+:host-context(.theme-light) .logout-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .approval-modal-backdrop,
+:host-context(.theme-light) .bill-modal-backdrop {
+  background: rgba(20, 20, 20, 0.4);
+}
+
+:host-context(.theme-light) .approval-modal {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfbfa
+    );
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.14),
+    0 0 50px rgba(214, 168, 92, 0.06);
+}
+
+:host-context(.theme-light) .approval-modal-close {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .approval-content h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .time-field label {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .time-input-wrap input {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: #1c1c1a;
+  color-scheme: light;
+}
+
+:host-context(.theme-light) .booking-nav-btn {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f7f5
+    );
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .booking-nav-btn.active {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(214, 168, 92, 0.12),
+      #ffffff
+    );
+}
+
+:host-context(.theme-light) .nav-text strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .section-title-area h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .requests-table-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfbfa
+    );
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.08);
+}
+
+:host-context(.theme-light) .table-top {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+:host-context(.theme-light) .table-heading h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .table-heading p {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .table-live {
+  border-color: rgba(88, 214, 141, 0.35);
+  background: rgba(88, 214, 141, 0.12);
+  color: #1f7d4d;
+}
+
+:host-context(.theme-light) .booking-table th {
+  background: #f7f7f5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .booking-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:host-context(.theme-light) .booking-table tbody tr:hover {
+  background: rgba(214, 168, 92, 0.08);
+}
+
+:host-context(.theme-light) .customer-avatar {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.04),
+      rgba(0, 0, 0, 0.01)
+    );
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .person-info strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .person-info span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-select {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .time-cell strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .time-cell span:not(.time-cell-icon) {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .status-badge.pending {
+  border-color: rgba(231, 168, 78, 0.4);
+  background: rgba(231, 168, 78, 0.13);
+  color: #b06a12;
+}
+
+:host-context(.theme-light) .status-badge.approved {
+  border-color: rgba(88, 214, 141, 0.35);
+  background: rgba(88, 214, 141, 0.12);
+  color: #1f7d4d;
+}
+
+:host-context(.theme-light) .complete-action {
+  border-color: rgba(88, 214, 141, 0.35);
+  background: rgba(88, 214, 141, 0.12);
+  color: #1f7d4d;
+}
+
+:host-context(.theme-light) .complete-action:hover:not(:disabled) {
+  background: rgba(88, 214, 141, 0.2);
+}
+
+:host-context(.theme-light) .dont-come-action {
+  border-color: rgba(231, 110, 96, 0.4);
+  background: rgba(231, 110, 96, 0.12);
+  color: #c0392b;
+}
+
+:host-context(.theme-light) .dont-come-action:hover:not(:disabled) {
+  border-color: rgba(231, 110, 96, 0.6);
+  background: rgba(231, 110, 96, 0.2);
+}
+
+:host-context(.theme-light) .request-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfbfa
+    );
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+:host-context(.theme-light) .request-card-top {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+:host-context(.theme-light) .request-number {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-label {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-person h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-info {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  background: #f7f7f5;
+}
+
+:host-context(.theme-light) .mobile-info div span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-info strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-service-box > span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-service-select {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-complete-btn {
+  border-color: rgba(88, 214, 141, 0.35);
+  background: rgba(88, 214, 141, 0.12);
+  color: #1f7d4d;
+}
+
+:host-context(.theme-light) .mobile-dont-come-btn {
+  border-color: rgba(231, 110, 96, 0.4);
+  background: rgba(231, 110, 96, 0.12);
+  color: #c0392b;
+}
+
+:host-context(.theme-light) .pagination {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+:host-context(.theme-light) .pagination-info {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .pagination-info strong {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .page-number,
+:host-context(.theme-light) .page-arrow {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: #55524b;
+}
+
+:host-context(.theme-light) .bill-modal-backdrop {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 168, 92, 0.05),
+      transparent 42%
+    ),
+    rgba(20, 20, 20, 0.45);
+}
+
+:host-context(.theme-light) .bill-modal {
+  border: 1px solid rgba(214, 168, 92, 0.3);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f8fa 75%
+    );
+  color: #1c1c1a;
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.18),
+    0 0 70px rgba(214, 168, 92, 0.06);
+}
+
+:host-context(.theme-light) .bill-modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(214, 168, 92, 0.08),
+      #ffffff
+    );
+}
+
+:host-context(.theme-light) .bill-modal h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-modal-subtitle {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-modal-close {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-info-card {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfbfa
+    );
+}
+
+:host-context(.theme-light) .bill-info-label {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-info-value {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-receipt {
+  border: 1px solid rgba(214, 168, 92, 0.28);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(214, 168, 92, 0.06),
+      #ffffff
+    );
+}
+
+:host-context(.theme-light) .bill-receipt-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+:host-context(.theme-light) .bill-receipt-header h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-service-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:host-context(.theme-light) .bill-service-info strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-service-info span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-total {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(214, 168, 92, 0.14),
+      rgba(214, 168, 92, 0.05)
+    );
+}
+
+:host-context(.theme-light) .bill-total-label span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-total-label strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-modal-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f7f8fa
+    );
+}
+
+:host-context(.theme-light) .bill-modal-actions .secondary-btn {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  color: #55524b;
+}
+
+:host-context(.theme-light) .bill-modal-actions .secondary-btn:hover:not(:disabled) {
+  border-color: rgba(0, 0, 0, 0.22);
+  background: #f1f1ee;
+  color: #1c1c1a;
+}

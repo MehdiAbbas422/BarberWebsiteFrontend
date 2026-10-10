@@ -6,6 +6,14 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Apply the saved UI theme before the app bootstraps (prevents a flash).
+    try {
+      if (localStorage.getItem('app-color-theme') === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <app-root></app-root>

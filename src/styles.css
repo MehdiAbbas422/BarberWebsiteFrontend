@@ -17,6 +17,11 @@ body {
     background: #080807;
 }
 
+html.theme-light,
+html.theme-light body {
+    background: #ffffff;
+}
+
 body {
     overflow-x: hidden;
 }

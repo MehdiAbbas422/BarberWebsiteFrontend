@@ -118,3 +118,41 @@
 @media (prefers-reduced-motion: reduce) {
     .app-message-modal { animation: none; }
 }
+
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+   :host-context -> html.theme-light
+========================================================= */
+
+:host-context(.theme-light) .app-content {
+    background: #ffffff;
+}
+
+:host-context(.theme-light) .app-message-backdrop {
+    background: rgba(255, 255, 255, 0.78);
+}
+
+:host-context(.theme-light) .app-message-modal {
+    border-color: rgba(201, 160, 82, 0.35);
+    background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent 38%), #ffffff;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18), 0 0 40px rgba(212, 175, 55, 0.08);
+    color: #1f1d18;
+}
+
+:host-context(.theme-light) .app-message-mark {
+    background: rgba(212, 175, 55, 0.1);
+    color: #9d7920;
+}
+
+:host-context(.theme-light) .app-message-eyebrow {
+    color: #9d7920;
+}
+
+:host-context(.theme-light) .app-message-modal h2 {
+    color: #1f1d18;
+}
+
+:host-context(.theme-light) .app-message-button:focus-visible {
+    outline-color: #9d7920;
+}

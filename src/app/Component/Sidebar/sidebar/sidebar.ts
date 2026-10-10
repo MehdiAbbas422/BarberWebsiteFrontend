@@ -1,7 +1,8 @@
-import { Component, OnInit ,  HostListener } from '@angular/core';
+import { Component, OnInit ,  HostListener, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Authentication } from '../../../Service/Auth/authentication';
 import { ChangeDetectorRef } from '@angular/core';
+import { ThemeService } from '../../../shared/theme.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,6 +24,9 @@ export class Sidebar implements OnInit{
   
     isSidebarOpen = false;
   isMobileOpen = false;
+
+  // Public so the template can read the current theme state.
+  readonly theme = inject(ThemeService);
 
   constructor(
     private router: Router,
@@ -92,6 +96,19 @@ ngOnInit(): void {
     // Mobile/tablet par route change ke baad
     // sidebar automatically close
     this.closeSidebar();
+
+  }
+
+
+  // =========================================
+  // THEME
+  // Color theme ON  -> original dark + gold UI
+  // Color theme OFF -> white / light UI
+  // =========================================
+
+  toggleTheme(): void {
+
+    this.theme.toggle();
 
   }
 

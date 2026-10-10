@@ -472,6 +472,44 @@
 
 
         <button
+            class="theme-toggle"
+            type="button"
+            [class.theme-toggle-on]="theme.isColorTheme()"
+            [attr.aria-pressed]="theme.isColorTheme()"
+            aria-label="Toggle color theme"
+            (click)="toggleTheme()"
+        >
+
+            <span
+                class="theme-toggle-icon"
+                aria-hidden="true"
+            >
+                {{ theme.isColorTheme() ? '🎨' : '☀' }}
+            </span>
+
+            <span class="theme-toggle-text">
+
+                <strong>
+                    {{ theme.isColorTheme() ? 'Color Theme' : 'White Theme' }}
+                </strong>
+
+                <small>
+                    {{ theme.isColorTheme() ? 'On' : 'Off' }}
+                </small>
+
+            </span>
+
+            <span
+                class="theme-switch"
+                aria-hidden="true"
+            >
+                <span class="theme-switch-knob"></span>
+            </span>
+
+        </button>
+
+
+        <button
             class="logout-button"
             type="button"
             (click)="Logout()"

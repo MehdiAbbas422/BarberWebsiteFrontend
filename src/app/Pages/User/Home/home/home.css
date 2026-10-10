@@ -3892,3 +3892,614 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+========================================================= */
+
+/* ---- Theme variables ---- */
+:host-context(.theme-light) {
+  --bg-canvas: #ffffff;
+  --bg-canvas-soft: #f7f7f5;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f7f7f5;
+  --bg-surface-hover: #f1f1ee;
+  --border: rgba(0, 0, 0, .08);
+  --border-soft: rgba(0, 0, 0, .05);
+  --text-main: #1c1c1a;
+  --text-soft: #55524b;
+  --text-muted: #8a857c;
+}
+
+/* ---- Page ---- */
+:host-context(.theme-light) .booking-page {
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(212, 175, 55, .06),
+      transparent 32%
+    ),
+    linear-gradient(180deg, #ffffff, #f7f8fa);
+  color: #1c1c1a;
+}
+
+/* ---- Top action ---- */
+:host-context(.theme-light) .logout-btn {
+  background: transparent;
+  border-color: rgba(0, 0, 0, .08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .logout-btn:hover {
+  color: #1c1c1a;
+  border-color: rgba(212, 175, 55, .45);
+  background: rgba(212, 175, 55, .08);
+}
+
+/* ---- Hero ---- */
+:host-context(.theme-light) .booking-hero {
+  border-bottom-color: rgba(0, 0, 0, .05);
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(212, 175, 55, .09),
+      transparent 35%
+    ),
+    linear-gradient(180deg, #ffffff, #f7f8fa);
+}
+
+:host-context(.theme-light) .hero-content h1 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .hero-content p {
+  color: #8a857c;
+}
+
+/* ---- Navigation ---- */
+:host-context(.theme-light) .booking-nav-item {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .booking-nav-item:hover {
+  background: #f1f1ee;
+  border-color: rgba(212, 175, 55, .25);
+}
+
+:host-context(.theme-light) .booking-nav-item.active {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212, 175, 55, .12),
+      rgba(212, 175, 55, .03)
+    );
+  border-color: rgba(212, 175, 55, .45);
+}
+
+:host-context(.theme-light) .nav-content strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .nav-content small {
+  color: #8a857c;
+}
+
+/* ---- Section headings ---- */
+:host-context(.theme-light) .section-heading h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .section-heading p {
+  color: #8a857c;
+}
+
+/* ---- Booking search ---- */
+:host-context(.theme-light) .booking-search-box {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .14);
+}
+
+:host-context(.theme-light) .booking-search-box:focus-within {
+  border-color: rgba(212, 175, 55, .55);
+}
+
+:host-context(.theme-light) .booking-search-box input {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .booking-search-box input::placeholder {
+  color: #9a958c;
+}
+
+:host-context(.theme-light) .booking-search-hint {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .available-counter {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .available-counter small {
+  color: #8a857c;
+}
+
+/* ---- Table card ---- */
+:host-context(.theme-light) .booking-table-card,
+:host-context(.theme-light) .requests-table-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .booking-table-header,
+:host-context(.theme-light) .requests-table-top {
+  border-bottom-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .booking-table-header h3,
+:host-context(.theme-light) .requests-table-top h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .available-label,
+:host-context(.theme-light) .live-status {
+  color: #8a857c;
+}
+
+/* ---- Table ---- */
+:host-context(.theme-light) .booking-table th {
+  background: #f7f7f5;
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .booking-table td {
+  border-top-color: rgba(0, 0, 0, .05);
+}
+
+/* ---- Barber ---- */
+:host-context(.theme-light) .barber-avatar,
+:host-context(.theme-light) .table-avatar {
+  background: linear-gradient(145deg, #f7f7f5, #ecebe6);
+}
+
+:host-context(.theme-light) .barber-avatar i,
+:host-context(.theme-light) .table-avatar i,
+:host-context(.theme-light) .mobile-barber-avatar i {
+  border-color: #ffffff;
+}
+
+:host-context(.theme-light) .barber-information strong,
+:host-context(.theme-light) .table-person-info strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .barber-information > span,
+:host-context(.theme-light) .table-person-info small {
+  color: #8a857c;
+}
+
+/* ---- Services / checkbox ---- */
+:host-context(.theme-light) .service-checkbox {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .custom-checkbox {
+  border-color: rgba(0, 0, 0, .2);
+  background: #ffffff;
+}
+
+/* ---- Request toolbar ---- */
+:host-context(.theme-light) .request-toolbar {
+  background: linear-gradient(145deg, #ffffff, #f7f7f5);
+  border-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .search-input-wrapper {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .14);
+}
+
+:host-context(.theme-light) .search-input-wrapper:focus-within {
+  border-color: rgba(212, 175, 55, .6);
+}
+
+:host-context(.theme-light) .search-input-wrapper input {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .search-input-wrapper input::placeholder {
+  color: #9a958c;
+}
+
+:host-context(.theme-light) .search-shortcut {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .request-count {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .request-count > span:not(.count-live) {
+  color: #8a857c;
+}
+
+/* ---- Service select ---- */
+:host-context(.theme-light) .service-select-box {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .14);
+}
+
+:host-context(.theme-light) .service-select {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .service-select option {
+  background: #ffffff;
+  color: #1c1c1a;
+}
+
+/* ---- Time trigger ---- */
+:host-context(.theme-light) .time-trigger {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .time-trigger-content strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .time-trigger-content small {
+  color: #8a857c;
+}
+
+/* ---- Pagination ---- */
+:host-context(.theme-light) .pagination-area {
+  background: #f7f7f5;
+  border-top-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .pagination-info {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .pagination-info strong {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .pagination-btn,
+:host-context(.theme-light) .pagination-number {
+  background: transparent;
+  border-color: rgba(0, 0, 0, .08);
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .pagination-btn:hover,
+:host-context(.theme-light) .pagination-number:hover {
+  color: var(--gold);
+  border-color: rgba(212, 175, 55, .35);
+}
+
+:host-context(.theme-light) .pagination-number.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0c0b08;
+}
+
+:host-context(.theme-light) .pagination-dots {
+  color: #8a857c;
+}
+
+/* ---- Mobile request cards ---- */
+:host-context(.theme-light) .request-card {
+  background: linear-gradient(145deg, #ffffff, #f7f7f5);
+  border-color: rgba(0, 0, 0, .08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .request-card-top {
+  border-bottom-color: rgba(0, 0, 0, .05);
+}
+
+:host-context(.theme-light) .request-card-top strong {
+  color: #1c1c1a;
+}
+
+/* ---- Mobile barber ---- */
+:host-context(.theme-light) .mobile-barber-avatar {
+  background: linear-gradient(145deg, #f7f7f5, #ecebe6);
+}
+
+:host-context(.theme-light) .mobile-barber-info h3 {
+  color: #1c1c1a;
+}
+
+/* ---- Mobile details ---- */
+:host-context(.theme-light) .mobile-details {
+  border-top-color: rgba(0, 0, 0, .05);
+}
+
+:host-context(.theme-light) .mobile-detail {
+  border-bottom-color: rgba(0, 0, 0, .05);
+}
+
+:host-context(.theme-light) .mobile-detail-content > span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-detail-content > strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-service-select {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .14);
+  color: #55524b;
+}
+
+/* ---- Modal ---- */
+:host-context(.theme-light) .booking-modal-backdrop {
+  background: rgba(0, 0, 0, .45);
+}
+
+:host-context(.theme-light) .booking-modal {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(212, 175, 55, .08),
+      transparent 35%
+    ),
+    #ffffff;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, .18),
+    0 0 40px rgba(212, 175, 55, .06);
+}
+
+:host-context(.theme-light) .modal-top {
+  border-bottom-color: rgba(0, 0, 0, .06);
+}
+
+:host-context(.theme-light) .booking-modal h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .modal-close-btn {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .modal-close-btn:hover {
+  color: var(--gold);
+  border-color: rgba(212, 175, 55, .4);
+}
+
+/* ---- Bill ---- */
+:host-context(.theme-light) .bill-info-item {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .bill-info-item span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-info-item strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-section-title {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .bill-service-row {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .05);
+}
+
+:host-context(.theme-light) .bill-service-row strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .bill-service-row span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .bill-total span {
+  color: #55524b;
+}
+
+/* ---- Report ---- */
+:host-context(.theme-light) .report-description {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .report-textarea-wrapper textarea {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, .14);
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .report-textarea-wrapper textarea:focus {
+  border-color: rgba(212, 175, 55, .55);
+}
+
+:host-context(.theme-light) .report-textarea-wrapper textarea::placeholder {
+  color: #9a958c;
+}
+
+:host-context(.theme-light) .report-textarea-wrapper > span {
+  color: #8a857c;
+}
+
+/* ---- Time modal ---- */
+:host-context(.theme-light) .time-modal-content > span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .time-modal-content > small {
+  color: #8a857c;
+}
+
+/* ---- Modal actions ---- */
+:host-context(.theme-light) .modal-secondary-btn {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .modal-secondary-btn:hover {
+  color: #1c1c1a;
+  border-color: rgba(212, 175, 55, .3);
+}
+
+/* ---- Service detail ---- */
+:host-context(.theme-light) .service-summary-text strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .service-card {
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(212, 175, 55, .07),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #ffffff, #f7f7f5);
+  border-color: rgba(0, 0, 0, .08);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .service-card:hover {
+  border-color: rgba(212, 175, 55, .32);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, .12);
+}
+
+:host-context(.theme-light) .service-card-status {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-card-body h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .service-card-body p {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-card-bottom {
+  border-top-color: rgba(0, 0, 0, .06);
+}
+
+:host-context(.theme-light) .service-card-bottom span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-empty-state {
+  background: #ffffff;
+}
+
+:host-context(.theme-light) .service-empty-state strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .service-empty-state span {
+  color: #8a857c;
+}
+
+/* ---- Booking barber cards (mobile) ---- */
+:host-context(.theme-light) .mobile-barber-card {
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(212, 175, 55, .07),
+      transparent 36%
+    ),
+    linear-gradient(145deg, #ffffff, #f7f7f5);
+  border-color: rgba(0, 0, 0, .08);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .mobile-barber-card-avatar {
+  background: linear-gradient(145deg, #f7f7f5, #ecebe6);
+}
+
+:host-context(.theme-light) .mobile-barber-card-avatar i {
+  border-color: #ffffff;
+}
+
+:host-context(.theme-light) .mobile-barber-card-info h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-card-divider {
+  background: rgba(0, 0, 0, .06);
+}
+
+:host-context(.theme-light) .mobile-card-section-title strong {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .mobile-card-section-title small {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .mobile-service-checkbox {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .mobile-custom-checkbox {
+  border-color: rgba(0, 0, 0, .2);
+  background: #ffffff;
+}
+
+:host-context(.theme-light) .mobile-barber-empty {
+  background: #ffffff;
+}
+
+:host-context(.theme-light) .mobile-barber-empty strong {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .mobile-barber-empty span {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .booking-mobile-pagination {
+  border-color: rgba(0, 0, 0, .08);
+  background: #ffffff;
+}
+
+:host-context(.theme-light) .mobile-pagination-btn {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, .08);
+}
+
+:host-context(.theme-light) .booking-mobile-page-numbers button {
+  border-color: rgba(0, 0, 0, .08);
+  background: transparent;
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .booking-mobile-page-numbers button.active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #0c0b08;
+}
+
+:host-context(.theme-light) .booking-mobile-page-numbers span {
+  color: #8a857c;
+}
+
+/* ---- Preserve responsive transparent request card ---- */
+@media (max-width: 900px) {
+  :host-context(.theme-light) .requests-table-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}

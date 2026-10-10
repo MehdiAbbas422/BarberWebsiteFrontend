@@ -1261,3 +1261,203 @@
     }
 
 }
+
+
+/* =========================================================
+   LIGHT (WHITE) THEME
+========================================================= */
+
+:host-context(.theme-light) .manual-entry-page {
+
+    --black: #ffffff;
+    --panel: #ffffff;
+    --panel-2: #f7f7f5;
+
+    --white: #1c1c1a;
+    --text: #55524b;
+    --muted: #8a857c;
+
+    --border: rgba(0, 0, 0, 0.08);
+
+    color: #1c1c1a;
+
+    background:
+        radial-gradient(
+            circle at 85% 5%,
+            rgba(201, 160, 82, 0.07),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 5% 70%,
+            rgba(201, 160, 82, 0.035),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f7f8fa
+        );
+}
+
+
+:host-context(.theme-light) .manual-card {
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fcfcfb
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.07);
+}
+
+
+:host-context(.theme-light) .form-header {
+
+    border-bottom:
+        1px solid rgba(0, 0, 0, 0.07);
+}
+
+
+:host-context(.theme-light) .form-header h2 {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .form-header p {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .form-group label {
+
+    color: #55524b;
+}
+
+
+:host-context(.theme-light) .input-wrapper input {
+
+    border:
+        1px solid rgba(0, 0, 0, 0.14);
+
+    color: #1c1c1a;
+
+    background:
+        #ffffff;
+}
+
+
+:host-context(.theme-light) .input-wrapper input::placeholder {
+
+    color: #9a958c;
+}
+
+
+:host-context(.theme-light) .input-wrapper input:hover {
+
+    border-color:
+        rgba(0, 0, 0, 0.22);
+}
+
+
+:host-context(.theme-light) .services-header h3 {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .service-count {
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+
+    color: #8a857c;
+
+    background:
+        #f7f7f5;
+}
+
+
+:host-context(.theme-light) .service-card-content {
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fbfbfa
+        );
+}
+
+
+:host-context(.theme-light) .service-card:hover .service-card-content {
+
+    border-color:
+        rgba(201, 160, 82, 0.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(201, 160, 82, 0.08),
+            #ffffff
+        );
+}
+
+
+:host-context(.theme-light) .service-card input:checked
+~ .service-card-content {
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        inset 0 0 20px rgba(201, 160, 82, 0.03);
+}
+
+
+:host-context(.theme-light) .service-name {
+
+    color: #1c1c1a;
+}
+
+
+:host-context(.theme-light) .service-caption {
+
+    color: #8a857c;
+}
+
+
+:host-context(.theme-light) .custom-checkbox {
+
+    border:
+        1px solid rgba(0, 0, 0, 0.3);
+
+    background:
+        #ffffff;
+}
+
+
+:host-context(.theme-light) .form-footer {
+
+    border-top:
+        1px solid rgba(0, 0, 0, 0.07);
+}
+
+
+:host-context(.theme-light) .footer-info strong {
+
+    color: #55524b;
+}
+
+
+:host-context(.theme-light) .footer-info small {
+
+    color: #8a857c;
+}
