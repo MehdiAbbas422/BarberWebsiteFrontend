@@ -1,13 +1,17 @@
 
 <div class="manage-page">
 
-  <!-- Background decorative lights -->
+  <!-- Full-page salon background image -->
+  <div class="salon-background"></div>
+  <div class="background-overlay"></div>
+
+  <!-- Decorative lighting -->
   <div class="ambient-light light-one"></div>
   <div class="ambient-light light-two"></div>
 
   <div class="page-content">
 
-    <!-- Header -->
+    <!-- Page Header -->
     <div class="page-header">
 
       <div class="heading-area">
@@ -31,11 +35,9 @@
 
     </div>
 
-
-    <!-- Main management card -->
+    <!-- Main Management Card -->
     <div class="service-manager">
 
-      <!-- Card top -->
       <div class="manager-top">
 
         <div>
@@ -47,14 +49,15 @@
         </div>
 
         <div class="service-count">
-          <span class="count-number">{{ BarberServiceList.length }}</span>
+          <span class="count-number">
+            {{ BarberServiceList.length }}
+          </span>
           <span class="count-label">Active Services</span>
         </div>
 
       </div>
 
-
-      <!-- Add service area -->
+      <!-- Add New Service -->
       <div class="add-service-box">
 
         <div class="add-heading">
@@ -77,8 +80,7 @@
               Choose a salon service
             </option>
 
-            @for(service of ServiceList; track $index)
-            {
+            @for (service of ServiceList; track $index) {
               <option [value]="service.id">
                 {{ service.serviceName }}
               </option>
@@ -90,14 +92,45 @@
 
         </div>
 
-        <div class="manager-footer">
-          <span>Showing {{ TotalRecords === 0 ? 0 : (Page - 1) * PageSize + 1 }}-{{ RecordEnd }} of {{ TotalRecords }} available services</span>
+        <!-- Pagination -->
+        <div class="manager-footer pagination-footer">
+
+          <span class="records-info">
+            Showing
+            {{ TotalRecords === 0 ? 0 : (Page - 1) * PageSize + 1 }}
+            -{{ RecordEnd }}
+            of {{ TotalRecords }} available services
+          </span>
+
           <div class="pagination-buttons">
-            <button type="button" aria-label="Previous page" [disabled]="Page <= 1 || Isloading" (click)="ChangePage(Page - 1)">‹</button>
-            @for(pageNumber of PageNumbers; track pageNumber) {
-              <button type="button" [class.active]="pageNumber === Page" [attr.aria-current]="pageNumber === Page ? 'page' : null" [disabled]="Isloading" (click)="ChangePage(pageNumber)">{{ pageNumber }}</button>
+
+            <button
+              type="button"
+              aria-label="Previous page"
+              [disabled]="Page <= 1 || Isloading"
+              (click)="ChangePage(Page - 1)">
+              ‹
+            </button>
+
+            @for (pageNumber of PageNumbers; track pageNumber) {
+              <button
+                type="button"
+                [class.active]="pageNumber === Page"
+                [attr.aria-current]="pageNumber === Page ? 'page' : null"
+                [disabled]="Isloading"
+                (click)="ChangePage(pageNumber)">
+                {{ pageNumber }}
+              </button>
             }
-            <button type="button" aria-label="Next page" [disabled]="Page >= TotalPages || Isloading" (click)="ChangePage(Page + 1)">›</button>
+
+            <button
+              type="button"
+              aria-label="Next page"
+              [disabled]="Page >= TotalPages || Isloading"
+              (click)="ChangePage(Page + 1)">
+              ›
+            </button>
+
           </div>
         </div>
 
@@ -107,8 +140,7 @@
 
       </div>
 
-
-      <!-- Services heading -->
+      <!-- Services Heading -->
       <div class="list-heading">
 
         <div>
@@ -122,8 +154,7 @@
 
       </div>
 
-
-      <!-- Desktop / tablet table -->
+      <!-- Services Table -->
       <div class="services-table-wrapper">
 
         <table class="services-table">
@@ -138,8 +169,7 @@
 
           <tbody>
 
-            @for(barber of BarberServiceList; track $index)
-            {
+            @for (barber of BarberServiceList; track $index) {
               <tr>
 
                 <td class="serial-number">
@@ -185,10 +215,9 @@
 
       </div>
 
+      <!-- Empty State -->
+      @if (BarberServiceList.length === 0) {
 
-      <!-- Empty state -->
-      @if(BarberServiceList.length === 0)
-      {
         <div class="empty-state">
 
           <div class="empty-icon">✂</div>
@@ -196,12 +225,13 @@
           <h3>No services added yet</h3>
 
           <p>
-            Your salon menu is empty. Choose a service above to get started.
+            Your salon menu is empty.
+            Choose a service above to get started.
           </p>
 
         </div>
-      }
 
+      }
 
       <!-- Footer -->
       <div class="manager-footer">
@@ -215,10 +245,6 @@
 
       </div>
 
-    </div>
-
-    <div class="header-image">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=150&fit=crop&crop=entropy" alt="Barber salon services" loading="lazy" />
     </div>
 
   </div>

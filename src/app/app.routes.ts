@@ -18,6 +18,7 @@ import { Reports } from './Pages/Admin/Report/reports/reports';
 import { ManualEntry } from './Pages/Barber/ManualEntry/manual-entry/manual-entry';
 import { ChangeUserName } from './Pages/Auth/ChangeUserName/change-user-name/change-user-name';
 import { superGuardGuard } from './Gruad/SuperGuard/super-guard-guard';
+import { NotFound } from './Pages/NotFound/not-found/not-found';
 
 export const routes: Routes = [
 
@@ -34,6 +35,10 @@ export const routes: Routes = [
 {path:'barber/Service' , component:BarberService , canActivate:[baberGuard]},
 {path:'admin/Report' , component:Reports , canActivate:[adminGuard]},
 {path:'barber/ManualEntry' , component:ManualEntry , canActivate:[baberGuard]},
-{path:'ChangeUserName', component:ChangeUserName , canActivate:[superGuardGuard] }
+{path:'ChangeUserName', component:ChangeUserName , canActivate:[superGuardGuard] },
+
+// 404 — wrong / unknown routes
+{ path: 'notfound', component: NotFound },
+{ path: '**', redirectTo: 'notfound' }
 
 ];

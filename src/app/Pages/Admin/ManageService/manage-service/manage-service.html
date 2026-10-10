@@ -1,98 +1,264 @@
 <div class="admin-wrapper">
+
+  <!-- Ambient background layers -->
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient-grid"></div>
+
   <!-- Page Header -->
   <header class="page-header">
+
     <div class="header-content">
+
       <div class="header-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><circle cx="7" cy="7" r=".5" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="26" height="26"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path d="M12 2H2v10l9.29 9.29a2.42 2.42 0 0 0 3.42 0l6.58-6.58a2.42 2.42 0 0 0 0-3.42L12 2Z"/>
+          <circle cx="7" cy="7" r=".5" fill="currentColor"/>
+        </svg>
       </div>
-      <div>
+
+      <div class="header-text">
+        <span class="eyebrow">SALON MANAGEMENT</span>
         <h1>Service Management</h1>
         <p class="subtitle">Create, update, and manage your salon service offerings</p>
       </div>
+
     </div>
+
     <div class="header-image">
-      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=150&fit=crop&crop=entropy" alt="Barber salon services" loading="lazy" />
+      <img
+        src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&auto=format&fit=crop&q=85"
+        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&auto=format&fit=crop&q=85';"
+        alt="Premium barber salon interior"
+        loading="lazy"
+      />
+
+      <div class="image-overlay"></div>
+
+      <div class="image-caption">
+        <span class="caption-label">THE ART OF GROOMING</span>
+        <h2>RECO BARBER</h2>
+        <p>Every detail. Every experience. Premium.</p>
+      </div>
+
     </div>
+
   </header>
 
-  <!-- Form Card -->
+  <!-- Create / Update Service -->
   <section class="premium-card form-card">
+
     <div class="card-header">
-      <span class="badge" [class.badge-update]="UpdateInputService.Id !== 0">
-        {{ UpdateInputService.Id === 0 ? 'Create New' : 'Edit Mode' }}
+
+      <div class="card-heading-icon">✦</div>
+
+      <div class="card-heading-text">
+        <span class="section-label">
+          {{ UpdateInputService.Id === 0 ? 'NEW SERVICE' : 'EDIT SERVICE' }}
+        </span>
+
+        <h3>
+          {{ UpdateInputService.Id === 0
+            ? 'Add New Service'
+            : 'Update Service Details' }}
+        </h3>
+
+        <p>Manage your salon's services and pricing.</p>
+      </div>
+
+      <span
+        class="badge"
+        [class.badge-update]="UpdateInputService.Id !== 0">
+        {{ UpdateInputService.Id === 0 ? 'Create Mode' : 'Edit Mode' }}
       </span>
-      <h3>{{ UpdateInputService.Id === 0 ? 'Add Service' : 'Update Service Details' }}</h3>
+
     </div>
 
-    @if(UpdateInputService.Id == 0) {
+    @if (UpdateInputService.Id === 0) {
+
       <div class="form-grid">
+
         <div class="input-group">
-          <label>Service Name</label>
+          <label for="createServiceName">Service Name</label>
+
           <div class="input-wrapper">
-            <input type="text" class="custom-input" [(ngModel)]="InputService.ServiceName" placeholder="e.g. Premium Haircut & Styling" />
+            <span class="input-icon">✂</span>
+
+            <input
+              id="createServiceName"
+              type="text"
+              class="custom-input"
+              [(ngModel)]="InputService.ServiceName"
+              placeholder="e.g. Premium Haircut & Styling"
+            />
           </div>
         </div>
 
         <div class="input-group">
-          <label>Service Price ($)</label>
+          <label for="createServicePrice">Service Price ($)</label>
+
           <div class="input-wrapper">
-            <input type="number" class="custom-input" [(ngModel)]="InputService.Price" placeholder="0.00" />
+            <span class="input-icon price-icon">$</span>
+
+            <input
+              id="createServicePrice"
+              type="number"
+              min="0"
+              class="custom-input"
+              [(ngModel)]="InputService.Price"
+              placeholder="0.00"
+            />
           </div>
         </div>
 
         <div class="form-actions">
-          <button class="btn btn-primary" [disabled]="Isloading()" (click)="CreateService()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            <span>Create Service</span>
+          <button
+            type="button"
+            class="btn btn-primary"
+            [disabled]="Isloading()"
+            (click)="CreateService()">
+
+            <span class="button-symbol">＋</span>
+            <span>{{ Isloading() ? 'Processing...' : 'Create Service' }}</span>
+
           </button>
         </div>
+
       </div>
-    } 
-    @else {
+
+    } @else {
+
       <div class="form-grid">
+
         <div class="input-group">
-          <label>Service Name</label>
+          <label for="updateServiceName">Service Name</label>
+
           <div class="input-wrapper">
-            <input type="text" class="custom-input" [(ngModel)]="UpdateInputService.ServiceName" placeholder="Enter service name" />
+            <span class="input-icon">✂</span>
+
+            <input
+              id="updateServiceName"
+              type="text"
+              class="custom-input"
+              [(ngModel)]="UpdateInputService.ServiceName"
+              placeholder="Enter service name"
+            />
           </div>
         </div>
 
         <div class="input-group">
-          <label>Service Price ($)</label>
+          <label for="updateServicePrice">Service Price ($)</label>
+
           <div class="input-wrapper">
-            <input type="number" class="custom-input" [(ngModel)]="UpdateInputService.Price" placeholder="0.00" />
+            <span class="input-icon price-icon">$</span>
+
+            <input
+              id="updateServicePrice"
+              type="number"
+              min="0"
+              class="custom-input"
+              [(ngModel)]="UpdateInputService.Price"
+              placeholder="0.00"
+            />
           </div>
         </div>
 
         <div class="form-actions">
-          <button class="btn btn-accent" [disabled]="Isloading()" (click)="UpdateService()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-            <span>Save Changes</span>
+          <button
+            type="button"
+            class="btn btn-primary"
+            [disabled]="Isloading()"
+            (click)="UpdateService()">
+
+            <span>✓</span>
+            <span>{{ Isloading() ? 'Saving...' : 'Save Changes' }}</span>
+
           </button>
         </div>
+
       </div>
+
     }
+
   </section>
 
-  <!-- Table Card -->
-  <section class="premium-card">
-    <!-- Search Toolbar -->
-    <div class="table-toolbar">
-      <div class="search-box">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input 
-          type="text" 
-          class="custom-input search-input" 
-          placeholder="Search by service name..." 
-          [(ngModel)]="Keyword"
-        />
-        <button class="btn btn-secondary" type="button" [disabled]="Isloading()" (click)="Search()">Search</button>
+  <!-- Services Table -->
+  <section class="premium-card table-card">
+
+    <div class="table-heading">
+
+      <div>
+        <span class="section-label">YOUR SALON MENU</span>
+        <h2>All Services</h2>
+        <p>View and manage the services available at your salon.</p>
       </div>
+
+      <div class="service-count">
+        <span class="count-value">{{ totalRecords }}</span>
+        <span class="count-label">Total Services</span>
+      </div>
+
+    </div>
+
+    <!-- Search -->
+    <div class="table-toolbar">
+
+      <div class="search-box">
+
+        <svg class="search-icon"
+             xmlns="http://www.w3.org/2000/svg"
+             width="19" height="19"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+
+        <input
+          type="text"
+          class="custom-input search-input"
+          placeholder="Search services..."
+          [(ngModel)]="Keyword"
+          (keyup.enter)="Search()"
+        />
+
+        @if (Keyword) {
+          <button
+            type="button"
+            class="clear-search"
+            aria-label="Clear search"
+            (click)="Keyword = ''; Search()">
+            ×
+          </button>
+        }
+
+        <button
+          type="button"
+          class="btn btn-search"
+          [disabled]="Isloading()"
+          (click)="Search()">
+          Search
+        </button>
+
+      </div>
+
     </div>
 
     <!-- Table -->
     <div class="table-responsive">
+
       <table class="premium-table">
+
         <thead>
           <tr>
             <th>Service Details</th>
@@ -100,66 +266,169 @@
             <th class="text-right">Actions</th>
           </tr>
         </thead>
+
         <tbody>
-          @for(service of ServiceList; track service.id) {
+
+          @for (service of ServiceList; track service.id) {
+
             <tr>
+
               <td>
                 <div class="service-name-cell">
-                  <span class="service-dot"></span>
-                  <span class="name-text">{{ service.serviceName }}</span>
+
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="20" height="20"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.7"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <circle cx="6" cy="6" r="3"/>
+                      <circle cx="6" cy="18" r="3"/>
+                      <path d="m20 4-12 12"/>
+                      <path d="m14 8 6 6"/>
+                      <path d="m8 8 6 6"/>
+                    </svg>
+                  </div>
+
+                  <div class="service-details">
+                    <span class="name-text">{{ service.serviceName }}</span>
+                    <span class="service-caption">Professional salon service</span>
+                  </div>
+
                 </div>
               </td>
+
               <td>
-                <span class="price-tag">${{ service.price }}</span>
+                <span class="price-tag">
+                  <span class="currency-symbol">$</span>{{ service.price }}
+                </span>
               </td>
+
               <td class="text-right">
                 <div class="action-buttons">
-                  <button class="btn-icon btn-edit" title="Edit Service" [disabled]="Isloading()" (click)="Update(service.id)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+
+                  <button
+                    type="button"
+                    class="btn-icon btn-edit"
+                    title="Edit Service"
+                    aria-label="Edit service"
+                    [disabled]="Isloading()"
+                    (click)="Update(service.id)">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="17" height="17"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <path d="M12 20h9"/>
+                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+                    </svg>
+
                   </button>
-                  <button class="btn-icon btn-delete" title="Delete Service" [disabled]="Isloading()" (click)="DeleteService(service.id)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+
+                  <button
+                    type="button"
+                    class="btn-icon btn-delete"
+                    title="Delete Service"
+                    aria-label="Delete service"
+                    [disabled]="Isloading()"
+                    (click)="DeleteService(service.id)">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="17" height="17"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+                      <path d="M3 6h18"/>
+                      <path d="M8 6V4h8v2"/>
+                      <path d="m19 6-1 14H6L5 6"/>
+                      <path d="M10 11v5M14 11v5"/>
+                    </svg>
+
                   </button>
+
                 </div>
               </td>
+
             </tr>
+
           } @empty {
+
             <tr>
-              <td colspan="3" class="empty-state">
-                No services found. Try creating one above.
+              <td colspan="3" class="empty-cell">
+
+                <div class="empty-state">
+                  <div class="empty-icon">✂</div>
+                  <h3>No services found</h3>
+                  <p>Try another search or create a new service above.</p>
+                </div>
+
               </td>
             </tr>
+
           }
+
         </tbody>
+
       </table>
+
     </div>
 
     <!-- Pagination -->
     <div class="pagination-container">
+
       <span class="pagination-info">
-        Showing {{ totalRecords === 0 ? 0 : (Page - 1) * PageSize + 1 }}-{{ RecordEnd }} of {{ totalRecords }} services
+        Showing
+        {{ totalRecords === 0 ? 0 : (Page - 1) * PageSize + 1 }}
+        -{{ RecordEnd }}
+        of {{ totalRecords }} services
       </span>
+
       <div class="pagination-buttons">
-        <button 
-          class="btn btn-outline btn-sm"
+
+        <button
           type="button"
+          class="pagination-btn"
           [disabled]="Page <= 1 || Isloading()"
           (click)="ChangePage(Page - 1)">
-          ‹ Prev
+          ‹ <span>Prev</span>
         </button>
-        @for(pageNumber of PageNumbers; track pageNumber) {
-          <button class="btn btn-outline btn-sm" type="button" [class.active]="pageNumber === Page" [disabled]="Isloading()" (click)="ChangePage(pageNumber)">
+
+        @for (pageNumber of PageNumbers; track pageNumber) {
+
+          <button
+            type="button"
+            class="pagination-btn page-number"
+            [class.active]="pageNumber === Page"
+            [attr.aria-current]="pageNumber === Page ? 'page' : null"
+            [disabled]="Isloading()"
+            (click)="ChangePage(pageNumber)">
             {{ pageNumber }}
           </button>
+
         }
+
         <button
-          class="btn btn-outline btn-sm"
           type="button"
+          class="pagination-btn"
           [disabled]="Page >= totalPages || Isloading()"
           (click)="ChangePage(Page + 1)">
-          Next ›
+          <span>Next</span> ›
         </button>
+
       </div>
+
     </div>
+
   </section>
+
 </div>

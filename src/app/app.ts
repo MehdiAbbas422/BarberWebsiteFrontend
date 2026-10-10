@@ -34,7 +34,8 @@ export class App {
                 const authRoutes = [
                     '/sigin',
                     '/sigup',
-                    '/resetpassword'
+                    '/resetpassword',
+                    '/notfound'
                 ];
 
                 this.showSidebar =
