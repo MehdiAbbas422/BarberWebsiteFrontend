@@ -983,3 +983,186 @@ h1 {
   }
 
 }
+
+
+/* =========================================
+   LIGHT (WHITE) THEME
+   :host-context -> html.theme-light
+========================================= */
+
+:host-context(.theme-light) .manage-page {
+  background:
+    radial-gradient(
+      ellipse at 85% 5%,
+      rgba(183, 142, 68, 0.08),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 0% 90%,
+      rgba(183, 142, 68, 0.05),
+      transparent 35%
+    ),
+    #ffffff;
+
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) h1 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .page-subtitle {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .header-badge {
+  border-color: rgba(0, 0, 0, 0.10);
+  background: #f7f7f5;
+  color: #55524b;
+}
+
+:host-context(.theme-light) .service-manager {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f7f8fa
+    );
+
+  border-color: rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+:host-context(.theme-light) .manager-top {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:host-context(.theme-light) .manager-top h2 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .section-description {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .count-label {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .add-service-box {
+  border-color: rgba(0, 0, 0, 0.08);
+
+  background:
+    linear-gradient(
+      120deg,
+      #f7f7f5,
+      #fbfbf9
+    );
+}
+
+:host-context(.theme-light) .add-heading h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .add-heading p {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-select {
+  border-color: rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .service-select:focus {
+  background: #ffffff;
+}
+
+:host-context(.theme-light) .service-select option {
+  background: #ffffff;
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .helper-text {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .list-heading h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .list-heading p {
+  color: #55524b;
+}
+
+:host-context(.theme-light) .list-count {
+  background: #f7f7f5;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #55524b;
+}
+
+:host-context(.theme-light) .services-table-wrapper {
+  border-color: rgba(0, 0, 0, 0.08);
+  scrollbar-color: #b8a06a #eeeeea;
+}
+
+:host-context(.theme-light) .services-table thead {
+  background: #f7f7f5;
+}
+
+:host-context(.theme-light) .services-table th {
+  color: #8a857c;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:host-context(.theme-light) .services-table td {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+:host-context(.theme-light) .serial-number {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .service-info h4 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .service-info p {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .delete-btn {
+  color: #c0392b;
+}
+
+:host-context(.theme-light) .delete-btn:hover {
+  color: #a52a1e;
+}
+
+:host-context(.theme-light) .empty-state {
+  border-color: rgba(0, 0, 0, 0.14);
+  background: #f7f7f5;
+}
+
+:host-context(.theme-light) .empty-state h3 {
+  color: #1c1c1a;
+}
+
+:host-context(.theme-light) .empty-state p {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .manager-footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+:host-context(.theme-light) .footer-status {
+  color: #8a857c;
+}
+
+:host-context(.theme-light) .footer-brand {
+  color: #8a857c;
+}
